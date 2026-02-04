@@ -8,7 +8,8 @@ import { SuitesAmenities } from './components/SuitesAmenities';
 import { AvailabilityCta } from './components/AvailabilityCta';
 import { EngagingDailyEvents } from './components/EngagingDailyEvents';
 import { Gallery } from './components/Gallery';
-import { BlockPlaceholder } from './components/BlockPlaceholder';
+import { Faq } from './components/Faq';
+import { Contact } from './components/Contact';
 
 export default function App() {
   return (
@@ -25,8 +26,8 @@ export default function App() {
         <AvailabilityCta />
         <EngagingDailyEvents />
         <Gallery />
-        <BlockPlaceholder id="faq" title="FAQ" />
-        <BlockPlaceholder id="contact" title="Contact" className="bg-white" />
+        <Faq />
+        <Contact />
       </main>
     </div>
   );

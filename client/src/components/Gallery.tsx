@@ -29,6 +29,9 @@ const GALLERY_IMAGES = [
 
 export function Gallery() {
   const [active, setActive] = useState(GALLERY_IMAGES[0].imgelink);
+  const currentIndex = GALLERY_IMAGES.findIndex((img) => img.imgelink === active);
+  const displayIndex = currentIndex >= 0 ? currentIndex + 1 : 1;
+  const totalImages = GALLERY_IMAGES.length;
 
   return (
     <section id="gallery" className="relative overflow-visible bg-white">
@@ -84,7 +87,7 @@ export function Gallery() {
               >
                 <img
                   src={imgelink}
-                  className="h-20 w-full object-cover object-center md:h-24"
+                  className="h-20 w-full object-cover object-center md:h-32"
                   alt=""
                 />
               </button>
@@ -94,7 +97,7 @@ export function Gallery() {
 
         {/* Pagination indicator */}
         <div className="mt-6 flex justify-center font-sans text-sm text-[#282828]">
-          1 / 4
+          {displayIndex} / {totalImages}
         </div>
       </div>
     </section>

@@ -27,7 +27,7 @@ export function Header() {
           }}
         >
           <span className="block text-start">{TITLE_LINE_1}</span>
-          <span className="block">{TITLE_LINE_2}</span>
+          <span className="block mr-4">{TITLE_LINE_2}</span>
         </h2>
         <p className="pl-4 font-sans text-[36px] font-normal leading-[1.25] tracking-[0] text-[#FFFFFF] drop-shadow-md max-sm:text-2xl">
           {SUBTITLE}
