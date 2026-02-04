@@ -1,0 +1,170 @@
+import { useState } from 'react';
+import orchidSmall from '../assets/images/orchid_small.png';
+
+const SUBTITLE =
+  '24/7 Dedicated staff available around the clock for safety and assistance';
+
+const SERVICES_ITEMS = [
+  {
+    title: 'Personal Care & Daily Living',
+    content: (
+      <>
+        <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+          We provide respectful, one-on-one assistance with the essential tasks of daily life,
+          tailored to each resident&apos;s level of independence.
+        </p>
+        <ul className="mt-3 list-disc space-y-2 pl-5 font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+          <li>Hygiene & Grooming: Assistance with bathing, hair care, oral hygiene, and dressing.</li>
+          <li>Mobility Support: Help with walking, stand-by assistance, and safe transfers (e.g., from bed to chair).</li>
+          <li>Incontinence Care: Compassionate and discreet management of personal care needs.</li>
+          <li>Escort Service: Assistance moving to and from the dining area and activity spaces.</li>
+        </ul>
+      </>
+    ),
+  },
+  { title: 'Health & Medication Management', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Oversight of medications, coordination with healthcare providers, and support with health monitoring.</p> },
+  { title: 'Culinary Excellence', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Nutritious, chef-prepared meals tailored to dietary needs and preferences.</p> },
+  { title: 'Hospitality & Environment', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Housekeeping, linen service, and a comfortable, well-maintained living environment.</p> },
+  { title: 'Engagement & Social Vitality', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Activities, outings, and programs designed to support social connection and purpose.</p> },
+  { title: 'Mobile Hair/Barber Manicure/Pedicure Services', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">On-site grooming and personal care services for convenience and dignity.</p> },
+  { title: 'Horticulture Therapy', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Gardening and plant-based activities to support wellness and engagement.</p> },
+];
+
+const SPECIALIZED_ITEMS = [
+  { title: "Dementia & Alzheimer's Care:", content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Specialized support and a secure, calming environment for residents with memory care needs.</p> },
+  { title: 'Memory Care:', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Structured programs and trained staff focused on cognitive and emotional well-being.</p> },
+  { title: 'Cognitive Stimulation Therapy (CST)', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Evidence-based group activities to support memory and cognitive function.</p> },
+  { title: 'Home health support:', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Coordination with home health agencies for nursing and therapy as needed.</p> },
+  { title: 'Hospice Support:', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Compassionate end-of-life care and family support in partnership with hospice providers.</p> },
+];
+
+function AccordionItem({
+  title,
+  children,
+  open,
+  onToggle,
+}: {
+  title: string;
+  children: React.ReactNode;
+  open: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div className="border-b border-[#909090]">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between py-4 text-left font-sans text-[24px] font-bold leading-[1.2] tracking-normal text-[#4D4D4D] transition"
+      >
+        <span>{title}</span>
+        <svg
+          className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-300 ease-out ${open ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className="grid transition-[grid-template-rows] duration-300 ease-out"
+        style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="pb-4 pr-8">{children}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Services() {
+  const [openService, setOpenService] = useState<number | null>(0);
+  const [openSpecialized, setOpenSpecialized] = useState<number | null>(null);
+
+  return (
+    <section id="services" className="relative overflow-visible bg-white">
+      {/* Orchid watermark — фон привязан к viewport, не поднимается/опускается при открытии dropdown */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `url(${orchidSmall})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '120px auto',
+          backgroundAttachment: 'fixed',
+        }}
+        aria-hidden
+      />
+
+      {/* Corner florals */}
+      <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
+        <img
+          src={orchidSmall}
+          alt=""
+          className="h-[148px] w-[300px] object-contain object-left-bottom"
+          aria-hidden
+        />
+      </div>
+      <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
+        <img
+          src={orchidSmall}
+          alt=""
+          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
+          aria-hidden
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+        {/* Title */}
+        <h2
+          className="font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
+          style={{ fontFamily: '"Tangerine", cursive' }}
+        >
+          Our Services & Amenities
+        </h2>
+        <p className="mt-4 font-sans text-[31px] font-normal italic leading-[1.3] tracking-normal text-[#282828]">
+          {SUBTITLE}
+        </p>
+
+        {/* Services accordion */}
+        <div className="mt-12">
+          <div className="flex items-center gap-4 border-b border-[#909090] pb-2">
+            <h3 className="font-sans text-[33px] font-light italic leading-[1.2] tracking-normal text-[#4D4D4D]">Services</h3>
+          </div>
+          <div className="mt-4">
+            {SERVICES_ITEMS.map((item, i) => (
+              <AccordionItem
+                key={i}
+                title={item.title}
+                open={openService === i}
+                onToggle={() => setOpenService(openService === i ? null : i)}
+              >
+                {item.content}
+              </AccordionItem>
+            ))}
+          </div>
+        </div>
+
+        {/* Specialized Care Services accordion */}
+        <div className="mt-14">
+          <h3 className="font-sans text-[33px] font-light italic leading-[1.2] tracking-normal text-[#4D4D4D]">
+            Specialized Care Services
+          </h3>
+          <div className="mt-4">
+            {SPECIALIZED_ITEMS.map((item, i) => (
+              <AccordionItem
+                key={i}
+                title={item.title}
+                open={openSpecialized === i}
+                onToggle={() => setOpenSpecialized(openSpecialized === i ? null : i)}
+              >
+                {item.content}
+              </AccordionItem>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
