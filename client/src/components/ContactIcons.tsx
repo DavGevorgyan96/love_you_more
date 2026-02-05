@@ -1,4 +1,4 @@
-import callSvg from '../assets/images/call.svg';
+import callSvg from '../assets/images/contact.svg';
 import emailSvg from '../assets/images/email.svg';
 import whatsappSvg from '../assets/images/whatsapp.svg';
 import floralAccent from '../assets/images/floral_accent.png';
@@ -11,7 +11,7 @@ const ICONS = [
 
 export function ContactIcons() {
   return (
-    <section className="relative overflow-visible bg-[#1A4D4A] py-6 sm:py-8">
+    <section className="relative overflow-visible bg-[#052720] py-6 sm:py-8">
       {/* Decorative left — extends into header */}
       <div className="pointer-events-none absolute left-0 bottom-0 z-0 hidden lg:block">
         <img
@@ -30,10 +30,10 @@ export function ContactIcons() {
             href={href}
             target={alt === 'WhatsApp' ? '_blank' : undefined}
             rel={alt === 'WhatsApp' ? 'noopener noreferrer' : undefined}
-            className="flex items-center justify-center rounded-[30px] border border-[#F2CF8B] bg-transparent p-[25px] transition hover:bg-[#F2CF8B]/10"
+            className="flex items-center justify-center w-[90px] h-[90px]"
             aria-label={alt}
           >
-            <img src={src} alt="" className="h-8 w-8 object-contain sm:h-10 sm:w-10" />
+            <img src={src} alt="" className="h-full w-full object-contain" />
           </a>
         ))}
       </div>

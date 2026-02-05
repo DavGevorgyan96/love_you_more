@@ -13,7 +13,7 @@ const PHONE = 'tel:+1';
 
 export function Navbar() {
   return (
-    <header className="bg-black text-gold">
+    <header className="bg-[#041F1A] text-gold">
       <div className="mx-[79px] flex flex-wrap items-center justify-between gap-4 py-4 lg:flex-nowrap">
         {/* Logo & Brand */}
         <div className="flex items-center gap-3">

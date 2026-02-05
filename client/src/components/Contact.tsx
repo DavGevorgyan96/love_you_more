@@ -1,8 +1,114 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import orchidSmall from '../assets/images/orchid_small.png';
 import { api } from '../api/client';
 
+type SelectOption = { value: string; label: string };
+
+function CustomSelect({
+  id,
+  options,
+  value,
+  onChange,
+  triggerClassName,
+}: {
+  id: string;
+  options: SelectOption[];
+  value: string;
+  onChange: (value: string) => void;
+  triggerClassName: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [open]);
+
+  const displayLabel = options.find((o) => o.value === value)?.label ?? options[0]?.label ?? '';
+  const isPlaceholder = !value;
+
+  return (
+    <div ref={ref} className="relative w-full max-w-[506px]">
+      <button
+        type="button"
+        id={id}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={displayLabel}
+        onClick={() => setOpen((p) => !p)}
+        className={`flex h-[40px] w-full items-center justify-between rounded-[13px] border border-[#D1D5DB] bg-white px-3 pr-10 text-left font-sans text-sm focus:border-[#6B9BD1] focus:outline-none focus:ring-1 focus:ring-[#6B9BD1] ${triggerClassName}`}
+      >
+        <span className={isPlaceholder ? 'text-[#D9D9D9]' : 'text-[#282828]'}>{displayLabel}</span>
+        <svg
+          className={`pointer-events-none h-4 w-4 shrink-0 text-[#909090] transition-transform ${open ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <ul
+          role="listbox"
+          className="absolute left-0 right-0 top-[calc(100%+4px)] z-50 max-h-[240px] overflow-auto rounded-[13px] border border-[#D1D5DB] bg-white py-1 shadow-lg"
+          aria-activedescendant={value ? undefined : undefined}
+        >
+          {options.map((opt) => {
+            const selected = opt.value === value;
+            return (
+              <li
+                key={opt.value || 'placeholder'}
+                role="option"
+                aria-selected={selected}
+                onClick={() => {
+                  onChange(opt.value);
+                  setOpen(false);
+                }}
+                className={`flex cursor-pointer items-center gap-2 px-3 py-2.5 font-sans text-sm text-[#282828] transition-colors first:rounded-t-[10px] last:rounded-b-[10px] hover:bg-[#E8F0FE] ${
+                  selected ? 'bg-[#6B9BD1] font-semibold text-white hover:bg-[#5a8ac4]' : ''
+                }`}
+              >
+                {selected && (
+                  <span className="text-sm" aria-hidden>
+                    ✓
+                  </span>
+                )}
+                <span className={selected ? 'text-white' : ''}>{opt.label}</span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || '';
+
+const HOW_CAN_WE_HELP_OPTIONS = [
+  { value: '', label: 'Tell us how we can help' },
+  { value: 'Booking a Tour', label: 'Booking a Tour' },
+  { value: 'Pricing & Availability', label: 'Pricing & Availability' },
+  { value: 'Careers', label: 'Careers' },
+  { value: 'Volunteering', label: 'Volunteering' },
+  { value: 'Other', label: 'Other' },
+];
+
+const HOW_DID_YOU_HEAR_OPTIONS = [
+  { value: '', label: 'e.g. referral, search, etc.' },
+  { value: 'Search Engine', label: 'Search Engine' },
+  { value: 'Word of Mouth', label: 'Word of Mouth' },
+  { value: 'Referral', label: 'Referral' },
+  { value: 'Social Media', label: 'Social Media' },
+];
 
 export function Contact() {
   const [firstName, setFirstName] = useState('');
@@ -70,8 +176,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative overflow-visible bg-white">
-      {/* Top blue line */}
-      <div className="h-0.5 w-full bg-[#6B9BD1]" />
 
       {/* Corner florals — gold/orchid banner style */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
@@ -166,27 +270,27 @@ export function Contact() {
               />
             </div>
             <div>
-              <label className={labelClass}>
+              <label className={labelClass} htmlFor="how-can-we-help">
                 How can we help you?
               </label>
-              <input
-                type="text"
+              <CustomSelect
+                id="how-can-we-help"
+                options={HOW_CAN_WE_HELP_OPTIONS}
                 value={howCanWeHelp}
-                onChange={(e) => setHowCanWeHelp(e.target.value)}
-                className={inputClass}
-                placeholder="Tell us how we can help"
+                onChange={setHowCanWeHelp}
+                triggerClassName="text-[#909090]"
               />
             </div>
             <div>
-              <label className={labelClass}>
+              <label className={labelClass} htmlFor="how-did-you-hear">
                 How did you hear about us?
               </label>
-              <input
-                type="text"
+              <CustomSelect
+                id="how-did-you-hear"
+                options={HOW_DID_YOU_HEAR_OPTIONS}
                 value={howDidYouHear}
-                onChange={(e) => setHowDidYouHear(e.target.value)}
-                className={inputClass}
-                placeholder="e.g. referral, search, etc."
+                onChange={setHowDidYouHear}
+                triggerClassName="text-[#909090]"
               />
             </div>
           </div>
@@ -211,14 +315,14 @@ export function Contact() {
                   type="checkbox"
                   checked={agree}
                   onChange={(e) => setAgree(e.target.checked)}
-                  className="mt-1 h-4 w-4 rounded border-gray-300 text-[#0F2C2A] focus:ring-[#6B9BD1]"
+                  className="h-4 w-4 shrink-0 rounded-none border-2 border-[#4D4D4D] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] accent-[#4D4D4D] focus:ring-2 focus:ring-[#6B9BD1] focus:ring-offset-0"
                 />
-                <span className="font-sans text-sm text-[#282828]">
+                <span className="font-inter text-[14px] font-normal leading-[140%] tracking-normal text-[#909090] align-middle">
                   I agree to the processing of{' '}
                   <a
-                    href="#"
-                    className="text-[#6B9BD1] underline hover:no-underline"
-                    onClick={(e) => e.preventDefault()}
+                    href="/pdfs/privacy-policy.pdf"
+                    download="privacy-policy.pdf"
+                    className="font-inter text-[14px] font-normal leading-[140%] tracking-normal text-[#000000] underline align-middle hover:opacity-80"
                   >
                     Personal data
                   </a>

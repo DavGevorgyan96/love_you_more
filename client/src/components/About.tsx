@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import floralAccent from '../assets/images/floral_accent.png';
 import { OrchidIcon } from './OrchidIcon';
 
-const PHILOSOPHY_SLIDES = [
+type SlideContent = { text: string } | { items: string[] };
+const PHILOSOPHY_SLIDES: Array<{ image: string; title: string } & SlideContent> = [
   {
     image: 'https://picsum.photos/seed/about1/600/750',
     title: 'Our Philosophy: The Gold Orchid Standard',
@@ -10,18 +11,31 @@ const PHILOSOPHY_SLIDES = [
   },
   {
     image: 'https://picsum.photos/seed/about2/600/750',
-    title: 'A Boutique Setting for Personalized Care',
-    text: 'We keep our community small by design. Fewer residents means more time, attention, and genuine connection for each person. Every team member knows every resident—their stories, preferences, and needs. This is not institutional care; this is family.',
+    title: 'Our Core Values',
+    items: [
+      'Radical Personalization: We adapt our home to the resident, never the resident to our home.',
+      'Uncompromising Dignity: We uphold the self-worth and autonomy of every senior, regardless of their level of care.',
+      'Presence-Based Safety: Our high caregiver-to-resident ratio ensures that safety is proactive, not reactive.',
+      'Holistic Vitality: We nourish the body with home-cooked meals, the mind with engagement, and the spirit with companionship.',
+      'Family Transparency: We operate with an "open door" heart, maintaining a continuous circle of trust with the families who choose us.',
+    ],
   },
   {
     image: 'https://picsum.photos/seed/about3/600/750',
-    title: 'Wellness and Dignity Every Day',
-    text: 'From nutritious meals to meaningful activities and peaceful surroundings, we focus on what makes life rich at every stage. Our programs support physical, emotional, and social wellness so that every day feels purposeful and dignified.',
+    title: 'Mission Statement',
+    text: 'To provide a sanctuary of comfort and compassion that transcends traditional senior living. At Love You More Residential Villa, our mission is to honor the life stories of our residents by providing a boutique, home-based environment where every individual feels deeply known, safely protected, and genuinely loved.',
   },
   {
     image: 'https://picsum.photos/seed/about4/600/750',
-    title: 'Family Involvement and Peace of Mind',
-    text: 'We partner closely with families so you stay connected and informed. Open communication, visits, and shared care decisions are at the heart of what we do. Your peace of mind matters as much as your loved one’s comfort.',
+    title: 'Our Core Commitment',
+    items: [
+      'Guaranteed consistency in standards',
+      'Profound Respect for Personal Privacy and Boundaries',
+      'Proactive Holistic Health monitoring',
+      'Focus on quality time and connection',
+      'Active Memory and Identity Integration',
+      'Validation and empathy',
+    ],
   },
 ];
 
@@ -33,9 +47,37 @@ const CEO_PARAGRAPHS = [
   'We are Honored to Welcome You to Our Family',
 ];
 
+const AUTO_ADVANCE_MS = 500000;
+
 export function About() {
   const [activeSlide, setActiveSlide] = useState(0);
   const totalSlides = PHILOSOPHY_SLIDES.length;
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goNext = useCallback(() => {
+    setActiveSlide((p) => (p < totalSlides - 1 ? p + 1 : 0));
+  }, [totalSlides]);
+
+  const resetAutoPlay = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(goNext, AUTO_ADVANCE_MS);
+  }, [goNext]);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(goNext, AUTO_ADVANCE_MS);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [goNext]);
+
+  const goPrev = () => {
+    setActiveSlide((p) => (p > 0 ? p - 1 : totalSlides - 1));
+    resetAutoPlay();
+  };
+  const goTo = (i: number) => {
+    setActiveSlide(i);
+    resetAutoPlay();
+  };
 
   return (
     <section id="about" className="relative overflow-visible bg-white">
@@ -59,7 +101,7 @@ export function About() {
           aria-hidden
         />
       </div>
-      
+
       <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24  xl:pt-[120px]">
         {/* Title: About Love You More Residential Villa */}
         <h2
@@ -70,53 +112,43 @@ export function About() {
         </h2>
 
         {/* Two columns: image + philosophy (carousel) — crossfade */}
-        <div className="mt-[60px] flex gap-[40px] xl:h-[500px]">
-          <div className="relative mx-auto h-[314px] w-[280px] shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:w-[320px] sm:rounded-[20px] md:h-[403px] md:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[448px] lg:w-[400px] lg:rounded-[30px] xl:h-[500px] xl:w-[446px]">
-            {PHILOSOPHY_SLIDES.map((item, i) => (
-              <div
-                key={i}
-                className="absolute inset-0 h-full w-full transition-opacity duration-300 ease-out"
-                style={{
-                  opacity: activeSlide === i ? 1 : 0,
-                  pointerEvents: activeSlide === i ? 'auto' : 'none',
-                }}
-                aria-hidden={activeSlide !== i}
-              >
-                <img
-                  src={item.image}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            ))}
+        <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[500px]">
+          <div className="mx-auto h-[314px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[448px] lg:w-[400px] lg:rounded-[30px] xl:h-[500px] xl:w-[446px]">
+            <img
+              key={activeSlide}
+              src={PHILOSOPHY_SLIDES[activeSlide].image}
+              alt=""
+              className="h-full w-full object-cover transition-opacity duration-300 ease-out"
+            />
           </div>
-          <div className="min-w-0 w-full py-[40px] flex flex-col">
-            <div className="relative" style={{ height: '-webkit-fill-available' }}>
-              {PHILOSOPHY_SLIDES.map((item, i) => (
-                <div
-                  key={i}
-                  className="absolute inset-0 transition-opacity duration-300 ease-out"
-                  style={{
-                    opacity: activeSlide === i ? 1 : 0,
-                    pointerEvents: activeSlide === i ? 'auto' : 'none',
-                  }}
-                  aria-hidden={activeSlide !== i}
-                >
+          <div className="min-w-0 w-full flex flex-col justify-between">
+            {(() => {
+              const item = PHILOSOPHY_SLIDES[activeSlide];
+              return (
+                <div key={activeSlide} className="animate-fade-in">
                   <h3 className="font-sans text-[24px] font-bold capitalize leading-[1.2] tracking-normal text-black">
                     {item.title}
                   </h3>
-                  <p className="mt-4 font-sans text-[24px] font-normal leading-[1.3] tracking-normal text-[#282828]">
-                    {item.text}
-                  </p>
+                  {'text' in item ? (
+                    <p className="mt-4 font-sans text-lg font-normal leading-[1.3] tracking-normal text-[#282828] xl:text-[24px]">
+                      {item.text}
+                    </p>
+                  ) : (
+                    <ul className="mt-4 list-disc space-y-2 pl-6 font-sans text-lg font-normal leading-[1.3] tracking-normal text-[#282828] xl:text-[24px]">
+                      {item.items.map((bullet, bi) => (
+                        <li key={bi}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
             {/* Carousel nav: стрелки сверху, орхидеи снизу */}
             <div className="mt-6 flex flex-col items-center gap-[37px]">
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => setActiveSlide((p) => (p > 0 ? p - 1 : totalSlides - 1))}
+                  onClick={goPrev}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-400 transition hover:border-slate-300 hover:text-slate-600"
                   aria-label="Previous"
                 >
@@ -124,19 +156,19 @@ export function About() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveSlide((p) => (p < totalSlides - 1 ? p + 1 : 0))}
+                  onClick={() => { goNext(); resetAutoPlay(); }}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-400 transition hover:border-slate-300 hover:text-slate-600"
                   aria-label="Next"
                 >
                   <span className="text-lg">&gt;</span>
                 </button>
-              </div>
+              </div> */}
               <div className="flex items-center gap-3">
                 {PHILOSOPHY_SLIDES.map((_, i) => (
                   <button
                     key={i}
                     type="button"
-                    onClick={() => setActiveSlide(i)}
+                    onClick={() => goTo(i)}
                     className="transition-opacity hover:opacity-80"
                     aria-label={`Slide ${i + 1}`}
                   >

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import orchidSmall from '../assets/images/orchid_small.png';
+import orchidBgLeft from '../assets/images/OrchidBackgroundLeft.svg';
+import orchidBgRight from '../assets/images/OrchidBackgroundRight.svg';
 
 const SUBTITLE =
   '24/7 Dedicated staff available around the clock for safety and assistance';
@@ -85,33 +86,26 @@ export function Services() {
 
   return (
     <section id="services" className="relative overflow-visible bg-white">
-      {/* Orchid watermark — фон привязан к viewport, не поднимается/опускается при открытии dropdown */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.06]"
-        style={{
-          backgroundImage: `url(${orchidSmall})`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '120px auto',
-          backgroundAttachment: 'fixed',
-        }}
-        aria-hidden
-      />
 
-      {/* Corner florals */}
-      <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
+      {/* Large orchid backgrounds — left and right, behind content */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 z-0 hidden lg:block opacity-[0.08]"
+        aria-hidden
+      >
         <img
-          src={orchidSmall}
+          src={orchidBgLeft}
           alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
+          className="h-auto max-h-[70vh] w-[min(400px,35vw)] object-contain object-left-bottom"
         />
       </div>
-      <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 z-0 hidden lg:block opacity-[0.08]"
+        aria-hidden
+      >
         <img
-          src={orchidSmall}
+          src={orchidBgRight}
           alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
+          className="h-auto max-h-[70vh] w-[min(400px,35vw)] object-contain object-right-bottom"
         />
       </div>
 
