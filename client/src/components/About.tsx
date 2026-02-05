@@ -70,10 +70,10 @@ export function About() {
     };
   }, [goNext]);
 
-  const goPrev = () => {
-    setActiveSlide((p) => (p > 0 ? p - 1 : totalSlides - 1));
-    resetAutoPlay();
-  };
+  // const goPrev = () => {
+  //   setActiveSlide((p) => (p > 0 ? p - 1 : totalSlides - 1));
+  //   resetAutoPlay();
+  // };
   const goTo = (i: number) => {
     setActiveSlide(i);
     resetAutoPlay();
