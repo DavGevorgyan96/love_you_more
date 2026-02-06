@@ -145,6 +145,7 @@ export function Contact() {
       `Email: ${email}`,
       `How can we help: ${howCanWeHelp}`,
       `How did you hear about us: ${howDidYouHear}`,
+      `Agreed to processing of personal data: ${agree ? 'Yes' : 'No'}`,
       '',
       'Message:',
       message,

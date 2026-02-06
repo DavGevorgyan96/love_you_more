@@ -84,8 +84,6 @@ export function Faq() {
 
   return (
     <section id="faq" className="relative overflow-visible bg-white">
-      {/* Top blue line */}
-      <div className="h-0.5 w-full bg-[#6B9BD1]" />
 
       {/* Corner florals */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">

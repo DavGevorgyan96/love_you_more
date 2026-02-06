@@ -17,7 +17,6 @@ const PHILOSOPHY_SLIDES: Array<{ image: string; title: string } & SlideContent> 
       'Uncompromising Dignity: We uphold the self-worth and autonomy of every senior, regardless of their level of care.',
       'Presence-Based Safety: Our high caregiver-to-resident ratio ensures that safety is proactive, not reactive.',
       'Holistic Vitality: We nourish the body with home-cooked meals, the mind with engagement, and the spirit with companionship.',
-      'Family Transparency: We operate with an "open door" heart, maintaining a continuous circle of trust with the families who choose us.',
     ],
   },
   {
@@ -70,10 +69,10 @@ export function About() {
     };
   }, [goNext]);
 
-  // const goPrev = () => {
-  //   setActiveSlide((p) => (p > 0 ? p - 1 : totalSlides - 1));
-  //   resetAutoPlay();
-  // };
+  const goPrev = () => {
+    setActiveSlide((p) => (p > 0 ? p - 1 : totalSlides - 1));
+    resetAutoPlay();
+  };
   const goTo = (i: number) => {
     setActiveSlide(i);
     resetAutoPlay();
@@ -81,8 +80,6 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-visible bg-white">
-      {/* Top blue line */}
-      <div className="h-0.5 w-full bg-[#6B9BD1]" />
 
       {/* Corner florals — как в ContactIcons: фиксированный размер 287×298 */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block scale-y-[-1]">
@@ -126,15 +123,15 @@ export function About() {
               const item = PHILOSOPHY_SLIDES[activeSlide];
               return (
                 <div key={activeSlide} className="animate-fade-in">
-                  <h3 className="font-sans text-[24px] font-bold capitalize leading-[1.2] tracking-normal text-black">
+                  <h3 className="font-sans text-[20px] font-bold capitalize leading-[1.2] tracking-normal text-black">
                     {item.title}
                   </h3>
                   {'text' in item ? (
-                    <p className="mt-4 font-sans text-lg font-normal leading-[1.3] tracking-normal text-[#282828] xl:text-[24px]">
+                    <p className="mt-4 font-sans font-normal leading-[1.3] tracking-normal text-[#282828] text-[16px]">
                       {item.text}
                     </p>
                   ) : (
-                    <ul className="mt-4 list-disc space-y-2 pl-6 font-sans text-lg font-normal leading-[1.3] tracking-normal text-[#282828] xl:text-[24px]">
+                    <ul className="mt-4 list-disc space-y-2 pl-6 font-sans font-normal leading-[1.3] tracking-normal text-[#282828] text-[16px]">
                       {item.items.map((bullet, bi) => (
                         <li key={bi}>{bullet}</li>
                       ))}
@@ -145,7 +142,7 @@ export function About() {
             })()}
             {/* Carousel nav: стрелки сверху, орхидеи снизу */}
             <div className="mt-6 flex flex-col items-center gap-[37px]">
-              {/* <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={goPrev}
@@ -162,7 +159,7 @@ export function About() {
                 >
                   <span className="text-lg">&gt;</span>
                 </button>
-              </div> */}
+              </div>
               <div className="flex items-center gap-3">
                 {PHILOSOPHY_SLIDES.map((_, i) => (
                   <button

@@ -44,7 +44,7 @@ export function Footer() {
         </nav>
 
         {/* Bottom row: legal */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 sm:mt-8">
+        <div className="mt-[22px] flex flex-wrap items-center justify-center gap-y-2">
           {LEGAL_LINKS.map((item, i) => (
             <span key={item.href}>
               {i > 0 && <span className="mx-1.5 text-[#FFFFFF]">|</span>}
