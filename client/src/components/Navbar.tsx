@@ -13,27 +13,27 @@ const PHONE = 'tel:+1';
 
 export function Navbar() {
   return (
-    <header className="bg-[#041F1A] text-gold">
-      <div className="mx-[79px] py-4">
+    <header className="flex  items-center bg-[#041F1A] text-gold h-[160px]">
+      <div className="2xl:mx-[79px] mx-4 w-full h-full">
         {/* One row: logo, nav links, CTA+address — links and buttons aligned by top */}
-        <div className="flex flex-wrap items-center justify-between gap-4 lg:flex-nowrap">
+        <div className="h-full flex flex-wrap items-center justify-between gap-4 lg:flex-nowrap">
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
             <img
               src={logoImg}
               alt="Love You More"
-              className="h-[128px] w-[370.91px] shrink-0 object-contain"
+              className="h-[100px] w-[290px] shrink-0 object-contain xl:h-[128px] xl:w-[370.91px]"
             />
           </div>
 
           {/* Nav links — same height as button block, vertically centered */}
           <nav className="order-3 w-full basis-full lg:order-2 lg:basis-auto lg:flex lg:h-[60px] lg:items-center lg:justify-center">
-            <ul className="flex flex-wrap items-center justify-center gap-6 min-[1400px]:gap-[50px] min-[1600px]:gap-[65.25px]">
+            <ul className="flex flex-wrap items-center justify-center gap-5 min-[1400px]:gap-[50px] min-[1600px]:gap-[65.25px]">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
                   <a
                     href={href}
-                    className="font-inter text-[18px] font-normal leading-[1.4] tracking-normal text-[#F2CF8B] transition hover:text-gold-light"
+                    className="font-inter text-[15px] xl:text-[18px] font-normal leading-[1.4] tracking-normal text-[#F2CF8B] transition hover:text-gold-light"
                   >
                     {label}
                   </a>
@@ -43,17 +43,17 @@ export function Navbar() {
           </nav>
 
           {/* CTA + Address — buttons same line as links, address under */}
-          <div className="order-2 lg:order-3 flex flex-col self-end gap-2 shrink-0">
-            <div className="flex h-[60px] w-[360px] items-center overflow-hidden rounded-[15px] border border-[#F2CF8B]">
+          <div className="relative order-2 lg:order-3 flex flex-col gap-2 shrink-0">
+            <div className="flex h-[52px] w-[320px] items-center overflow-hidden rounded-[12px] border border-[#F2CF8B] xl:h-[60px] xl:w-[360px] xl:rounded-[15px]">
               <a
-                href="#tour"
-                className="inline-flex h-full w-full items-center justify-center bg-transparent px-4 font-inter text-[17px] font-semibold leading-[1.4] tracking-normal text-[#F2CF8B] transition hover:bg-gold/10"
+                href="#contact"
+                className="inline-flex h-full w-full items-center justify-center bg-transparent px-3 font-inter text-[15px] font-semibold leading-[0] tracking-normal text-[#F2CF8B] transition hover:bg-gold/10 xl:px-4 xl:text-[18px]"
               >
                 Book a Tour
               </a>
               <a
                 href={PHONE}
-                className="inline-flex h-full w-full items-center justify-center gap-[11px] bg-[#F2CF8B] px-4 font-inter text-[17px] font-semibold leading-[1.4] tracking-normal text-black transition hover:bg-gold-light"
+                className="inline-flex h-full w-full items-center justify-center gap-2 bg-[#F2CF8B] px-3 font-inter text-[15px] font-semibold leading-[0] tracking-normal text-black transition hover:bg-gold-light xl:gap-[11px] xl:px-4 xl:text-[17px]"
                 aria-label="Позвонить"
               >
                 Contact us
@@ -67,11 +67,13 @@ export function Navbar() {
                 </svg>
               </a>
             </div>
-            <p className="text-right font-roboto text-[18px] font-normal leading-[1.4] tracking-normal text-[#F2CF8B]">
+            <p className="absolute bottom-[-32px] right-0 text-right font-roboto text-[15px] font-normal leading-[1.4] tracking-normal text-[#F2CF8B] xl:text-[18px]">
               {ADDRESS}
             </p>
           </div>
+
         </div>
+
       </div>
     </header>
   );

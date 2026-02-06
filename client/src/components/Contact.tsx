@@ -34,7 +34,7 @@ function CustomSelect({
   const isPlaceholder = !value;
 
   return (
-    <div ref={ref} className="relative w-full max-w-[506px]">
+    <div ref={ref} className="relative w-full">
       <button
         type="button"
         id={id}
@@ -122,6 +122,15 @@ export function Contact() {
   const [agree, setAgree] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+
+  useEffect(() => {
+    if (status !== 'success' && status !== 'error') return;
+    const t = setTimeout(() => {
+      setStatus('idle');
+      setStatusMessage('');
+    }, 4000);
+    return () => clearTimeout(t);
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -330,12 +339,27 @@ export function Contact() {
                 </span>
               </label>
               {statusMessage && (
-                <p
-                  className={`font-sans text-sm ${status === 'success' ? 'text-green-700' : 'text-red-600'
-                    }`}
+                <div
+                  role="alert"
+                  className={`fixed right-4 top-4 z-50 flex max-w-[360px] items-center gap-3 rounded-xl border px-4 py-3 shadow-lg transition-all sm:right-6 sm:top-6 ${
+                    status === 'success'
+                      ? 'border-green-200 bg-green-50 text-green-800'
+                      : 'border-red-200 bg-red-50 text-red-800'
+                  }`}
                 >
-                  {statusMessage}
-                </p>
+                  {status === 'success' ? (
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600" aria-hidden>
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                  ) : (
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600" aria-hidden>
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                    </span>
+                  )}
+                  <p className="font-sans text-sm font-medium leading-snug">
+                    {statusMessage}
+                  </p>
+                </div>
               )}
               <button
                 type="submit"
