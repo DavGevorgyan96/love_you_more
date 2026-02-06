@@ -54,32 +54,31 @@ export function SuitesAmenities() {
           Suites & Amenities
         </h2>
 
-        <div className="mt-[53px] flex flex-col gap-[40px] lg:flex-row lg:items-start pb-10 lg:pb-14 xl:pb-[97px]">
-          <div className="h-[400px] w-[580px] shrink-0 overflow-hidden rounded-[30px]">
+        <div className="mt-6 md:mt-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start pb-10 md:pb-14 xl:pb-[97px]">
+          <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-[400px] md:w-[580px] md:rounded-[30px]">
             <img
               src="https://picsum.photos/seed/suites-bedroom/800/560"
               alt="Comfortable bedroom with twin beds and luxury finishes"
-              className="h-full w-full rounded-[30px] object-cover"
+              className="h-full w-full rounded-[20px] object-cover md:rounded-[30px]"
             />
           </div>
 
-          <div className="flex flex-col gap-8 font-sans lg:flex-1">
-            <div className="pt-10">
+          <div className="flex flex-col gap-5 md:gap-8 font-sans md:flex-1">
+            <div className="pt-4 md:pt-10">
               <h3
-                className="font-sans font-bold capitalize text-black"
-                style={{ fontSize: 24, lineHeight: '120%', letterSpacing: 0 }}
+                className="font-sans font-bold capitalize text-black text-lg md:text-2xl"
+                style={{ lineHeight: '120%', letterSpacing: 0 }}
               >
                 Suite Features May Include:
               </h3>
-              <ul className="mt-4 list-disc space-y-3 pl-[70px] marker:text-black">
+              <ul className="mt-3 md:mt-4 list-disc space-y-2 md:space-y-3 pl-5 md:pl-[70px] marker:text-black">
                 {SUITE_FEATURES.map((item, i) => (
                   <li
                     key={i}
-                    className="font-sans font-normal text-left text-[#282828]"
+                    className="font-sans font-normal text-left text-[#282828] text-base md:text-2xl"
                     style={{
                       fontFamily: 'Roboto, sans-serif',
                       fontWeight: 400,
-                      fontSize: 24,
                       lineHeight: '130%',
                       letterSpacing: 0,
                     }}
@@ -89,16 +88,16 @@ export function SuitesAmenities() {
                 ))}
               </ul>
             </div>
-            <div className='flex items-center gap-2'>
+            <div className="flex flex-wrap items-center gap-2">
               <h3
-                className="font-sans font-bold text-[#282828]"
-                style={{ fontSize: 24, lineHeight: '130%', letterSpacing: 0 }}
+                className="font-sans font-bold text-[#282828] text-base md:text-2xl"
+                style={{ lineHeight: '130%', letterSpacing: 0 }}
               >
                 Room types:
               </h3>
               <p
-                className="font-sans font-normal text-[#282828]"
-                style={{ fontSize: 24, lineHeight: '130%', letterSpacing: 0 }}
+                className="font-sans font-normal text-[#282828] text-base md:text-2xl"
+                style={{ lineHeight: '130%', letterSpacing: 0 }}
               >
                 Shared or Private
               </p>

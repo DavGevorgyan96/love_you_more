@@ -11,4 +11,24 @@
   body {
     @apply font-sans;
   }
+  *:focus,
+  *:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
 }
+
+.activities-carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: auto;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+}
+.activities-carousel .carousel-slide {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+.activities-carousel::-webkit-scrollbar {
+  display: none;
+}
+

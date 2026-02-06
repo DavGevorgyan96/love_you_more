@@ -74,7 +74,7 @@ export function EngagingDailyEvents() {
               key={i}
               className="flex w-[578px] max-w-full flex-col"
             >
-              <div className="h-[460px] w-full overflow-hidden rounded-[60px]">
+              <div className="h-[300px] md:h-[460px] w-full overflow-hidden rounded-[60px]">
                 <img
                   src={item.image}
                   alt=""

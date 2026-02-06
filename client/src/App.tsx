@@ -31,7 +31,7 @@ export default function App() {
         <Faq />
         <Contact />
         <BookTour />
-      <Footer />
+        <Footer />
       </main>
     </div>
   );

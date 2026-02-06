@@ -42,7 +42,7 @@ function CustomSelect({
         aria-expanded={open}
         aria-label={displayLabel}
         onClick={() => setOpen((p) => !p)}
-        className={`flex h-[40px] w-full items-center justify-between rounded-[13px] border border-[#D1D5DB] bg-white px-3 pr-10 text-left font-sans text-sm focus:border-[#6B9BD1] focus:outline-none focus:ring-1 focus:ring-[#6B9BD1] ${triggerClassName}`}
+        className={`flex h-[44px] sm:h-[40px] w-full items-center justify-between rounded-[13px] border border-[#D1D5DB] bg-white px-3 text-left font-sans text-sm focus:outline-none ${triggerClassName}`}
       >
         <span className={isPlaceholder ? 'text-[#D9D9D9]' : 'text-[#282828]'}>{displayLabel}</span>
         <svg
@@ -179,10 +179,10 @@ export function Contact() {
   };
 
   const labelClass =
-    'mb-1.5 block font-sans text-[17px] font-semibold leading-[140%] tracking-normal text-[#000000]';
+    'mb-1.5 block font-sans text-[15px] sm:text-[17px] font-semibold leading-[140%] tracking-normal text-[#000000]';
   const inputBaseClass =
-    'w-full rounded-[13px] border border-[#D1D5DB] bg-white px-3 font-sans text-sm text-[#000000] placeholder:font-bold placeholder:text-xs placeholder:leading-[100%] placeholder:tracking-[1px] placeholder:uppercase placeholder:text-[#D9D9D9] focus:border-[#6B9BD1] focus:outline-none focus:ring-1 focus:ring-[#6B9BD1]';
-  const inputClass = `${inputBaseClass} h-[40px]`;
+    'w-full rounded-[13px] border border-[#D1D5DB] bg-white px-3 font-sans text-sm text-[#000000] placeholder:font-bold placeholder:text-xs placeholder:leading-[100%] placeholder:tracking-[1px] placeholder:uppercase placeholder:text-[#D9D9D9] focus:outline-none';
+  const inputClass = `${inputBaseClass} h-[44px] sm:h-[40px]`;
 
   return (
     <section id="contact" className="relative overflow-visible bg-white">
@@ -205,22 +205,22 @@ export function Contact() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px] pb-16 lg:pb-24">
+      <div className="relative z-10 mx-auto max-w-[1232px] px-4 sm:px-6 md:px-8 pt-6 sm:pt-10 md:pt-14 lg:pt-24 xl:pt-[120px] pb-12 sm:pb-16 lg:pb-24">
         <h2
-          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
+          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
         >
           Transparency Through Direct Engagement
         </h2>
 
-        <form onSubmit={handleSubmit} className="flex mt-10 gap-[107px] lg:mt-14">
+        <form onSubmit={handleSubmit} className="flex flex-col mt-6 sm:mt-8 lg:mt-14 lg:flex-row lg:gap-[60px] xl:gap-[107px]">
           {/* Left column */}
-          <div className="w-full space-y-3">
+          <div className="w-full flex-1 space-y-3 sm:space-y-4">
             <div>
               <label className={labelClass}>
                 Name / Last Name <span className="text-[#000000]">*</span>
               </label>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 sm:gap-3">
                 <input
                   type="text"
                   value={firstName}
@@ -239,8 +239,8 @@ export function Contact() {
                 />
               </div>
             </div>
-            <div className="flex gap-3 ">
-              <div className='w-full'>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="w-full">
                 <label className={labelClass}>
                   Phone <span className="text-[#000000]">*</span>
                 </label>
@@ -253,7 +253,7 @@ export function Contact() {
                   placeholder="10-DIGIT PHONE NUMBER"
                 />
               </div>
-              <div className='w-full'>
+              <div className="w-full">
                 <label className={labelClass}>
                   Zip Code
                 </label>
@@ -306,7 +306,7 @@ export function Contact() {
           </div>
 
           {/* Right column */}
-          <div className="w-full flex flex-col justify-between">
+          <div className="w-full flex-1 flex flex-col justify-between mt-6 lg:mt-0">
             <div>
               <label className={labelClass}>
                 Your Message
@@ -314,12 +314,12 @@ export function Contact() {
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                rows={10}
-                className={`${inputBaseClass} min-h-[277px] resize-y py-2.5`}
+                rows={6}
+                className={`${inputBaseClass} min-h-[160px] sm:min-h-[200px] lg:min-h-[277px] resize-y py-2.5`}
                 placeholder="YOUR MESSAGE"
               />
             </div>
-            <div className="mt-6 flex flex-col gap-12">
+            <div className="mt-6 flex flex-col gap-6 sm:gap-8 lg:gap-12">
               <label className="flex cursor-pointer items-start gap-3">
                 <input
                   type="checkbox"
@@ -341,7 +341,7 @@ export function Contact() {
               {statusMessage && (
                 <div
                   role="alert"
-                  className={`fixed right-4 top-4 z-50 flex max-w-[360px] items-center gap-3 rounded-xl border px-4 py-3 shadow-lg transition-all sm:right-6 sm:top-6 ${
+                  className={`fixed left-4 right-4 top-4 z-50 flex max-w-[360px] sm:left-auto mx-auto sm:mx-0 items-center gap-3 rounded-xl border px-4 py-3 shadow-lg transition-all sm:right-6 sm:top-6 ${
                     status === 'success'
                       ? 'border-green-200 bg-green-50 text-green-800'
                       : 'border-red-200 bg-red-50 text-red-800'
@@ -364,7 +364,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full max-w-[200px] rounded-lg bg-[#0F2C2A] px-6 py-3 font-sans text-sm font-medium text-white transition hover:bg-[#1a3d3a] disabled:opacity-50 sm:py-3.5"
+                className="w-full sm:max-w-[200px] rounded-lg bg-[#0F2C2A] px-6 py-3.5 font-sans text-sm font-medium text-white transition hover:bg-[#1a3d3a] disabled:opacity-50"
               >
                 {status === 'loading' ? 'Sending...' : 'Submit'}
               </button>
