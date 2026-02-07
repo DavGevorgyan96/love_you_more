@@ -25,7 +25,7 @@ const SOCIAL_LINKS = [
 ];
 
 const MAP_EMBED_URL =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d373.1043654075474!2d-118.4424497096089!3d34.23961276360128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c290df1dbb5b83%3Ax2fd8e5989cf85a5!2zOTM3MSBEb3JyaW5ndG9uIFBsLCBBcmxldGEsIENBIDkxMzMxLCDQodCo0JA!5e1!3m2!1sru!2sam!4v1770302746703!5m2!1sru!2sam';
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d373.1043654075474!2d-118.4424497096089!3d34.23961276360128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c290df1dbb5b83%3Ax2fd8e5989cf85a5!2zOTM3MSBEb3JyaW5ndG9uIFBsLCBBcmxldGEsIENBIDkxMzMxLCDQodCo0JA!5e0!3m2!1sen!2sam!4v1770302746703!5m2!1sru!2sam';
 
 export function BookTour() {
   return (

@@ -30,7 +30,7 @@ export function ContactIcons() {
             href={href}
             target={alt === 'WhatsApp' ? '_blank' : undefined}
             rel={alt === 'WhatsApp' ? 'noopener noreferrer' : undefined}
-            className="flex items-center justify-center w-[90px] h-[90px]"
+            className="flex items-center justify-center w-[60px] h-[60px] md:w-[90px] md:h-[90px]"
             aria-label={alt}
           >
             <img src={src} alt="" className="h-full w-full object-contain" />

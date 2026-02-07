@@ -15,7 +15,7 @@ import { Footer } from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen font-sans bg-slate-50">
+    <div className="min-h-screen font-sans bg-slate-50 pb-[max(env(safe-area-inset-bottom),24px)]">
       <Navbar />
       <Header />
       <ContactIcons />

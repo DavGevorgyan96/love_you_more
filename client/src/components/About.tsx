@@ -118,11 +118,11 @@ export function About() {
               className="h-full w-full object-cover transition-opacity duration-300 ease-out"
             />
           </div>
-          <div className="min-w-0 w-full flex flex-col justify-between">
+          <div className="min-w-0 w-full flex flex-col justify-between max-[919px]:h-[420px] max-[919px]:flex-shrink-0">
             {(() => {
               const item = PHILOSOPHY_SLIDES[activeSlide];
               return (
-                <div key={activeSlide} className="animate-fade-in">
+                <div key={activeSlide} className="animate-fade-in max-[919px]:min-h-0 max-[919px]:overflow-y-auto max-[919px]:flex-1 max-[919px]:pr-1">
                   <h3 className="font-sans text-[20px] font-bold capitalize leading-[1.2] tracking-normal text-black">
                     {item.title}
                   </h3>
@@ -140,8 +140,8 @@ export function About() {
                 </div>
               );
             })()}
-            {/* Carousel nav: стрелки сверху, орхидеи снизу */}
-            <div className="mt-6 flex flex-col items-center gap-[37px]">
+            {/* Carousel nav: стрелки сверху, орхидеи снизу — фиксированы снизу при max-width 919px */}
+            <div className="mt-6 flex flex-col items-center gap-[37px] max-[919px]:flex-shrink-0">
               <div className="flex items-center gap-2">
                 <button
                   type="button"

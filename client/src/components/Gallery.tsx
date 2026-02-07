@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import orchidSmall from '../assets/images/orchid_small.png';
+import { EmblaCarouselThumb } from './EmblaCarouselThumb';
+import '../css/embla.css';
 
 const GALLERY_SUBTITLE =
   '24/7 Dedicated staff available around the clock for safety and assistance';
@@ -28,10 +31,33 @@ const GALLERY_IMAGES = [
 ];
 
 export function Gallery() {
-  const [active, setActive] = useState(GALLERY_IMAGES[0].imgelink);
-  const currentIndex = GALLERY_IMAGES.findIndex((img) => img.imgelink === active);
-  const displayIndex = currentIndex >= 0 ? currentIndex + 1 : 1;
-  const totalImages = GALLERY_IMAGES.length;
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+  const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
+    containScroll: 'keepSnaps',
+    watchDrag: false,
+  });
+
+  const onThumbClick = useCallback(
+    (index: number) => {
+      if (!embla || !emblaThumbs) return;
+      embla.scrollTo(index);
+      emblaThumbs.scrollTo(index);
+    },
+    [embla, emblaThumbs]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!embla || !emblaThumbs) return;
+    setSelectedIndex(embla.selectedScrollSnap());
+    emblaThumbs.scrollTo(embla.selectedScrollSnap());
+  }, [embla, emblaThumbs]);
+
+  useEffect(() => {
+    if (!embla) return;
+    onSelect();
+    embla.on('select', onSelect);
+  }, [embla, onSelect]);
 
   return (
     <section id="gallery" className="relative overflow-visible bg-white">
@@ -64,40 +90,45 @@ export function Gallery() {
           {GALLERY_SUBTITLE}
         </p>
 
-        {/* Featured image gallery: one main image + thumbnails */}
-        <div className="mt-10 grid gap-4 lg:mt-12">
-          <div className="overflow-hidden rounded-2xl bg-gray-100">
-            <img
-              className="h-auto w-full max-w-full rounded-2xl object-cover object-center md:h-[480px]"
-              src={active}
-              alt=""
-            />
+        {/* Embla: main carousel + thumbnails */}
+        <div className="gallery-embla mt-10 lg:mt-12">
+          <div className="embla" data-embla="main">
+            <div className="embla__viewport" ref={mainViewportRef}>
+              <div className="embla__container">
+                {GALLERY_IMAGES.map(({ imgelink }, index) => (
+                  <div className="embla__slide" key={index}>
+                    <div className="embla__slide__inner embla__slide__inner--main">
+                      <img
+                        className="embla__slide__img"
+                        src={imgelink}
+                        alt=""
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-            {GALLERY_IMAGES.map(({ imgelink }, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => setActive(imgelink)}
-                className={`overflow-hidden rounded-2xl border-2 transition focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                  active === imgelink
-                    ? 'border-[#0F2C2A] ring-[#0F2C2A]'
-                    : 'border-transparent hover:border-gray-300'
-                }`}
-              >
-                <img
-                  src={imgelink}
-                  className="h-20 w-full object-cover object-center md:h-32"
-                  alt=""
-                />
-              </button>
-            ))}
+
+          <div className="embla embla--thumb" data-embla="thumbs">
+            <div className="embla__viewport" ref={thumbViewportRef}>
+              <div className="embla__container embla__container--thumb">
+                {GALLERY_IMAGES.map(({ imgelink }, index) => (
+                  <EmblaCarouselThumb
+                    key={index}
+                    onClick={() => onThumbClick(index)}
+                    selected={index === selectedIndex}
+                    imgSrc={imgelink}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Pagination indicator */}
         <div className="mt-6 flex justify-center font-sans text-sm text-[#282828]">
-          {displayIndex} / {totalImages}
+          {selectedIndex + 1} / {GALLERY_IMAGES.length}
         </div>
       </div>
     </section>
