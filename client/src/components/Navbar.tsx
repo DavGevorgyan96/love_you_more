@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logoImg from '../assets/images/logo.svg';
+
+const DESKTOP_BREAKPOINT = 768; // md in Tailwind — when desktop nav is shown
 
 const NAV_LINKS = [
   { label: 'About us', href: '#about' },
@@ -17,8 +19,18 @@ export function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  // Close mobile menu when switching to desktop viewport
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= DESKTOP_BREAKPOINT) setMenuOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    onResize(); // run once in case we're already desktop
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
-    <header className="flex items-center bg-[#041F1A] text-gold h-[120px] lg:h-[160px]">
+    <header className="sticky top-0 z-40 flex items-center bg-[#041F1A] text-gold h-[120px] lg:h-[160px]">
       <div className="2xl:mx-[79px] mx-4 w-full h-full">
         {/* Mobile: hamburger | logo | book icon | contact icon */}
         <div className="md:hidden flex h-full items-center justify-between gap-2">
@@ -60,7 +72,7 @@ export function Navbar() {
         </div>
 
         {/* Desktop: logo, nav links, CTA+address */}
-        <div className="h-full flex-wrap items-center justify-between gap-4 md:flex md:flex-nowrap">
+        <div className="hidden h-full flex-wrap items-center justify-between gap-4 md:flex md:flex-nowrap">
           <div className="flex items-center gap-3">
             <img
               src={logoImg}

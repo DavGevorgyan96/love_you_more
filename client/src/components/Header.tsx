@@ -6,7 +6,7 @@ const SUBTITLE = 'Elevating Supportive Living for elderly 60+';
 
 export function Header() {
   return (
-    <header className="relative h-[360px] w-full overflow-hidden sm:h-[480px] md:h-[560px] lg:h-[640px] xl:h-[740px]">
+    <header className="relative h-[calc(100vh-160px)] w-full overflow-hidden min-h-[360px]">
       {/* Background image with overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-[height] duration-300 ease-out"
@@ -15,7 +15,7 @@ export function Header() {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
-      <div className="relative z-10 flex max-w-[1240px] w-full mx-auto h-full flex-col items-start justify-end gap-[28px] py-[72px] text-center">
+      <div className="relative z-10 flex max-w-[1232px] px-4 w-full mx-auto h-full flex-col items-start justify-end gap-[28px] py-[72px] text-center">
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal drop-shadow-md max-xl:text-[clamp(2rem,8vw,5rem)] xl:text-[142.5px]"
           style={{
