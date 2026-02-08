@@ -6,8 +6,8 @@ const SUBTITLE = 'Elevating Supportive Living for elderly 60+';
 
 export function Header() {
   return (
-    <header className="hero-viewport-height relative w-full overflow-hidden md:h-[560px]">
-      {/* Background image with overlay */}
+    <header className="hero-viewport-height relative w-full overflow-hidden h-[calc(100vh-160px)]">
+      {/* Background image with overlay  md:h-[560px]*/}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-[height] duration-300 ease-out"
         style={{ backgroundImage: `url(${headerBg})` }}
