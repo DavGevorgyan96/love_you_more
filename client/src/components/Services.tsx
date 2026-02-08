@@ -158,7 +158,7 @@ export function Services() {
 
         {/* Specialized Care Services accordion */}
         <div className="mt-14">
-          <h3 className="font-sans text-[33px] font-light italic leading-[1.2] tracking-normal text-[#4D4D4D]">
+          <h3 className="font-sans text-[24px] font-light italic leading-[1.2] tracking-normal text-[#4D4D4D]">
             Specialized Care Services
           </h3>
           <div className="mt-4">
