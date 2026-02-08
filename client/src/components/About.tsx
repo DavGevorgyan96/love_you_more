@@ -109,8 +109,8 @@ export function About() {
         </h2>
 
         {/* Two columns: image + philosophy (carousel) — crossfade */}
-        <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[500px]">
-          <div className="mx-auto h-[314px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[448px] lg:w-[400px] lg:rounded-[30px] xl:h-[500px] xl:w-[446px]">
+        <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[440px]">
+          <div className="mx-auto h-[440px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[448px] lg:w-[400px] lg:rounded-[30px] xl:h-[440px] xl:w-[440px]">
             <img
               key={activeSlide}
               src={PHILOSOPHY_SLIDES[activeSlide].image}
@@ -141,23 +141,23 @@ export function About() {
               );
             })()}
             {/* Carousel nav: стрелки сверху, орхидеи снизу — фиксированы снизу при max-width 919px */}
-            <div className="mt-6 flex flex-col items-center gap-[37px] max-[919px]:flex-shrink-0">
+            <div className="mt-6 flex flex-col items-center max-[919px]:flex-shrink-0">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={goPrev}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-400 transition hover:border-slate-300 hover:text-slate-600"
+                  className="flex h-12 w-12 items-center justify-center rounded-full"
                   aria-label="Previous"
                 >
-                  <span className="text-lg">&lt;</span>
+                  <span className="text-[36px] font-light opacity-50">&lt;</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => { goNext(); resetAutoPlay(); }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-400 transition hover:border-slate-300 hover:text-slate-600"
+                  className="flex h-12 w-12 items-center justify-center rounded-full"
                   aria-label="Next"
                 >
-                  <span className="text-lg">&gt;</span>
+                  <span className="text-[36px] font-light opacity-50">&gt;</span>
                 </button>
               </div>
               <div className="flex items-center gap-3">
@@ -192,7 +192,7 @@ export function About() {
           {CEO_PARAGRAPHS.map((text, i) => (
             <p
               key={i}
-              className={`font-sans text-[24px] font-normal leading-[1.3] tracking-normal text-[#282828] ${i > 0 ? 'mt-4' : ''}`}
+              className={`font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828] ${i > 0 ? 'mt-4' : ''}`}
             >
               {text}
             </p>
@@ -200,13 +200,13 @@ export function About() {
         </div>
 
         {/* CEO signature block */}
-        <div className="mt-10 flex max-w-[714px] flex-wrap items-center gap-6 lg:gap-8">
-          <div className="h-20 w-20 shrink-0 rounded-xl bg-slate-200 sm:h-24 sm:w-24" aria-hidden />
+        <div className="mt-2 flex max-w-[714px] flex-wrap items-center gap-6 lg:gap-8">
+          <div className="h-[120px] w-[120px] shrink-0 rounded-[30px] bg-slate-200" aria-hidden />
           <div>
-            <p className="font-sans text-lg font-semibold text-[#282828] sm:text-xl">
+            <p className="font-sans text-lg font-regular text-[#282828] sm:text-xl">
               Armine Marie Jimenez
             </p>
-            <p className="mt-1 font-sans text-sm text-[#6B7280] sm:text-base">
+            <p className="mt-1 font-sans text-sm text-[#909090] sm:text-base">
               Co-founder & CEO
             </p>
           </div>

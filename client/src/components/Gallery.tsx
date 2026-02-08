@@ -86,12 +86,12 @@ export function Gallery() {
         >
           Gallery
         </h2>
-        <p className="mt-4 text-center font-sans text-[18px] font-normal leading-[1.3] text-[#282828]">
+        <p className="mt-4 text-center font-sans text-[24px] font-light italic leading-[1.3] text-[#282828]">
           {GALLERY_SUBTITLE}
         </p>
 
         {/* Embla: main carousel + thumbnails */}
-        <div className="gallery-embla mt-10 lg:mt-12">
+        <div className="gallery-embla mt-[16px]">
           <div className="embla" data-embla="main">
             <div className="embla__viewport" ref={mainViewportRef}>
               <div className="embla__container">

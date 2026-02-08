@@ -52,7 +52,7 @@ function FaqAccordionItem({
         onClick={onToggle}
         className="flex w-full items-start justify-between gap-4 py-5 text-left transition"
       >
-        <span className="font-sans text-base font-semibold leading-[1.3] tracking-normal text-black sm:text-lg">
+        <span className="font-sans text-[22px] font-semibold leading-[1.3] tracking-normal text-[#282828]">
           {question}
         </span>
         <svg
@@ -70,7 +70,7 @@ function FaqAccordionItem({
         style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
         <div className="min-h-0 overflow-hidden">
-          <p className="pb-5 pr-8 font-sans text-sm font-normal leading-[1.4] tracking-normal text-[#282828] sm:text-base">
+          <p className="pb-5 pr-8 font-sans text-[18px] font-normal leading-[1.4] tracking-normal text-[#282828]">
             {answer}
           </p>
         </div>
@@ -115,7 +115,7 @@ export function Faq() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px] pb-16 lg:pb-24">
+      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px] pb-16">
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}

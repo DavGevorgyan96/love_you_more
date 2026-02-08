@@ -68,7 +68,7 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
     <div
       className={`flex h-[460px] w-full max-w-full flex-col rounded-[30px] bg-[#EFEFEF] px-5 py-5 sm:max-w-[372px] lg:h-[507px] lg:px-8 lg:py-6 ${isHighlighted ? 'shadow-[0_13px_13.1px_0_rgba(0,0,0,0.17)]' : ''}`}
     >
-      <p className="shrink-0 text-center font-sans text-[18px] font-bold leading-[120%] tracking-normal text-[#282828] lg:text-[25px]">
+      <p className="shrink-0 text-center font-sans text-[20px] font-bold leading-[120%] tracking-normal text-[#282828] md:text-[22px]">
         {tier.tier}
       </p>
       <div className="my-3 flex shrink-0 justify-center gap-0.5 lg:my-5 lg:gap-1">
@@ -83,14 +83,23 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
         ))}
       </div>
       <p
-        className="shrink-0 text-center text-[32px] font-normal capitalize leading-[85%] tracking-normal text-[#000000] lg:text-[48px]"
+        className="shrink-0 text-center text-[32px] font-normal capitalize leading-[85%] tracking-normal text-[#000000] md:text-[48px]"
         style={{ fontFamily: '"Tangerine", cursive' }}
       >
         {tier.title}
       </p>
       <div className="min-h-0 flex-1 overflow-y-auto">
-        <p className="mt-2 text-center font-sans text-[13px] font-normal leading-[1.5] text-[#282828] lg:mt-3 lg:text-[15px]">
-          {tier.description}
+        <p className="mt-2 font-sans text-[13px] font-normal leading-[1.5] text-[#282828] lg:mt-3 lg:text-[16px]">
+          {tier.description.includes(': ') ? (
+            <>
+              <span className="text-[16px] font-bold text-[#282828]">
+                {tier.description.split(': ')[0]}:
+              </span>
+              <span> {tier.description.split(': ').slice(1).join(': ')}</span>
+            </>
+          ) : (
+            tier.description
+          )}
         </p>
         <ul className="mt-2 list-disc space-y-0.5 pl-4 text-left font-sans text-[13px] font-normal leading-[1.5] text-[#282828] lg:mt-3 lg:space-y-1 lg:pl-5 lg:text-[15px]">
           {tier.bullets.map((b, j) => (
@@ -314,9 +323,9 @@ export function Activities() {
           >
             Discover The Love You More Standard
           </p>
-          <p className="mt-6 text-center font-sans text-[18px] italic leading-[120%] tracking-normal text-[#4C4C4C] lg:mt-[40px] lg:text-[25px]">
-            <span className="font-extrabold">Note: </span>
-            <span className="font-normal">Care is personalized and adjusted based on assessment.</span>
+          <p className="mt-6 text-center font-sans text-[18px] italic leading-[120%] tracking-normal text-[#4C4C4C] lg:mt-[40px] lg:text-[24px]">
+            <span className="font-extrabold text-[#282828]">Note: </span>
+            <span className="font-normal text-[#282828]">Care is personalized and adjusted based on assessment.</span>
           </p>
         </div>
       </div>

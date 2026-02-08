@@ -66,7 +66,7 @@ export function SuitesAmenities() {
           <div className="flex flex-col gap-5 md:gap-8 font-sans md:flex-1">
             <div className="pt-4 md:pt-10">
               <h3
-                className="font-sans font-bold capitalize text-black text-lg md:text-2xl"
+                className="font-sans font-bold capitalize text-black text-[22px]"
                 style={{ lineHeight: '120%', letterSpacing: 0 }}
               >
                 Suite Features May Include:
@@ -75,7 +75,7 @@ export function SuitesAmenities() {
                 {SUITE_FEATURES.map((item, i) => (
                   <li
                     key={i}
-                    className="font-sans font-normal text-left text-[#282828] text-base md:text-2xl"
+                    className="font-sans font-normal text-left text-[#282828] text-[18px]"
                     style={{
                       fontFamily: 'Roboto, sans-serif',
                       fontWeight: 400,
@@ -90,13 +90,13 @@ export function SuitesAmenities() {
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <h3
-                className="font-sans font-bold text-[#282828] text-base md:text-2xl"
+                className="font-sans font-bold text-[#282828] text-[22px]"
                 style={{ lineHeight: '130%', letterSpacing: 0 }}
               >
                 Room types:
               </h3>
               <p
-                className="font-sans font-normal text-[#282828] text-base md:text-2xl"
+                className="font-sans font-normal text-[#282828] text-[18px]"
                 style={{ lineHeight: '130%', letterSpacing: 0 }}
               >
                 Shared or Private

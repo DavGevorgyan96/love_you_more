@@ -42,7 +42,7 @@ export function BookTour() {
             </h2>
 
             {/* Contact icons — circular, golden */}
-            <div className="mt-8 flex flex-wrap gap-4 sm:gap-6">
+            <div className="mt-8 flex items-center justify-center flex-wrap gap-4 sm:gap-6">
               {TOUR_ICONS.map(({ href, src, alt }) => (
                 <a
                   key={alt}

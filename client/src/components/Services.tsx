@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import orchidBgLeft from '../assets/images/OrchidBackgroundLeft.svg';
 import orchidBgRight from '../assets/images/OrchidBackgroundRight.svg';
+import orchidSmall from '../assets/images/orchid_small.png';
 
 const SUBTITLE =
   '24/7 Dedicated staff available around the clock for safety and assistance';
@@ -10,11 +11,11 @@ const SERVICES_ITEMS = [
     title: 'Personal Care & Daily Living',
     content: (
       <>
-        <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
           We provide respectful, one-on-one assistance with the essential tasks of daily life,
           tailored to each resident&apos;s level of independence.
         </p>
-        <ul className="mt-3 list-disc space-y-2 pl-5 font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        <ul className="mt-3 list-disc space-y-2 pl-5 font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
           <li>Hygiene & Grooming: Assistance with bathing, hair care, oral hygiene, and dressing.</li>
           <li>Mobility Support: Help with walking, stand-by assistance, and safe transfers (e.g., from bed to chair).</li>
           <li>Incontinence Care: Compassionate and discreet management of personal care needs.</li>
@@ -23,20 +24,20 @@ const SERVICES_ITEMS = [
       </>
     ),
   },
-  { title: 'Health & Medication Management', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Oversight of medications, coordination with healthcare providers, and support with health monitoring.</p> },
-  { title: 'Culinary Excellence', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Nutritious, chef-prepared meals tailored to dietary needs and preferences.</p> },
-  { title: 'Hospitality & Environment', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Housekeeping, linen service, and a comfortable, well-maintained living environment.</p> },
-  { title: 'Engagement & Social Vitality', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Activities, outings, and programs designed to support social connection and purpose.</p> },
-  { title: 'Mobile Hair/Barber Manicure/Pedicure Services', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">On-site grooming and personal care services for convenience and dignity.</p> },
-  { title: 'Horticulture Therapy', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Gardening and plant-based activities to support wellness and engagement.</p> },
+  { title: 'Health & Medication Management', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Oversight of medications, coordination with healthcare providers, and support with health monitoring.</p> },
+  { title: 'Culinary Excellence', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Nutritious, chef-prepared meals tailored to dietary needs and preferences.</p> },
+  { title: 'Hospitality & Environment', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Housekeeping, linen service, and a comfortable, well-maintained living environment.</p> },
+  { title: 'Engagement & Social Vitality', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Activities, outings, and programs designed to support social connection and purpose.</p> },
+  { title: 'Mobile Hair/Barber Manicure/Pedicure Services', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">On-site grooming and personal care services for convenience and dignity.</p> },
+  { title: 'Horticulture Therapy', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Gardening and plant-based activities to support wellness and engagement.</p> },
 ];
 
 const SPECIALIZED_ITEMS = [
-  { title: "Dementia & Alzheimer's Care:", content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Specialized support and a secure, calming environment for residents with memory care needs.</p> },
-  { title: 'Memory Care:', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Structured programs and trained staff focused on cognitive and emotional well-being.</p> },
-  { title: 'Cognitive Stimulation Therapy (CST)', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Evidence-based group activities to support memory and cognitive function.</p> },
-  { title: 'Home health support:', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Coordination with home health agencies for nursing and therapy as needed.</p> },
-  { title: 'Hospice Support:', content: <p className="font-sans text-[20px] font-normal leading-[1.3] tracking-normal text-[#282828]">Compassionate end-of-life care and family support in partnership with hospice providers.</p> },
+  { title: "Dementia & Alzheimer's Care:", content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Specialized support and a secure, calming environment for residents with memory care needs.</p> },
+  { title: 'Memory Care:', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Structured programs and trained staff focused on cognitive and emotional well-being.</p> },
+  { title: 'Cognitive Stimulation Therapy (CST)', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Evidence-based group activities to support memory and cognitive function.</p> },
+  { title: 'Home health support:', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Coordination with home health agencies for nursing and therapy as needed.</p> },
+  { title: 'Hospice Support:', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Compassionate end-of-life care and family support in partnership with hospice providers.</p> },
 ];
 
 function AccordionItem({
@@ -55,7 +56,7 @@ function AccordionItem({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between py-4 text-left font-sans text-[24px] font-bold leading-[1.2] tracking-normal text-[#4D4D4D] transition"
+        className="flex w-full items-center justify-between py-4 text-left font-sans text-[22px] font-bold leading-[1.2] tracking-normal text-[#282828] transition"
       >
         <span>{title}</span>
         <svg
@@ -86,10 +87,25 @@ export function Services() {
 
   return (
     <section id="services" className="relative overflow-visible bg-white">
-
+      <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
+        <img
+          src={orchidSmall}
+          alt=""
+          className="h-[148px] w-[300px] object-contain object-left-bottom"
+          aria-hidden
+        />
+      </div>
+      <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
+        <img
+          src={orchidSmall}
+          alt=""
+          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
+          aria-hidden
+        />
+      </div>
       {/* Large orchid backgrounds — left and right, behind content */}
       <div
-        className="pointer-events-none absolute bottom-0 left-0 z-0 hidden lg:block opacity-[0.08]"
+        className="pointer-events-none absolute bottom-0 left-0 z-0 opacity-[0.08]"
         aria-hidden
       >
         <img
@@ -99,7 +115,7 @@ export function Services() {
         />
       </div>
       <div
-        className="pointer-events-none absolute bottom-0 right-0 z-0 hidden lg:block opacity-[0.08]"
+        className="pointer-events-none absolute bottom-0 right-0 z-0 opacity-[0.08]"
         aria-hidden
       >
         <img
@@ -117,14 +133,14 @@ export function Services() {
         >
           Our Services & Amenities
         </h2>
-        <p className="mt-4 font-sans text-[31px] font-normal italic leading-[1.3] tracking-normal text-[#282828]">
+        <p className="mt-4 font-sans text-[24px] font-normal italic leading-[1.3] tracking-normal text-[#282828]">
           {SUBTITLE}
         </p>
 
         {/* Services accordion */}
         <div className="mt-12">
           <div className="flex items-center gap-4 border-b border-[#909090] pb-2">
-            <h3 className="font-sans text-[33px] font-light italic leading-[1.2] tracking-normal text-[#4D4D4D]">Services</h3>
+            <h3 className="font-sans text-[24px] font-light italic leading-[1.2] tracking-normal text-[#282828]">Services</h3>
           </div>
           <div className="mt-4">
             {SERVICES_ITEMS.map((item, i) => (

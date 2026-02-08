@@ -83,9 +83,8 @@ export function EngagingDailyEvents() {
               </div>
               <div className="flex flex-1 flex-col justify-center pt-5">
                 <h3
-                  className="font-sans font-bold text-[#282828]"
+                  className="font-sans text-[22px] font-bold text-[#282828]"
                   style={{
-                    fontSize: 25,
                     lineHeight: '120%',
                     letterSpacing: 0,
                   }}
@@ -93,9 +92,8 @@ export function EngagingDailyEvents() {
                   {item.title}
                 </h3>
                 <p
-                  className="mt-2 font-sans font-normal text-[#282828]"
+                  className="mt-2 font-sans text-[18px] font-normal text-[#282828]"
                   style={{
-                    fontSize: 18,
                     lineHeight: '130%',
                     letterSpacing: 0,
                     width: '90%',

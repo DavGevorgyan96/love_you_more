@@ -6,18 +6,19 @@ const SUBTITLE = 'Elevating Supportive Living for elderly 60+';
 
 export function Header() {
   return (
-    <header className="hero-viewport-height relative w-full overflow-hidden h-[calc(100vh-160px)]">
+    <header className="hero-viewport-height relative w-full overflow-hidden h-[calc(100vh-120px)]">
       {/* Background image with overlay  md:h-[560px]*/}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-[height] duration-300 ease-out"
-        style={{ backgroundImage: `url(${headerBg})` }}
+      <img
+        src={headerBg}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover object-top transition-[height] duration-300 ease-out"
       />
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
       <div className="relative z-10 flex max-w-[1240px] w-full mx-auto h-full flex-col items-start justify-end gap-[28px] py-[72px] text-center">
         <h2
-          className="font-normal capitalize leading-[0.85] tracking-normal drop-shadow-md max-xl:text-[clamp(2rem,8vw,5rem)] xl:text-[142.5px]"
+          className="font-normal capitalize leading-[0.85] tracking-normal drop-shadow-md max-xl:text-[clamp(2rem,8vw,5rem)] xl:text-[126.5px]"
           style={{
             fontFamily: '"Tangerine", cursive',
             background: 'radial-gradient(129.35% 458.06% at 50% 80.17%, #F2CF8B 0%, #8C7850 100%)',
