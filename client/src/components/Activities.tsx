@@ -62,11 +62,19 @@ const TIERS = [
 
 type Tier = (typeof TIERS)[number];
 
+function scrollToContact() {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+}
+
 function TierCard({ tier, index }: { tier: Tier; index: number }) {
-  const isHighlighted = index === 1;
   return (
     <div
-      className={`flex h-[460px] w-full max-w-full flex-col rounded-[30px] bg-[#EFEFEF] px-5 py-5 sm:max-w-[372px] lg:h-[507px] lg:px-8 lg:py-6 ${isHighlighted ? 'shadow-[0_13px_13.1px_0_rgba(0,0,0,0.17)]' : ''}`}
+      role="button"
+      tabIndex={0}
+      onClick={scrollToContact}
+      onKeyDown={(e) => e.key === 'Enter' && scrollToContact()}
+      className={`flex h-[460px] w-full max-w-full md:cursor-pointer flex-col rounded-[30px] bg-[#EFEFEF] px-5 py-5 transition-shadow sm:max-w-[372px] lg:h-[507px] lg:px-8 lg:py-6 hover:shadow-[0_8px_6px_0_rgba(0,0,0,0.15)]`}
     >
       <p className="shrink-0 text-center font-sans text-[20px] font-bold leading-[120%] tracking-normal text-[#282828] md:text-[22px]">
         {tier.tier}
@@ -101,7 +109,7 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
             tier.description
           )}
         </p>
-        <ul className="mt-2 list-disc space-y-0.5 pl-4 text-left font-sans text-[13px] font-normal leading-[1.5] text-[#282828] lg:mt-3 lg:space-y-1 lg:pl-5 lg:text-[15px]">
+        <ul className="mt-2 list-disc pl-4 text-left font-sans text-[13px] font-normal leading-[1.5] text-[#282828] lg:mt-3 lg:pl-5 lg:text-[15px]">
           {tier.bullets.map((b, j) => (
             <li key={j}>{b}</li>
           ))}
@@ -270,7 +278,7 @@ export function Activities() {
           Personalized Care Tiers
         </h2>
 
-        <div className="mt-8 rounded-[30px] border border-[#28282826] p-4 lg:mt-12 lg:p-5">
+        <div className="mt-8 rounded-[30px] p-4 lg:mt-12 lg:p-5">
           <div className="md:hidden">
             <div
               ref={containerRef}
