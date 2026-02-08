@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import orchidSmall from '../assets/images/orchid_small.png';
+import { OrchidSmall } from './OrchidSmall';
 import smallOrchidIcon from '../assets/images/SmallOrchidIcon.svg';
 
 const GAP = 16;
@@ -254,20 +254,10 @@ export function Activities() {
   return (
     <section id="" className="relative overflow-visible bg-white">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
-        />
+        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
-        />
+        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1234px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">

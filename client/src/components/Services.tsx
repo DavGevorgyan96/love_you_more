@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import orchidBgLeft from '../assets/images/OrchidBackgroundLeft.svg';
 import orchidBgRight from '../assets/images/OrchidBackgroundRight.svg';
-import orchidSmall from '../assets/images/orchid_small.png';
+import { OrchidSmall } from './OrchidSmall';
 
 const SUBTITLE =
   '24/7 Dedicated staff available around the clock for safety and assistance';
@@ -88,20 +88,10 @@ export function Services() {
   return (
     <section id="services" className="relative overflow-visible bg-white">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
-        />
+        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
-        />
+        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
       {/* Large orchid backgrounds — left and right, behind content */}
       <div

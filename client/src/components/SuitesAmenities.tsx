@@ -1,5 +1,5 @@
 import floralAccent from '../assets/images/floral_accent.png';
-import orchidSmall from '../assets/images/orchid_small.png';
+import { OrchidSmall } from './OrchidSmall';
 
 const SUITE_FEATURES = [
   'Comfortable, private living space',
@@ -14,20 +14,10 @@ export function SuitesAmenities() {
     <section id="suites-amenities" className="relative overflow-visible bg-white">
 
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
-        />
+        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
-        />
+        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
       <div className="pointer-events-none absolute bottom-0 left-0 z-0 hidden lg:block">
         <img

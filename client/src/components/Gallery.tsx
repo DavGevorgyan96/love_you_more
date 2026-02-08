@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import orchidSmall from '../assets/images/orchid_small.png';
+import { OrchidSmall } from './OrchidSmall';
 import { EmblaCarouselThumb } from './EmblaCarouselThumb';
 import '../css/embla.css';
 
@@ -63,20 +63,10 @@ export function Gallery() {
     <section id="gallery" className="relative overflow-visible bg-white">
       {/* Corner florals */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
-        />
+        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
-        />
+        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 pb-10 sm:pt-12 md:pt-16 lg:pt-24 lg:pb-14 xl:pt-[120px] xl:pb-14">

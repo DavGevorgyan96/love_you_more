@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import orchidSmall from '../assets/images/orchid_small.png';
+import { OrchidSmall, getOrchidSmallDataUrl } from './OrchidSmall';
 
 const FAQ_ITEMS = [
   {
@@ -87,27 +87,17 @@ export function Faq() {
 
       {/* Corner florals */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
-        />
+        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
-        />
+        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
 
       {/* Orchid watermark background */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.06]"
         style={{
-          backgroundImage: `url(${orchidSmall})`,
+          backgroundImage: `url(${getOrchidSmallDataUrl()})`,
           backgroundRepeat: 'repeat',
           backgroundSize: '120px auto',
           backgroundAttachment: 'fixed',

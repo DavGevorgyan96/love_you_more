@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import orchidSmall from '../assets/images/orchid_small.png';
+import { OrchidSmall } from './OrchidSmall';
 import { api } from '../api/client';
 
 type SelectOption = { value: string; label: string };
@@ -187,20 +187,10 @@ export function Contact() {
 
       {/* Corner florals — gold/orchid banner style */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] object-contain object-left-bottom"
-          aria-hidden
-        />
+        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <img
-          src={orchidSmall}
-          alt=""
-          className="h-[148px] w-[300px] scale-x-[-1] object-contain object-right-bottom"
-          aria-hidden
-        />
+        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1232px] px-4 sm:px-6 md:px-8 pt-6 sm:pt-10 md:pt-14 lg:pt-24 xl:pt-[120px] pb-12 sm:pb-16 lg:pb-24">
