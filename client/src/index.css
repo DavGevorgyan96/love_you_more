@@ -16,6 +16,25 @@
     outline: none;
     box-shadow: none;
   }
+  /* Offset scroll target for sticky navbar (120px/160px) + 20px */
+  #about,
+  #services,
+  #activities,
+  #gallery,
+  #faq,
+  #contact {
+    scroll-margin-top: 140px; /* 120px navbar + 20px */
+  }
+  @media (min-width: 1024px) {
+    #about,
+    #services,
+    #activities,
+    #gallery,
+    #faq,
+    #contact {
+      scroll-margin-top: 70px; /* 160px navbar + 20px */
+    }
+  }
 }
 
 .activities-carousel {

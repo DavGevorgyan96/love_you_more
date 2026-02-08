@@ -31,7 +31,6 @@ function CustomSelect({
   }, [open]);
 
   const displayLabel = options.find((o) => o.value === value)?.label ?? options[0]?.label ?? '';
-  const isPlaceholder = !value;
 
   return (
     <div ref={ref} className="relative w-full">

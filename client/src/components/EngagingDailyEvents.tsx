@@ -41,7 +41,7 @@ const EVENTS_ITEMS = [
 
 export function EngagingDailyEvents() {
   return (
-    <section id="engaging-daily-events" className="relative overflow-visible bg-white">
+    <section id="activities" className="relative overflow-visible bg-white">
       {/* Corner florals */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block scale-y-[-1]">
         <img

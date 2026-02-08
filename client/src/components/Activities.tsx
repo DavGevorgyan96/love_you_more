@@ -244,7 +244,7 @@ export function Activities() {
   const slideStyleWidth = getSlideStyleWidth(slideWidthMode);
 
   return (
-    <section id="activities" className="relative overflow-visible bg-white">
+    <section id="" className="relative overflow-visible bg-white">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
         <img
           src={orchidSmall}
