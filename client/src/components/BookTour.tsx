@@ -4,9 +4,9 @@ import whatsappSvg from '../assets/images/whatsapp.svg';
 import faxSvg from '../assets/images/fax.svg';
 
 const ADDRESS = '9371 Dorrington Pl, Los Angeles, CA 91331';
-const EMAIL = 'hello@email.pro';
-const PHONE = 'tel:+1';
-const WHATSAPP_URL = 'https://wa.me/';
+const EMAIL = 'info@loveyoumoreresidentialvilla.org';
+const PHONE = 'tel:+14249778000';
+const WHATSAPP_URL = 'https://wa.me/14249778000';
 
 const TOUR_ICONS = [
   { href: PHONE, src: contactSvg, alt: 'Call' },
@@ -57,7 +57,7 @@ export function BookTour() {
               ))}
             </div>
 
-            <p className="mt-6 max-w-[499px] font-sans text-[21px] font-normal leading-[130%] tracking-normal capitalize text-[#F2CF8B]">
+            <p className="mt-6 max-w-[499px] font-sans text-[18px] font-normal leading-[130%] tracking-normal capitalize text-[#F2CF8B]">
               {CTA_TEXT}
             </p>
           </div>
@@ -78,7 +78,7 @@ export function BookTour() {
               </a>
             </div>
             <div>
-              <p className="font-sans text-sm font-semibold tracking-wide text-[#F2CF8B] sm:text-base">
+              <p className="font-sans text-[18px] font-semibold tracking-wide text-[#F2CF8B]">
                 Follow us
               </p>
               <ul className="mt-1 flex flex-col gap-0.5">
@@ -86,7 +86,7 @@ export function BookTour() {
                   <li key={label}>
                     <a
                       href={href}
-                      className="font-sans no-underline text-sm text-white underline hover:no-underline sm:text-base"
+                      className="font-sans no-underline text-[18px] font-regular text-white underline hover:no-underline sm:text-base"
                     >
                       {label}
                     </a>

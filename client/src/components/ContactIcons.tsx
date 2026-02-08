@@ -4,9 +4,9 @@ import whatsappSvg from '../assets/images/whatsapp.svg';
 import floralAccent from '../assets/images/floral_accent.png';
 
 const ICONS = [
-  { href: 'tel:+1', src: callSvg, alt: 'Call' },
-  { href: 'mailto:info@loveyoumore.com', src: emailSvg, alt: 'Email' },
-  { href: 'https://wa.me/', src: whatsappSvg, alt: 'WhatsApp' },
+  { href: 'tel:+14249778000', src: callSvg, alt: 'Call' },
+  { href: 'mailto:info@loveyoumoreresidentialvilla.org', src: emailSvg, alt: 'Email' },
+  { href: 'https://wa.me/14249778000', src: whatsappSvg, alt: 'WhatsApp' },
 ] as const;
 
 export function ContactIcons() {

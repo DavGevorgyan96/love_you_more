@@ -5,7 +5,7 @@ export function AvailabilityCta() {
     <section className="relative bg-[#EFEEEE]">
       <div className="mx-auto flex max-w-[1232px] flex-wrap items-center justify-between gap-6 px-4 py-8 sm:px-6 md:py-10 lg:px-8">
         <p
-          className="font-normal text-[#000000]"
+          className="font-normal text-[#282828]"
           style={{
             fontFamily: '"Tangerine", cursive',
             fontSize: 80,

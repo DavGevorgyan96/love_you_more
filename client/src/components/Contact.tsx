@@ -44,7 +44,7 @@ function CustomSelect({
         onClick={() => setOpen((p) => !p)}
         className={`flex h-[44px] sm:h-[40px] w-full items-center justify-between rounded-[13px] border border-[#D1D5DB] bg-white px-3 text-left font-sans text-sm focus:outline-none ${triggerClassName}`}
       >
-        <span className={isPlaceholder ? 'text-[#D9D9D9]' : 'text-[#282828]'}>{displayLabel}</span>
+        <span className={'text-[#282828]'}>{displayLabel}</span>
         <svg
           className={`pointer-events-none h-4 w-4 shrink-0 text-[#909090] transition-transform ${open ? 'rotate-180' : ''}`}
           fill="none"
@@ -72,9 +72,8 @@ function CustomSelect({
                   onChange(opt.value);
                   setOpen(false);
                 }}
-                className={`flex cursor-pointer items-center gap-2 px-3 py-2.5 font-sans text-sm text-[#282828] transition-colors first:rounded-t-[10px] last:rounded-b-[10px] hover:bg-[#E8F0FE] ${
-                  selected ? 'bg-[#6B9BD1] font-semibold text-white hover:bg-[#5a8ac4]' : ''
-                }`}
+                className={`flex cursor-pointer items-center gap-2 px-3 py-2.5 font-sans text-sm text-[#282828] transition-colors first:rounded-t-[10px] last:rounded-b-[10px] hover:bg-[#E8F0FE] ${selected ? 'bg-[#6B9BD1] font-semibold text-white hover:bg-[#5a8ac4]' : ''
+                  }`}
               >
                 {selected && (
                   <span className="text-sm" aria-hidden>
@@ -179,9 +178,9 @@ export function Contact() {
   };
 
   const labelClass =
-    'mb-1.5 block font-sans text-[15px] sm:text-[17px] font-semibold leading-[140%] tracking-normal text-[#000000]';
+    'mb-1.5 block font-sans text-[15px] sm:text-[17px] font-semibold leading-[140%] tracking-normal text-[#282828]';
   const inputBaseClass =
-    'w-full rounded-[13px] border border-[#D1D5DB] bg-white px-3 font-sans text-sm text-[#000000] placeholder:font-bold placeholder:text-xs placeholder:leading-[100%] placeholder:tracking-[1px] placeholder:uppercase placeholder:text-[#D9D9D9] focus:outline-none';
+    'w-full rounded-[13px] border border-[#D1D5DB] bg-white px-3 font-sans text-sm text-[#282828] placeholder:font-bold placeholder:text-xs placeholder:leading-[100%] placeholder:tracking-[1px] placeholder:uppercase focus:outline-none';
   const inputClass = `${inputBaseClass} h-[44px] sm:h-[40px]`;
 
   return (
@@ -218,7 +217,7 @@ export function Contact() {
           <div className="w-full flex-1 space-y-3 sm:space-y-4">
             <div>
               <label className={labelClass}>
-                Name / Last Name <span className="text-[#000000]">*</span>
+                Name / Last Name <span className="text-[#282828]">*</span>
               </label>
               <div className="flex flex-col gap-3 sm:gap-3">
                 <input
@@ -242,7 +241,7 @@ export function Contact() {
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="w-full">
                 <label className={labelClass}>
-                  Phone <span className="text-[#000000]">*</span>
+                  Phone <span className="text-[#282828]">*</span>
                 </label>
                 <input
                   type="tel"
@@ -268,7 +267,7 @@ export function Contact() {
             </div>
             <div>
               <label className={labelClass}>
-                Email <span className="text-[#000000]">*</span>
+                Email <span className="text-[#282828]">*</span>
               </label>
               <input
                 type="email"
@@ -288,7 +287,7 @@ export function Contact() {
                 options={HOW_CAN_WE_HELP_OPTIONS}
                 value={howCanWeHelp}
                 onChange={setHowCanWeHelp}
-                triggerClassName="text-[#909090]"
+                triggerClassName="text-[#282828]"
               />
             </div>
             <div>
@@ -300,7 +299,7 @@ export function Contact() {
                 options={HOW_DID_YOU_HEAR_OPTIONS}
                 value={howDidYouHear}
                 onChange={setHowDidYouHear}
-                triggerClassName="text-[#909090]"
+                triggerClassName="text-[#282828]"
               />
             </div>
           </div>
@@ -332,7 +331,7 @@ export function Contact() {
                   <a
                     href="/pdfs/privacy-policy.pdf"
                     download="privacy-policy.pdf"
-                    className="font-inter text-[14px] font-normal leading-[140%] tracking-normal text-[#000000] underline align-middle hover:opacity-80"
+                    className="font-inter text-[14px] font-normal leading-[140%] tracking-normal text-[#282828] underline align-middle hover:opacity-80"
                   >
                     Personal data
                   </a>
@@ -341,11 +340,10 @@ export function Contact() {
               {statusMessage && (
                 <div
                   role="alert"
-                  className={`fixed left-4 right-4 top-4 z-50 flex max-w-[360px] sm:left-auto mx-auto sm:mx-0 items-center gap-3 rounded-xl border px-4 py-3 shadow-lg transition-all sm:right-6 sm:top-6 ${
-                    status === 'success'
-                      ? 'border-green-200 bg-green-50 text-green-800'
-                      : 'border-red-200 bg-red-50 text-red-800'
-                  }`}
+                  className={`fixed left-4 right-4 top-4 z-50 flex max-w-[360px] sm:left-auto mx-auto sm:mx-0 items-center gap-3 rounded-xl border px-4 py-3 shadow-lg transition-all sm:right-6 sm:top-6 ${status === 'success'
+                    ? 'border-green-200 bg-green-50 text-green-800'
+                    : 'border-red-200 bg-red-50 text-red-800'
+                    }`}
                 >
                   {status === 'success' ? (
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600" aria-hidden>
@@ -364,7 +362,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full sm:max-w-[200px] rounded-lg bg-[#0F2C2A] px-6 py-3.5 font-sans text-sm font-medium text-white transition hover:bg-[#1a3d3a] disabled:opacity-50"
+                className="w-full sm:max-w-[200px] rounded-[16px] bg-[#0F2C2A] px-6 py-3.5 font-sans text-sm font-medium text-white transition hover:bg-[#1a3d3a] disabled:opacity-50"
               >
                 {status === 'loading' ? 'Sending...' : 'Submit'}
               </button>

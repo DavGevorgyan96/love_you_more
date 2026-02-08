@@ -83,7 +83,7 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
         ))}
       </div>
       <p
-        className="shrink-0 text-center text-[32px] font-normal capitalize leading-[85%] tracking-normal text-[#000000] md:text-[48px]"
+        className="shrink-0 text-center text-[32px] font-normal capitalize leading-[85%] tracking-normal text-[#282828] md:text-[48px]"
         style={{ fontFamily: '"Tangerine", cursive' }}
       >
         {tier.title}
@@ -128,7 +128,7 @@ export function Activities() {
   const scrollStartIndexRef = useRef(0);
   const scrollStartLeftRef = useRef(0);
   const lastReportedIndexRef = useRef(0);
-  const onScrollEndRef = useRef<() => void>(() => {});
+  const onScrollEndRef = useRef<() => void>(() => { });
 
   const captureScrollStart = useCallback(() => {
     const el = containerRef.current;
@@ -211,7 +211,7 @@ export function Activities() {
     const allowed = otherIdx === -1 ? [startIdx] : [startIdx, otherIdx];
     const nearest =
       Math.abs(el.scrollLeft - positions[allowed[0]]) <=
-      Math.abs(el.scrollLeft - positions[allowed[allowed.length - 1]])
+        Math.abs(el.scrollLeft - positions[allowed[allowed.length - 1]])
         ? allowed[0]
         : allowed[allowed.length - 1];
     const target = positions[nearest];
@@ -270,7 +270,7 @@ export function Activities() {
           Personalized Care Tiers
         </h2>
 
-        <div className="mt-8 rounded-[30px] border border-[#00000026] p-4 lg:mt-12 lg:p-5">
+        <div className="mt-8 rounded-[30px] border border-[#28282826] p-4 lg:mt-12 lg:p-5">
           <div className="md:hidden">
             <div
               ref={containerRef}
@@ -300,9 +300,8 @@ export function Activities() {
                   key={i}
                   type="button"
                   onClick={() => scrollToSlide(i)}
-                  className={`h-2 rounded-full transition-colors ${
-                    currentIndex === i ? 'w-6 bg-[#4a90d9]' : 'w-2 bg-[#ccc]'
-                  }`}
+                  className={`h-2 rounded-full transition-colors ${currentIndex === i ? 'w-6 bg-[#4a90d9]' : 'w-2 bg-[#ccc]'
+                    }`}
                   aria-label={`Go to slide ${i + 1}`}
                 />
               ))}

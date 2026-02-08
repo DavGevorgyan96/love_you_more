@@ -15,7 +15,7 @@ const SERVICES_ITEMS = [
           We provide respectful, one-on-one assistance with the essential tasks of daily life,
           tailored to each resident&apos;s level of independence.
         </p>
-        <ul className="mt-3 list-disc space-y-2 pl-5 font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        <ul className="mt-3 list-disc pl-5 font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
           <li>Hygiene & Grooming: Assistance with bathing, hair care, oral hygiene, and dressing.</li>
           <li>Mobility Support: Help with walking, stand-by assistance, and safe transfers (e.g., from bed to chair).</li>
           <li>Incontinence Care: Compassionate and discreet management of personal care needs.</li>

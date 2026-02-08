@@ -131,7 +131,7 @@ export function About() {
                       {item.text}
                     </p>
                   ) : (
-                    <ul className="mt-4 list-disc space-y-2 pl-6 font-sans font-normal leading-[1.3] tracking-normal text-[#282828] text-[16px]">
+                    <ul className="mt-4 list-disc pl-6 font-sans font-normal leading-[1.3] tracking-normal text-[#282828] text-[16px]">
                       {item.items.map((bullet, bi) => (
                         <li key={bi}>{bullet}</li>
                       ))}
@@ -170,7 +170,7 @@ export function About() {
                     aria-label={`Slide ${i + 1}`}
                   >
                     <OrchidIcon
-                      color={i === activeSlide ? '#000000' : '#D9D9D9'}
+                      color={i === activeSlide ? '#282828' : '#D9D9D9'}
                       width={28}
                       height={24}
                     />
@@ -200,7 +200,7 @@ export function About() {
         </div>
 
         {/* CEO signature block */}
-        <div className="mt-2 flex max-w-[714px] flex-wrap items-center gap-6 lg:gap-8">
+        <div className="mt-[40px] flex max-w-[714px] flex-wrap items-center gap-6 lg:gap-8">
           <div className="h-[120px] w-[120px] shrink-0 rounded-[30px] bg-slate-200" aria-hidden />
           <div>
             <p className="font-sans text-lg font-regular text-[#282828] sm:text-xl">

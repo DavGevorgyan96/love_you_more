@@ -55,7 +55,7 @@ export function SuitesAmenities() {
         </h2>
 
         <div className="mt-6 md:mt-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start pb-10 md:pb-14 xl:pb-[97px]">
-          <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-[400px] md:w-[580px] md:rounded-[30px]">
+          <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-[440px] md:w-[440px] md:rounded-[30px]">
             <img
               src="https://picsum.photos/seed/suites-bedroom/800/560"
               alt="Comfortable bedroom with twin beds and luxury finishes"

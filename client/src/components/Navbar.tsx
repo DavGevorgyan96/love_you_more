@@ -12,7 +12,7 @@ const NAV_LINKS = [
 ];
 
 const ADDRESS = '9371 Dorrington Pl, Los Angeles, CA 91331';
-const PHONE = 'tel:+1';
+const PHONE = 'tel:+14249778000';
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
