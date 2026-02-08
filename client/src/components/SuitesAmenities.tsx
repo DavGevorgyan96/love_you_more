@@ -44,7 +44,7 @@ export function SuitesAmenities() {
           Suites & Amenities
         </h2>
 
-        <div className="mt-6 md:mt-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start pb-10 md:pb-14 xl:pb-[97px]">
+        <div className="mt-6 h-[440px] md:mt-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start pb-10 md:pb-14 xl:pb-[97px]">
           <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-[440px] md:w-[440px] md:rounded-[30px]">
             <img
               src="https://picsum.photos/seed/suites-bedroom/800/560"
@@ -53,7 +53,7 @@ export function SuitesAmenities() {
             />
           </div>
 
-          <div className="flex flex-col gap-5 md:gap-8 font-sans md:flex-1">
+          <div className="flex flex-col justify-between pb-[40px] gap-5 md:gap-8 font-sans md:flex-1">
             <div className="pt-4 md:pt-10">
               <h3
                 className="font-sans font-bold capitalize text-black text-[22px]"
@@ -61,7 +61,7 @@ export function SuitesAmenities() {
               >
                 Suite Features May Include:
               </h3>
-              <ul className="mt-3 md:mt-4 list-disc space-y-2 md:space-y-3 pl-5 md:pl-[70px] marker:text-black">
+              <ul className="mt-3 md:mt-4 list-disc pl-5 md:pl-[70px] marker:text-black">
                 {SUITE_FEATURES.map((item, i) => (
                   <li
                     key={i}
@@ -86,7 +86,7 @@ export function SuitesAmenities() {
                 Room types:
               </h3>
               <p
-                className="font-sans font-normal text-[#282828] text-[18px]"
+                className="font-sans font-light text-[#282828] text-[22px]"
                 style={{ lineHeight: '130%', letterSpacing: 0 }}
               >
                 Shared or Private
