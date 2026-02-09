@@ -10,6 +10,6 @@
     "build:client": "npm run build --prefix client"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.19.10"
   }
 }
