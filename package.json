@@ -6,10 +6,12 @@
     "install:all": "npm install --prefix server && npm install --prefix client",
     "dev:server": "npm run start:dev --prefix server",
     "dev:client": "npm run dev --prefix client",
+    "vercel:dev": "npm run build:server && npx vercel dev",
     "build:server": "npm run build --prefix server",
     "build:client": "npm run build --prefix client"
   },
   "devDependencies": {
-    "@types/node": "^22.19.10"
+    "@types/node": "^22.19.10",
+    "vercel": "^47.0.0"
   }
 }

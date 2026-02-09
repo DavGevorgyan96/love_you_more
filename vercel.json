@@ -2,6 +2,7 @@
   "buildCommand": "npm run build:server && npm run build:client",
   "outputDirectory": "client/dist",
   "installCommand": "npm run install:all",
+  "devCommand": "npm run dev --prefix client",
   "functions": {
     "api/[[...path]].ts": {
       "includeFiles": "server/dist/**"
