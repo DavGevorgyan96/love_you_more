@@ -36,9 +36,12 @@ app.get(['/health', '/api/health'], (_req, res) => {
 app.post(['/mail/send', '/api/mail/send'], async (req, res) => {
   try {
     const { to, subject, text, html } = req.body || {};
+    const recipient = to || process.env.CONTACT_EMAIL;
 
-    if (!to || !subject || !text) {
-      return res.status(400).json({ message: 'to, subject and text are required' });
+    if (!recipient || !subject || !text) {
+      return res.status(400).json({
+        message: 'subject and text are required; set CONTACT_EMAIL or pass to in request body',
+      });
     }
 
     const transporter = getTransporter();
@@ -51,7 +54,7 @@ app.post(['/mail/send', '/api/mail/send'], async (req, res) => {
     const from = process.env.MAIL_FROM || process.env.MAIL_USER || 'noreply@localhost';
     const info = await transporter.sendMail({
       from,
-      to,
+      to: recipient,
       subject,
       text,
       html: html || text.replace(/\n/g, '<br>'),

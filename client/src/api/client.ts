@@ -20,7 +20,7 @@ export async function request<T>(
 
 export const api = {
   health: () => request<{ status: string }>('/health'),
-  sendMail: (body: { to: string; subject: string; text: string; html?: string }) =>
+  sendMail: (body: { to?: string; subject: string; text: string; html?: string }) =>
     request<{ messageId: string; accepted: string[] }>('/mail/send', {
       method: 'POST',
       body: JSON.stringify(body),

@@ -90,8 +90,6 @@ function CustomSelect({
   );
 }
 
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || '';
-
 const HOW_CAN_WE_HELP_OPTIONS = [
   { value: '', label: 'Tell us how we can help' },
   { value: 'Booking a Tour', label: 'Booking a Tour' },
@@ -127,10 +125,6 @@ export function Contact() {
       toast.error('Please agree to the processing of personal data.');
       return;
     }
-    if (!CONTACT_EMAIL) {
-      toast.error('Contact form is not configured (missing VITE_CONTACT_EMAIL).');
-      return;
-    }
     setStatus('loading');
     const subject = `Contact form: ${firstName} ${lastName}`.trim() || 'Contact form submission';
     const text = [
@@ -146,7 +140,7 @@ export function Contact() {
       message,
     ].join('\n');
     try {
-      await api.sendMail({ to: CONTACT_EMAIL, subject, text });
+      await api.sendMail({ subject, text });
       setStatus('idle');
       toast.success('Thank you. Your message has been sent.');
       setFirstName('');
