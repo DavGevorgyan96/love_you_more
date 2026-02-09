@@ -1,17 +1,28 @@
 {
-  "buildCommand": "npm run build:server && npm run build:client",
-  "outputDirectory": "client/dist",
-  "installCommand": "npm run install:all",
-  "devCommand": "npm run dev --prefix client",
-  "functions": {
-    "api/[...path].ts": {
-      "includeFiles": "server/dist/**"
+  "version": 2,
+  "buildCommand": "npm run install:all && npm run build:vercel",
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
     },
-    "api/mail/send.ts": {
-      "includeFiles": "server/dist/**"
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
-  },
-  "rewrites": [
-    { "source": "/((?!api).*)", "destination": "/index.html" }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
   ]
 }

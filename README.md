@@ -1,99 +1,62 @@
 # Love You More
 
-Полноценный стек: **React + Tailwind** (клиент) и **NestJS + Nodemailer** (сервер).
+Стек: **React + Tailwind** (клиент) и **Express + Nodemailer** в одном файле `server.js` (API).
 
 ## Структура
 
 ```
 love_you_more/
-├── client/                 # React + Vite + Tailwind
-│   ├── src/
-│   │   ├── api/            # API-клиент
-│   │   ├── components/     # React-компоненты
-│   │   ├── App.tsx
-│   │   ├── main.tsx
-│   │   └── index.css
-│   ├── index.html
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.ts
-├── server/                 # NestJS + Nodemailer
-│   ├── src/
-│   │   ├── mail/           # Модуль почты (Nodemailer)
-│   │   │   ├── dto/
-│   │   │   ├── mail.controller.ts
-│   │   │   ├── mail.service.ts
-│   │   │   └── mail.module.ts
-│   │   ├── app.module.ts
-│   │   ├── app.controller.ts
-│   │   ├── app.service.ts
-│   │   └── main.ts
-│   ├── package.json
-│   ├── nest-cli.json
-│   └── tsconfig.json
-└── README.md
+├── client/           # React + Vite + Tailwind
+├── public/           # собранный клиент (создаётся при build:vercel)
+├── scripts/
+│   └── copy-dist.js  # копирует client/dist → public
+├── server.js         # API: GET /api/health, POST /api/mail/send
+├── vercel.json       # builds (server.js + public) и routes
+└── package.json
 ```
 
 ## Запуск
 
-### 1. Сервер (NestJS)
+### 1. Сервер (Express)
 
 ```bash
-cd server
 cp .env.example .env
 # Отредактируй .env: MAIL_HOST, MAIL_USER, MAIL_PASS и т.д.
-npm install
-npm run start:dev
+npm run install:all
+node server.js
 ```
 
 API: `http://localhost:3000`  
-- `GET /health` — проверка  
-- `POST /mail/send` — отправка письма (body: `{ to, subject, text [, html ] }`)
+- `GET /api/health` — проверка  
+- `POST /api/mail/send` — отправка письма (body: `{ to, subject, text [, html ] }`)
 
 ### 2. Клиент (React)
 
-```bash
-cd client
-npm install
-npm run dev
-```
-
-Сайт: `http://localhost:5173`  
-Запросы к API идут через прокси `/api` → `http://localhost:3000`.
-
-### 3. Локально как на Vercel (serverless + статика)
-
-Из **корня** проекта (нужен [Vercel CLI](https://vercel.com/docs/cli)):
+В другом терминале:
 
 ```bash
-npm run vercel:dev
+npm run dev:client
 ```
 
-Скрипт соберёт сервер (`server/dist`) и запустит `vercel dev`: раздаётся статика и работают те же serverless-функции (`/api/*`), что и на проде. В консоли будет указан локальный URL — **открывай именно его** (часто `http://localhost:3000`), а не 5173.
-
-**Для проверки формы и почты локально проще использовать обычный запуск** (п. 1 и 2 выше): в двух терминалах `npm run dev:server` и `npm run dev:client` — ответы приходят сразу, без холодного старта. `vercel:dev` нужен, когда важно проверить именно поведение serverless перед деплоем.
+Сайт: `http://localhost:5173`, запросы к API через прокси `/api` → `http://localhost:3000`.
 
 ### Переменные окружения
 
-**server/.env**
+В корне (файл `.env` или переменные Vercel):
 
-- `PORT` — порт сервера (по умолчанию 3000)
-- `CLIENT_URL` — origin клиента для CORS (по умолчанию http://localhost:5173)
-- `MAIL_HOST`, `MAIL_PORT`, `MAIL_USER`, `MAIL_PASS`, `MAIL_FROM`, `MAIL_SECURE` — настройки SMTP для Nodemailer
+- `PORT` — порт (по умолчанию 3000)
+- `CLIENT_URL` — origin для CORS
+- `MAIL_HOST`, `MAIL_PORT`, `MAIL_USER`, `MAIL_PASS`, `MAIL_FROM`, `MAIL_SECURE` — SMTP для Nodemailer
 
-**client**
-
-- `VITE_API_URL` — базовый URL API (по умолчанию `/api` для прокси Vite)
+**client:** `VITE_API_URL` — по умолчанию `/api`.
 
 ## Сборка
 
 ```bash
-# Сервер
-cd server && npm run build && npm run start:prod
-
-# Клиент
-cd client && npm run build
+npm run build:vercel
 ```
+
+Собирает клиент в `client/dist` и копирует в `public/`. Для Vercel этого достаточно (в `vercel.json` заданы `buildCommand` и `builds`).
 
 Статика клиента будет в `client/dist`. Её можно раздавать любым веб-сервером или NestJS.
 
