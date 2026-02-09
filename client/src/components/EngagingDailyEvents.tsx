@@ -1,4 +1,4 @@
-import floralAccent from '../assets/images/floral_accent.png';
+// import floralAccent from '../assets/images/floral_accent.png';
 import { OrchidSmall } from './OrchidSmall';
 
 const EVENTS_ITEMS = [
