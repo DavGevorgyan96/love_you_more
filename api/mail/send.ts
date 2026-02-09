@@ -2,6 +2,8 @@
 const nestHandler = require('../../server/dist/vercel-handler').default;
 
 export default async function handler(req: unknown, res: unknown) {
+  // Vercel may pass a different path; Nest needs the full route path.
+  (req as { url?: string }).url = '/api/mail/send';
   try {
     await nestHandler(req, res);
   } catch (err) {
