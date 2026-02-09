@@ -110,7 +110,7 @@ export function About() {
 
         {/* Two columns: image + philosophy (carousel) — crossfade */}
         <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[400px]">
-          <div className="mx-auto h-[440px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[400px] lg:w-[400px] lg:rounded-[30px] xl:h-[440px] xl:w-[440px]">
+          <div className="mx-auto h-[400px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[400px] lg:w-[400px] lg:rounded-[30px] xl:h-[400px] xl:w-[350px]">
             <img
               key={activeSlide}
               src={PHILOSOPHY_SLIDES[activeSlide].image}
@@ -149,7 +149,7 @@ export function About() {
                   className="flex h-12 w-12 items-center justify-center rounded-full"
                   aria-label="Previous"
                 >
-                  <span className="text-[36px] font-light opacity-50">&lt;</span>
+                  <span className="text-[30px] font-light opacity-50">&lt;</span>
                 </button>
                 <button
                   type="button"
@@ -157,7 +157,7 @@ export function About() {
                   className="flex h-12 w-12 items-center justify-center rounded-full"
                   aria-label="Next"
                 >
-                  <span className="text-[36px] font-light opacity-50">&gt;</span>
+                  <span className="text-[30px] font-light opacity-50">&gt;</span>
                 </button>
               </div>
               <div className="flex items-center gap-3">

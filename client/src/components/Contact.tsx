@@ -72,7 +72,7 @@ function CustomSelect({
                   onChange(opt.value);
                   setOpen(false);
                 }}
-                className={`flex cursor-pointer items-center gap-2 px-3 py-2.5 font-sans text-sm text-[#282828] transition-colors first:rounded-t-[10px] last:rounded-b-[10px] hover:bg-[#E8F0FE] ${selected ? 'bg-[#6B9BD1] font-semibold text-white hover:bg-[#5a8ac4]' : ''
+                className={`flex cursor-pointer items-center gap-2 px-3 py-2.5 font-sans text-sm text-[#282828] transition-colors first:rounded-t-[10px] last:rounded-b-[10px] ${selected ? 'bg-[#052720] font-semibold text-white' : ''
                   }`}
               >
                 {selected && (

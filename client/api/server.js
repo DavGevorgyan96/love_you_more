@@ -36,11 +36,15 @@ app.get(['/health', '/api/health'], (_req, res) => {
 app.post(['/mail/send', '/api/mail/send'], async (req, res) => {
   try {
     const { to, subject, text, html } = req.body || {};
-    const recipient = to || process.env.CONTACT_EMAIL;
+    const recipient = to || process.env.CONTACT_EMAIL || process.env.MAIL_USER;
 
-    if (!recipient || !subject || !text) {
+    if (!subject || !text) {
+      return res.status(400).json({ message: 'subject and text are required' });
+    }
+
+    if (!recipient) {
       return res.status(400).json({
-        message: 'subject and text are required; set CONTACT_EMAIL or pass to in request body',
+        message: 'Recipient is not configured. Set CONTACT_EMAIL (or MAIL_USER) on the server.',
       });
     }
 
