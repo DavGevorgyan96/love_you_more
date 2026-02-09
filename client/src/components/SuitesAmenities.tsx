@@ -19,7 +19,7 @@ export function SuitesAmenities() {
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
         <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
       </div>
-      <div className="pointer-events-none absolute bottom-0 left-0 z-0 hidden lg:block">
+      {/* <div className="pointer-events-none absolute bottom-0 left-0 z-0 hidden lg:block">
         <img
           src={floralAccent}
           alt=""
@@ -34,9 +34,9 @@ export function SuitesAmenities() {
           className="h-[298px] w-[287px] scale-x-[-1] object-contain object-right-bottom"
           aria-hidden
         />
-      </div>
+      </div> */}
 
-      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 pb-10 sm:pt-12 md:pt-16 lg:pt-24 lg:pb-14 xl:pt-[120px] xl:pb-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
@@ -44,8 +44,8 @@ export function SuitesAmenities() {
           Suites & Amenities
         </h2>
 
-        <div className="mt-6 h-[440px] md:mt-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start pb-10 md:pb-14 xl:pb-[97px]">
-          <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-[440px] md:w-[440px] md:rounded-[30px]">
+        <div className="mt-6 h-[400px] md:my-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start">
+          <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-full md:w-[350px] md:rounded-[30px]">
             <img
               src="https://picsum.photos/seed/suites-bedroom/800/560"
               alt="Comfortable bedroom with twin beds and luxury finishes"
@@ -53,7 +53,7 @@ export function SuitesAmenities() {
             />
           </div>
 
-          <div className="flex flex-col justify-between pb-[40px] gap-5 md:gap-8 font-sans md:flex-1">
+          <div className="h-full flex flex-col justify-between pb-[40px] gap-5 md:gap-8 font-sans md:flex-1">
             <div className="pt-4 md:pt-10">
               <h3
                 className="font-sans font-bold capitalize text-black text-[22px]"

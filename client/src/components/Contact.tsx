@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { OrchidSmall } from './OrchidSmall';
 import { api } from '../api/client';
 
@@ -118,32 +119,19 @@ export function Contact() {
   const [howDidYouHear, setHowDidYouHear] = useState('');
   const [message, setMessage] = useState('');
   const [agree, setAgree] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
-
-  useEffect(() => {
-    if (status !== 'success' && status !== 'error') return;
-    const t = setTimeout(() => {
-      setStatus('idle');
-      setStatusMessage('');
-    }, 4000);
-    return () => clearTimeout(t);
-  }, [status]);
+  const [status, setStatus] = useState<'idle' | 'loading'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agree) {
-      setStatus('error');
-      setStatusMessage('Please agree to the processing of personal data.');
+      toast.error('Please agree to the processing of personal data.');
       return;
     }
     if (!CONTACT_EMAIL) {
-      setStatus('error');
-      setStatusMessage('Contact form is not configured (missing VITE_CONTACT_EMAIL).');
+      toast.error('Contact form is not configured (missing VITE_CONTACT_EMAIL).');
       return;
     }
     setStatus('loading');
-    setStatusMessage('');
     const subject = `Contact form: ${firstName} ${lastName}`.trim() || 'Contact form submission';
     const text = [
       `Name: ${firstName} ${lastName}`,
@@ -159,8 +147,8 @@ export function Contact() {
     ].join('\n');
     try {
       await api.sendMail({ to: CONTACT_EMAIL, subject, text });
-      setStatus('success');
-      setStatusMessage('Thank you. Your message has been sent.');
+      setStatus('idle');
+      toast.success('Thank you. Your message has been sent.');
       setFirstName('');
       setLastName('');
       setPhone('');
@@ -171,15 +159,15 @@ export function Contact() {
       setMessage('');
       setAgree(false);
     } catch (err) {
-      setStatus('error');
-      setStatusMessage(err instanceof Error ? err.message : 'Failed to send. Please try again.');
+      setStatus('idle');
+      toast.error(err instanceof Error ? err.message : 'Failed to send. Please try again.');
     }
   };
 
   const labelClass =
     'mb-1.5 block font-sans text-[15px] sm:text-[17px] font-semibold leading-[140%] tracking-normal text-[#282828]';
   const inputBaseClass =
-    'w-full rounded-[13px] border border-[#D1D5DB] bg-white px-3 font-sans text-sm text-[#282828] placeholder:font-bold placeholder:text-xs placeholder:leading-[100%] placeholder:tracking-[1px] placeholder:uppercase focus:outline-none';
+    'w-full rounded-[13px] border border-[#D1D5DB] bg-white px-3 font-sans text-sm text-[#282828] placeholder:font-bold placeholder:text-xs placeholder:leading-[100%] placeholder:tracking-[1px] focus:outline-none';
   const inputClass = `${inputBaseClass} h-[44px] sm:h-[40px]`;
 
   return (
@@ -215,7 +203,7 @@ export function Contact() {
                   onChange={(e) => setFirstName(e.target.value)}
                   required
                   className={inputClass}
-                  placeholder="FIRST NAME"
+                  placeholder="First Name"
                 />
                 <input
                   type="text"
@@ -223,7 +211,7 @@ export function Contact() {
                   onChange={(e) => setLastName(e.target.value)}
                   required
                   className={inputClass}
-                  placeholder="LAST NAME"
+                  placeholder="Last Name"
                 />
               </div>
             </div>
@@ -238,7 +226,7 @@ export function Contact() {
                   onChange={(e) => setPhone(e.target.value)}
                   required
                   className={inputClass}
-                  placeholder="10-DIGIT PHONE NUMBER"
+                  placeholder="10-Digit Phone Number"
                 />
               </div>
               <div className="w-full">
@@ -250,7 +238,7 @@ export function Contact() {
                   value={zipCode}
                   onChange={(e) => setZipCode(e.target.value)}
                   className={inputClass}
-                  placeholder="ZIP CODE"
+                  placeholder="Zip Code"
                 />
               </div>
             </div>
@@ -264,7 +252,7 @@ export function Contact() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className={inputClass}
-                placeholder="EMAIL"
+                placeholder="Email"
               />
             </div>
             <div>
@@ -304,7 +292,7 @@ export function Contact() {
                 onChange={(e) => setMessage(e.target.value)}
                 rows={6}
                 className={`${inputBaseClass} min-h-[160px] sm:min-h-[200px] lg:min-h-[277px] resize-y py-2.5`}
-                placeholder="YOUR MESSAGE"
+                placeholder="Your Message"
               />
             </div>
             <div className="mt-6 flex flex-col gap-6 sm:gap-8 lg:gap-12">
@@ -326,28 +314,6 @@ export function Contact() {
                   </a>
                 </span>
               </label>
-              {statusMessage && (
-                <div
-                  role="alert"
-                  className={`fixed left-4 right-4 top-4 z-50 flex max-w-[360px] sm:left-auto mx-auto sm:mx-0 items-center gap-3 rounded-xl border px-4 py-3 shadow-lg transition-all sm:right-6 sm:top-6 ${status === 'success'
-                    ? 'border-green-200 bg-green-50 text-green-800'
-                    : 'border-red-200 bg-red-50 text-red-800'
-                    }`}
-                >
-                  {status === 'success' ? (
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600" aria-hidden>
-                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    </span>
-                  ) : (
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600" aria-hidden>
-                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                    </span>
-                  )}
-                  <p className="font-sans text-sm font-medium leading-snug">
-                    {statusMessage}
-                  </p>
-                </div>
-              )}
               <button
                 type="submit"
                 disabled={status === 'loading'}

@@ -17,13 +17,13 @@ export function AvailabilityCta() {
         </p>
         <a
           href={PHONE}
-          className="flex items-center justify-center gap-[10px] rounded-[16px] bg-[#0F2C2A] px-[38px] py-[19px] font-sans text-[16px] font-semibold leading-[140%] tracking-normal text-white transition hover:opacity-90"
+          className="flex items-center justify-center gap-[10px] rounded-[16px] bg-[#0F2C2A] px-[37.77px] py-[19px] font-sans text-[17px] font-semibold leading-[140%] tracking-normal text-white transition hover:opacity-90"
           style={{ letterSpacing: 0 }}
           aria-label="Contact us"
         >
           Contact us
           <svg
-            className="h-5 w-5 shrink-0"
+            className="h-4 w-4 shrink-0"
             fill="white"
             viewBox="0 0 17 17"
             aria-hidden

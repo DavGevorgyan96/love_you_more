@@ -94,7 +94,7 @@ export function Navbar() {
               ))}
             </ul>
           </nav>
-          <div className="relative order-2 lg:order-3 flex flex-col gap-2 shrink-0">
+          <div className="relative order-2 lg:order-3 flex flex-col items-center gap-2 shrink-0">
             <div className="flex h-[52px] w-[320px] items-center overflow-hidden rounded-[12px] border border-[#F2CF8B] xl:h-[60px] xl:w-[360px] lg:h-[52px] lg:w-[320px] md:h-[45px] md:w-[230px] xl:rounded-[15px]">
               <a
                 href="#contact"
@@ -113,7 +113,7 @@ export function Navbar() {
                 </svg>
               </a>
             </div>
-            <p className="absolute bottom-[-22px] right-0 text-right font-roboto font-light leading-[1.4] tracking-normal text-[#F2CF8B] xl:text-[18px] lg:text-[15px] md:text-[11px] lg:bottom-[-32px]">
+            <p className="absolute bottom-[-22px] text-right font-roboto font-light leading-[1.4] tracking-normal text-[#F2CF8B] lg:text-[16px] lg:bottom-[-32px]">
               {ADDRESS}
             </p>
           </div>

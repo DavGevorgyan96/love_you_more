@@ -4,7 +4,7 @@ import whatsappSvg from '../assets/images/whatsapp.svg';
 import faxSvg from '../assets/images/fax.svg';
 
 const ADDRESS = '9371 Dorrington Pl, Los Angeles, CA 91331';
-const EMAIL = 'info@loveyoumoreresidentialvilla.org';
+const EMAIL = 'gevorgyandav96@gmail.com';
 const PHONE = 'tel:+14249778000';
 const WHATSAPP_URL = 'https://wa.me/14249778000';
 
@@ -72,7 +72,7 @@ export function BookTour() {
               </p>
               <a
                 href={`mailto:${EMAIL}`}
-                className="mt-1 block font-sans text-sm text-white underline hover:no-underline sm:text-base"
+                className="mt-1 block font-sans text-[18px] text-white hover:underline"
               >
                 {EMAIL}
               </a>

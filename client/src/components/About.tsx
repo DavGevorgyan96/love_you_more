@@ -109,8 +109,8 @@ export function About() {
         </h2>
 
         {/* Two columns: image + philosophy (carousel) — crossfade */}
-        <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[440px]">
-          <div className="mx-auto h-[440px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[448px] lg:w-[400px] lg:rounded-[30px] xl:h-[440px] xl:w-[440px]">
+        <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[400px]">
+          <div className="mx-auto h-[440px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[400px] lg:w-[400px] lg:rounded-[30px] xl:h-[440px] xl:w-[440px]">
             <img
               key={activeSlide}
               src={PHILOSOPHY_SLIDES[activeSlide].image}
