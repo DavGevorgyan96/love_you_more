@@ -84,3 +84,16 @@ cd client && npm run build
 ```
 
 Статика клиента будет в `client/dist`. Её можно раздавать любым веб-сервером или NestJS.
+
+## Деплой на Vercel
+
+Проект настроен на один деплой: и клиент, и сервер (NestJS) работают в одном проекте Vercel.
+
+1. Подключи репозиторий к [Vercel](https://vercel.com/new). **Root Directory** оставь корень проекта (не `client`).
+2. Сборка и вывод заданы в корневом `vercel.json`: сначала собирается сервер, потом клиент, статика — из `client/dist`, запросы `/api/*` обрабатывает NestJS как serverless-функция.
+3. В настройках проекта Vercel → **Settings → Environment Variables** добавь переменные для сервера (то же, что в `server/.env`):
+   - `CLIENT_URL` — URL фронта (например `https://твой-проект.vercel.app`)
+   - `MAIL_HOST`, `MAIL_PORT`, `MAIL_USER`, `MAIL_PASS`, `MAIL_FROM`, при необходимости `MAIL_SECURE`
+4. Деплой: каждый push в основную ветку или деплой через Vercel CLI (`npx vercel`).
+
+Клиент ходит на API по относительному пути `/api`, поэтому отдельно задавать `VITE_API_URL` не нужно.
