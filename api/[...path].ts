@@ -1,4 +1,4 @@
-// Vercel serverless: all /api/* requests are handled by NestJS (server)
+// Vercel serverless: /api/* (with at least one segment) → NestJS (server)
 // server/dist is produced by "npm run build:server" (run on Vercel before this)
 const nestHandler = require('../server/dist/vercel-handler').default;
 
