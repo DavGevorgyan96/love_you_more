@@ -6,39 +6,39 @@ type SlideContent = { text: string } | { items: string[] };
 const PHILOSOPHY_SLIDES: Array<
   { image: string; title: string } & SlideContent
 > = [
-  {
-    image: "https://picsum.photos/seed/about1/600/750",
-    title: "Our Philosophy: The Gold Orchid Standard",
-    text: 'At Love You More, we believe that aging should be a promotion in quality of life, not a retreat from it. We replace the clinical coldness of traditional facilities with the warmth of a true home. By maintaining a boutique, intimate setting, we ensure that every resident is not just "monitored," but deeply known, respected, and cherished. Our name is our daily standard: in every interaction, we choose to go further, listen longer, and love you more.',
-  },
-  {
-    image: "https://picsum.photos/seed/about2/600/750",
-    title: "Our Core Values",
-    items: [
-      "Radical Personalization: We adapt our home to the resident, never the resident to our home.",
-      "Uncompromising Dignity: We uphold the self-worth and autonomy of every senior, regardless of their level of care.",
-      "Presence-Based Safety: Our high caregiver-to-resident ratio ensures that safety is proactive, not reactive.",
-      "Holistic Vitality: We nourish the body with home-cooked meals, the mind with engagement, and the spirit with companionship.",
-    ],
-  },
-  {
-    image: "https://picsum.photos/seed/about3/600/750",
-    title: "Mission Statement",
-    text: "To provide a sanctuary of comfort and compassion that transcends traditional senior living. At Love You More Residential Villa, our mission is to honor the life stories of our residents by providing a boutique, home-based environment where every individual feels deeply known, safely protected, and genuinely loved.",
-  },
-  {
-    image: "https://picsum.photos/seed/about4/600/750",
-    title: "Our Core Commitment",
-    items: [
-      "Guaranteed consistency in standards",
-      "Profound Respect for Personal Privacy and Boundaries",
-      "Proactive Holistic Health monitoring",
-      "Focus on quality time and connection",
-      "Active Memory and Identity Integration",
-      "Validation and empathy",
-    ],
-  },
-];
+    {
+      image: "https://picsum.photos/seed/about1/600/750",
+      title: "Our Philosophy: The Gold Orchid Standard",
+      text: 'At Love You More, we believe that aging should be a promotion in quality of life, not a retreat from it. We replace the clinical coldness of traditional facilities with the warmth of a true home. By maintaining a boutique, intimate setting, we ensure that every resident is not just "monitored," but deeply known, respected, and cherished. Our name is our daily standard: in every interaction, we choose to go further, listen longer, and love you more.',
+    },
+    {
+      image: "https://picsum.photos/seed/about2/600/750",
+      title: "Our Core Values",
+      items: [
+        "Radical Personalization: We adapt our home to the resident, never the resident to our home.",
+        "Uncompromising Dignity: We uphold the self-worth and autonomy of every senior, regardless of their level of care.",
+        "Presence-Based Safety: Our high caregiver-to-resident ratio ensures that safety is proactive, not reactive.",
+        "Holistic Vitality: We nourish the body with home-cooked meals, the mind with engagement, and the spirit with companionship.",
+      ],
+    },
+    {
+      image: "https://picsum.photos/seed/about3/600/750",
+      title: "Mission Statement",
+      text: "To provide a sanctuary of comfort and compassion that transcends traditional senior living. At Love You More Residential Villa, our mission is to honor the life stories of our residents by providing a boutique, home-based environment where every individual feels deeply known, safely protected, and genuinely loved.",
+    },
+    {
+      image: "https://picsum.photos/seed/about4/600/750",
+      title: "Our Core Commitment",
+      items: [
+        "Guaranteed consistency in standards",
+        "Profound Respect for Personal Privacy and Boundaries",
+        "Proactive Holistic Health monitoring",
+        "Focus on quality time and connection",
+        "Active Memory and Identity Integration",
+        "Validation and empathy",
+      ],
+    },
+  ];
 
 const CEO_PARAGRAPHS = [
   "To Our Families,",
@@ -81,13 +81,13 @@ export function About() {
   };
 
   return (
-    <section id="about" className="relative overflow-visible bg-white">
+    <section id="about" className="relative overflow-visible bg-white px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       {/* Corner florals — как в ContactIcons: фиксированный размер 287×298 */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block scale-y-[-1]">
         <img
           src={floralAccent}
           alt=""
-          className="h-[298px] w-[287px] object-contain object-left-top"
+          className="lg:h-[258px] lg:w-[247px] xl:h-[298px] xl:w-[287px] object-contain object-left-top"
           aria-hidden
         />
       </div>
@@ -95,12 +95,12 @@ export function About() {
         <img
           src={floralAccent}
           alt=""
-          className="h-[298px] w-[287px] scale-x-[-1] object-contain object-right-top"
+          className="lg:h-[258px] lg:w-[247px] xl:h-[298px] xl:w-[287px] scale-x-[-1] object-contain object-right-top"
           aria-hidden
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1232px] px-4 pt-8 sm:pt-12 md:pt-16 lg:pt-24  xl:pt-[120px]">
+      <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         {/* Title: About Love You More Residential Villa */}
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"

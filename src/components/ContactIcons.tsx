@@ -11,13 +11,13 @@ const ICONS = [
 
 export function ContactIcons() {
   return (
-    <section className="relative overflow-visible bg-[#052720] py-6 sm:py-8">
+    <section className="relative overflow-visible bg-[#052720] py-6 sm:py-8 px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       {/* Decorative left — extends into header */}
       <div className="pointer-events-none absolute left-0 bottom-0 z-0 hidden lg:block">
         <img
           src={floralAccent}
           alt=""
-          className="h-[298px] w-[287px] object-contain object-left-top"
+          className="lg:h-[258px] lg:w-[247px] xl:h-[298px] xl:w-[287px] object-contain object-left-top"
           aria-hidden
         />
       </div>
@@ -43,7 +43,7 @@ export function ContactIcons() {
         <img
           src={floralAccent}
           alt=""
-          className="h-[298px] w-[287px] scale-x-[-1] object-contain object-right-top"
+          className="lg:h-[258px] lg:w-[247px] xl:h-[298px] xl:w-[287px] scale-x-[-1] object-contain object-right-top"
           aria-hidden
         />
       </div>

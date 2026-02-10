@@ -165,17 +165,17 @@ export function Contact() {
   const inputClass = `${inputBaseClass} h-[44px] sm:h-[40px]`;
 
   return (
-    <section id="contact" className="relative overflow-visible bg-white">
+    <section id="contact" className="relative overflow-visible bg-white px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
 
       {/* Corner florals — gold/orchid banner style */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
-        <OrchidSmall flipHorizontal className="h-[148px] w-[300px] object-contain object-left-bottom" />
+        <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
       </div>
       <div className="pointer-events-none absolute right-0 top-0 z-0 hidden lg:block">
-        <OrchidSmall className="h-[148px] w-[300px] object-contain object-right-bottom" />
+        <OrchidSmall className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-right-bottom" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1232px] px-4 sm:px-6 md:px-8 pt-6 sm:pt-10 md:pt-14 lg:pt-24 xl:pt-[120px] pb-12 sm:pb-16 lg:pb-24">
+      <div className="relative z-10 mx-auto sm:px-6 md:px-8 pt-6 sm:pt-10 md:pt-14 lg:pt-24 xl:pt-[120px] pb-12 sm:pb-16 lg:pb-24">
         <h2
           className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}

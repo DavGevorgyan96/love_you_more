@@ -29,10 +29,10 @@ const MAP_EMBED_URL =
 
 export function BookTour() {
   return (
-    <section id="tour" className="min-h-[400px] md:min-h-[500px] lg:min-h-[532px]">
+    <section id="tour" className="min-h-[400px] md:min-h-[500px] lg:min-h-[532px] px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px] bg-[#052720]">
       <div className="grid min-h-[400px] md:min-h-[500px] lg:grid-cols-[1fr_1fr] lg:min-h-[532px]">
         {/* Left: dark green panel */}
-        <div className="flex flex-col items-center justify-end gap-[31px] bg-[#052720] px-6 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
+        <div className="flex flex-col items-center justify-end gap-[31px]  px-6 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
           <div>
             <h2
               className="font-normal text-[#F2CF8B] max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-[72px]"

@@ -30,7 +30,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 flex items-center bg-[#041F1A] text-gold h-[120px] lg:h-[160px]">
+    <header className="sticky top-0 z-40 flex items-center bg-[#041F1A] h-[120px] lg:h-[160px]">
       <div className="2xl:mx-[79px] mx-4 w-full h-full">
         {/* Mobile: hamburger | logo | book icon | contact icon */}
         <div className="md:hidden flex h-full items-center justify-between gap-2">
@@ -86,7 +86,7 @@ export function Navbar() {
                 <li key={href}>
                   <a
                     href={href}
-                    className="font-inter text-[15px] xl:text-[18px] font-normal leading-[1.4] tracking-normal text-[#F2CF8B] transition hover:text-gold-light"
+                    className="font-inter text-[15px] xl:text-[18px] font-normal leading-[1.4] tracking-normal text-[#F2CF8B] transition "
                   >
                     {label}
                   </a>
@@ -150,7 +150,7 @@ export function Navbar() {
                     <a
                       href={href}
                       onClick={closeMenu}
-                      className="block rounded-lg px-4 py-3 font-inter text-[18px] font-normal text-[#F2CF8B] transition hover:bg-gold/10 hover:text-gold-light"
+                      className="block rounded-lg px-4 py-3 font-inter text-[18px] font-normal text-[#F2CF8B]"
                     >
                       {label}
                     </a>

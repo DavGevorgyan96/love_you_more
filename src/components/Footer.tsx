@@ -24,11 +24,11 @@ export function Footer() {
         <img
           src={floralAccent}
           alt=""
-          className="h-[298px] w-[287px] object-contain object-left-bottom"
+          className="lg:h-[258px] lg:w-[247px] xl:h-[298px] xl:w-[287px] object-contain object-left-bottom"
           aria-hidden
         />
       </div>
-     
+
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         {/* Top row: navigation */}
         <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8">
@@ -64,7 +64,7 @@ export function Footer() {
         <img
           src={floralAccent}
           alt=""
-          className="h-[298px] w-[287px] scale-x-[-1] object-contain object-right-bottom"
+          className="lg:h-[258px] lg:w-[247px] xl:h-[298px] xl:w-[287px] scale-x-[-1] object-contain object-right-bottom"
           aria-hidden
         />
       </div>
