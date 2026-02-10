@@ -56,7 +56,7 @@ function AccordionItem({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between py-4 text-left font-sans text-[22px] font-bold leading-[1.2] tracking-normal text-[#282828] transition"
+        className="flex w-full items-center justify-between py-4 text-left font-sans text-[20px] md:text-[22px] font-bold leading-[1.2] tracking-normal text-[#282828]"
       >
         <span>{title}</span>
         <svg
@@ -86,7 +86,7 @@ export function Services() {
   const [openSpecialized, setOpenSpecialized] = useState<number | null>(null);
 
   return (
-    <section id="services" className="relative overflow-visible bg-white px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section id="services" className="relative overflow-visible bg-white px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
         <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
       </div>
@@ -115,7 +115,7 @@ export function Services() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         {/* Title */}
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
@@ -128,11 +128,11 @@ export function Services() {
         </p>
 
         {/* Services accordion */}
-        <div className="mt-12">
+        <div className="mt-[30px] md:mt-12">
           <div className="flex items-center gap-4 border-b border-[#909090] pb-2">
             <h3 className="font-sans text-[24px] font-light italic leading-[1.2] tracking-normal text-[#282828]">Services</h3>
           </div>
-          <div className="mt-4">
+          <div className="mt-0 sm:mt-4">
             {SERVICES_ITEMS.map((item, i) => (
               <AccordionItem
                 key={i}
@@ -147,11 +147,11 @@ export function Services() {
         </div>
 
         {/* Specialized Care Services accordion */}
-        <div className="mt-14">
+        <div className="mt-[30px] md:mt-14">
           <h3 className="font-sans text-[24px] font-light italic leading-[1.2] tracking-normal text-[#4D4D4D]">
             Specialized Care Services
           </h3>
-          <div className="mt-4">
+          <div className="mt-0 sm:mt-4">
             {SPECIALIZED_ITEMS.map((item, i) => (
               <AccordionItem
                 key={i}

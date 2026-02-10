@@ -9,12 +9,12 @@ import { Activities } from './components/Activities';
 import { SuitesAmenities } from './components/SuitesAmenities';
 // import { AvailabilityCta } from './components/AvailabilityCta';
 import { EngagingDailyEvents } from './components/EngagingDailyEvents';
-import { Gallery } from './components/Gallery';
+// import { Gallery } from './components/Gallery';
 import { BookTour } from './components/BookTour';
 import { Faq } from './components/Faq';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-// import GallerySlider from './components/GallerySlider';
+import GallerySlider from './components/GallerySlider';
 
 export default function App() {
   return (
@@ -31,8 +31,8 @@ export default function App() {
         <SuitesAmenities />
         {/* <AvailabilityCta /> */}
         <EngagingDailyEvents />
-        <Gallery />
-        {/* <GallerySlider /> */}
+        {/* <Gallery /> */}
+        <GallerySlider />
         <Faq />
         <Contact />
         <BookTour />

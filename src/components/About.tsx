@@ -38,6 +38,18 @@ const PHILOSOPHY_SLIDES: Array<
         "Validation and empathy",
       ],
     },
+    {
+      image: "https://picsum.photos/seed/about4/600/750",
+      title: "Our Core Commitment",
+      items: [
+        "Guaranteed consistency in standards",
+        "Profound Respect for Personal Privacy and Boundaries",
+        "Proactive Holistic Health monitoring",
+        "Focus on quality time and connection",
+        "Active Memory and Identity Integration",
+        "Validation and empathy",
+      ],
+    }
   ];
 
 const CEO_PARAGRAPHS = [
@@ -81,8 +93,7 @@ export function About() {
   };
 
   return (
-    <section id="about" className="relative overflow-visible bg-white px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
-      {/* Corner florals — как в ContactIcons: фиксированный размер 287×298 */}
+    <section id="about" className="relative overflow-visible bg-white px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block scale-y-[-1]">
         <img
           src={floralAccent}
@@ -100,7 +111,7 @@ export function About() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-[21px] sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         {/* Title: About Love You More Residential Villa */}
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
@@ -110,8 +121,8 @@ export function About() {
         </h2>
 
         {/* Two columns: image + philosophy (carousel) — crossfade */}
-        <div className="mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[400px]">
-          <div className="mx-auto h-[400px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[400px] lg:w-[400px] lg:rounded-[30px] xl:h-[400px] xl:w-[350px]">
+        <div className="mt-[21px] sm:mt-[31px] md:mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[400px]">
+          <div className="mx-auto h-[281px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[400px] lg:w-[400px] lg:rounded-[30px] xl:h-[400px] xl:w-[350px]">
             <img
               key={activeSlide}
               src={PHILOSOPHY_SLIDES[activeSlide].image}
@@ -119,7 +130,7 @@ export function About() {
               className="h-full w-full object-cover transition-opacity duration-300 ease-out"
             />
           </div>
-          <div className="min-w-0 w-full flex flex-col justify-between max-[919px]:h-[420px] max-[919px]:flex-shrink-0">
+          <div className="min-w-0 w-full flex flex-col justify-between h-[400px] lg:h-[300px] xl:h-[420px] max-[919px]:flex-shrink-0">
             {(() => {
               const item = PHILOSOPHY_SLIDES[activeSlide];
               return (
@@ -127,8 +138,22 @@ export function About() {
                   key={activeSlide}
                   className="animate-fade-in max-[919px]:min-h-0 max-[919px]:overflow-y-auto max-[919px]:flex-1 max-[919px]:pr-1"
                 >
-                  <h3 className="font-sans text-[20px] font-bold capitalize leading-[1.2] tracking-normal text-black">
-                    {item.title}
+                  <h3 className="font-sans text-[22px] font-bold capitalize leading-[1.2] tracking-normal text-black">
+                    {(() => {
+                      const colonIndex = item.title.indexOf(":");
+                      if (colonIndex >= 0) {
+                        const beforeColon = item.title.slice(0, colonIndex + 1);
+                        const afterColon = item.title.slice(colonIndex + 1).trim();
+                        return (
+                          <>
+                            <span>{beforeColon}</span>
+                            <br className="sm:hidden" />
+                            <span>{afterColon}</span>
+                          </>
+                        );
+                      }
+                      return item.title;
+                    })()}
                   </h3>
                   {"text" in item ? (
                     <p className="mt-4 font-sans font-normal leading-[1.3] tracking-normal text-[#282828] text-[16px]">
@@ -144,7 +169,7 @@ export function About() {
                 </div>
               );
             })()}
-            <div className="mt-6 flex flex-col items-center max-[919px]:flex-shrink-0">
+            <div className="flex flex-col items-center max-[919px]:flex-shrink-0">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -170,7 +195,7 @@ export function About() {
                   </span>
                 </button>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex max-sm:w-full items-center gap-3 max-sm:justify-around">
                 {PHILOSOPHY_SLIDES.map((_, i) => (
                   <button
                     key={i}
@@ -181,8 +206,8 @@ export function About() {
                   >
                     <OrchidIcon
                       color={i === activeSlide ? "#282828" : "#D9D9D9"}
-                      width={28}
-                      height={24}
+                      width={41}
+                      height={35}
                     />
                   </button>
                 ))}
@@ -198,7 +223,7 @@ export function About() {
         >
           A Message From Our CEO
         </h2>
-        <div className="mt-6 w-full">
+        <div className="mt-4 sm:mt-6 w-full">
           {CEO_PARAGRAPHS.map((text, i) => (
             <p
               key={i}
@@ -210,9 +235,9 @@ export function About() {
         </div>
 
         {/* CEO signature block */}
-        <div className="mt-[40px] flex max-w-[714px] flex-wrap items-center gap-6 lg:gap-8">
+        <div className="mt-[20px] sm:mt-[40px] flex max-w-[714px] flex-wrap items-center gap-[37px]">
           <div
-            className="h-[120px] w-[120px] shrink-0 rounded-[30px] bg-slate-200"
+            className="h-[117px] w-[117px] sm:h-[120px] sm:w-[120px] shrink-0 rounded-[30px] bg-slate-200"
             aria-hidden
           />
           <div>

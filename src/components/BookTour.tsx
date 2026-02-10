@@ -4,7 +4,7 @@ import whatsappSvg from '../assets/images/whatsapp.svg';
 import faxSvg from '../assets/images/fax.svg';
 
 const ADDRESS = '9371 Dorrington Pl, Los Angeles, CA 91331';
-const EMAIL = 'gevorgyandav96@gmail.com';
+const EMAIL = 'info@loveyoumoreresidentialvilla.org';
 const PHONE = 'tel:+14249778000';
 const WHATSAPP_URL = 'https://wa.me/14249778000';
 

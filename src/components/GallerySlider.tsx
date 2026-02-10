@@ -1,93 +1,160 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { OrchidSmall } from './OrchidSmall';
+
+const GALLERY_SUBTITLE =
+  '24/7 Dedicated staff available around the clock for safety and assistance';
 
 const GALLERY_IMAGES = [
-  {
-    imgelink:
-      'https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  },
-  {
-    imgelink:
-      'https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-  },
-  {
-    imgelink:
-      'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-  },
-  {
-    imgelink:
-      'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80',
-  },
-  {
-    imgelink:
-      'https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80',
-  },
+  'https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  'https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+  'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
+  'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80',
+  'https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80',
 ];
 
-const originalImages = GALLERY_IMAGES.map((img) => img.imgelink);
-const thumbnailImages = GALLERY_IMAGES.map((img) => img.imgelink);
+const IMAGE_COUNT = GALLERY_IMAGES.length;
+const INFINITE_IMAGES = [...GALLERY_IMAGES, ...GALLERY_IMAGES, ...GALLERY_IMAGES];
 
-const IMAGE_WIDTH = 836.571;
-const IMAGE_GAP = 40;
-const THUMB_WIDTH = 233.6;
-const THUMB_GAP = 38;
+const LG_BREAKPOINT = 1024;
+const MD_BREAKPOINT = 768;
+const RESET_THRESHOLD = 0.01;
+const LOCK_RELEASE_MS = 50;
+
+type SizeMode = 'lg' | 'md' | 'sm';
+
+interface SizeConfig {
+  imageWidth: number;
+  imageHeight: number;
+  imageGap: number;
+  thumbWidth: number;
+  thumbHeight: number;
+  thumbGap: number;
+}
+
+const SIZE_CONFIG: Record<SizeMode, SizeConfig> = {
+  lg: {
+    imageWidth: 836.571,
+    imageHeight: 488,
+    imageGap: 40,
+    thumbWidth: 233.6,
+    thumbHeight: 181,
+    thumbGap: 38,
+  },
+  md: {
+    imageWidth: 560,
+    imageHeight: 327,
+    imageGap: 24,
+    thumbWidth: 160,
+    thumbHeight: 93,
+    thumbGap: 24,
+  },
+  sm: {
+    imageWidth: 380,
+    imageHeight: 281,
+    imageGap: 16,
+    thumbWidth: 118,
+    thumbHeight: 107,
+    thumbGap: 12,
+  },
+};
+
+function getSizeMode(width: number): SizeMode {
+  if (width >= LG_BREAKPOINT) return 'lg';
+  if (width >= MD_BREAKPOINT) return 'md';
+  return 'sm';
+}
+
+function modIndex(index: number, length: number): number {
+  return ((index % length) + length) % length;
+}
 
 export default function GallerySlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(IMAGE_COUNT);
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const thumbScrollRef = useRef<HTMLDivElement>(null);
   const isScrollingRef = useRef(false);
 
-  // Create infinite loop by tripling the array
-  const infiniteImages = [...originalImages, ...originalImages, ...originalImages];
-  const infiniteThumbnails = [...thumbnailImages, ...thumbnailImages, ...thumbnailImages];
-  const originalLength = originalImages.length;
+  const [sizeMode, setSizeMode] = useState<SizeMode>(() =>
+    typeof window !== 'undefined' ? getSizeMode(window.innerWidth) : 'lg'
+  );
 
-  const scrollToIndex = (index: number, smooth: boolean = true) => {
-    if (!mainScrollRef.current || isScrollingRef.current) return;
+  useEffect(() => {
+    const onResize = () => setSizeMode(getSizeMode(window.innerWidth));
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
-    const scrollPosition = index * (IMAGE_WIDTH + IMAGE_GAP);
-    mainScrollRef.current.scrollTo({
-      left: scrollPosition,
-      behavior: smooth ? 'smooth' : 'auto',
-    });
-  };
+  const config = SIZE_CONFIG[sizeMode];
+  const step = config.imageWidth + config.imageGap;
+  const thumbStep = config.thumbWidth + config.thumbGap;
 
-  const scrollThumbToIndex = (index: number, smooth: boolean = true) => {
-    if (!thumbScrollRef.current) return;
-    const scrollPosition = index * (THUMB_WIDTH + THUMB_GAP);
-    thumbScrollRef.current.scrollTo({
-      left: scrollPosition,
-      behavior: smooth ? 'smooth' : 'auto',
-    });
-  };
+  const scrollToIndex = useCallback(
+    (index: number, smooth: boolean = true) => {
+      if (!mainScrollRef.current || isScrollingRef.current) return;
+      mainScrollRef.current.scrollTo({
+        left: index * step,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    },
+    [step]
+  );
 
-  const scrollMainAndThumb = (index: number, smooth: boolean = true) => {
-    scrollToIndex(index, smooth);
-    scrollThumbToIndex(index, smooth);
-  };
+  const scrollThumbToIndex = useCallback(
+    (index: number, smooth: boolean = true) => {
+      if (!thumbScrollRef.current) return;
+      thumbScrollRef.current.scrollTo({
+        left: index * thumbStep,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    },
+    [thumbStep]
+  );
 
-  const nextImage = () => {
-    const newIndex = currentIndex + 1;
-    setCurrentIndex(newIndex);
-    scrollMainAndThumb(newIndex);
-  };
+  const scrollMainAndThumb = useCallback(
+    (index: number, smooth: boolean = true) => {
+      scrollToIndex(index, smooth);
+      scrollThumbToIndex(index, smooth);
+    },
+    [scrollToIndex, scrollThumbToIndex]
+  );
 
-  const prevImage = () => {
-    const newIndex = currentIndex - 1;
-    setCurrentIndex(newIndex);
-    scrollMainAndThumb(newIndex);
-  };
+  const nextImage = useCallback(() => {
+    const next = currentIndex + 1;
+    setCurrentIndex(next);
+    scrollMainAndThumb(next);
+  }, [currentIndex, scrollMainAndThumb]);
 
-  const handleThumbnailClick = (clickedIndex: number) => {
-    const newIndex = currentIndex - (currentIndex % originalLength) + clickedIndex;
-    setCurrentIndex(newIndex);
-    scrollMainAndThumb(newIndex);
-  };
+  const prevImage = useCallback(() => {
+    const prev = currentIndex - 1;
+    setCurrentIndex(prev);
+    scrollMainAndThumb(prev);
+  }, [currentIndex, scrollMainAndThumb]);
 
-  const step = IMAGE_WIDTH + IMAGE_GAP;
-  const thumbStep = THUMB_WIDTH + THUMB_GAP;
+  const handleThumbnailClick = useCallback(
+    (clickedIndex: number) => {
+      const base = currentIndex - modIndex(currentIndex, IMAGE_COUNT);
+      const newIndex = base + clickedIndex;
+      setCurrentIndex(newIndex);
+      scrollMainAndThumb(newIndex);
+    },
+    [currentIndex, scrollMainAndThumb]
+  );
 
-  // Reset infinite scroll only when scroll position reaches boundary (after smooth scroll ends)
+  const applyReset = useCallback(
+    (resetIndex: number) => {
+      isScrollingRef.current = true;
+      const el = mainScrollRef.current;
+      const thumb = thumbScrollRef.current;
+      if (el) el.scrollLeft = resetIndex * step;
+      if (thumb) thumb.scrollLeft = resetIndex * thumbStep;
+      setCurrentIndex(resetIndex);
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, LOCK_RELEASE_MS);
+    },
+    [step, thumbStep]
+  );
+
   useEffect(() => {
     const el = mainScrollRef.current;
     if (!el) return;
@@ -95,126 +162,143 @@ export default function GallerySlider() {
     const handleScroll = () => {
       if (isScrollingRef.current) return;
       const left = el.scrollLeft;
-      const rightBound = (originalLength * 2 - 0.01) * step; // reset only when almost at 10
-      const leftBound = 0.01 * step;
+      const rightBound = (IMAGE_COUNT * 2 - RESET_THRESHOLD) * step;
+      const leftBound = RESET_THRESHOLD * step;
 
-      if (left >= rightBound) {
-        isScrollingRef.current = true;
-        const resetIndex = originalLength;
-        el.scrollLeft = resetIndex * step;
-        thumbScrollRef.current && (thumbScrollRef.current.scrollLeft = resetIndex * thumbStep);
-        setCurrentIndex(resetIndex);
-        setTimeout(() => { isScrollingRef.current = false; }, 50);
-      } else if (left <= leftBound) {
-        isScrollingRef.current = true;
-        const resetIndex = originalLength; // same as right: jump to middle block (image 1)
-        el.scrollLeft = resetIndex * step;
-        thumbScrollRef.current && (thumbScrollRef.current.scrollLeft = resetIndex * thumbStep);
-        setCurrentIndex(resetIndex);
-        setTimeout(() => { isScrollingRef.current = false; }, 50);
+      if (left >= rightBound || left <= leftBound) {
+        applyReset(IMAGE_COUNT);
       }
     };
 
     el.addEventListener('scroll', handleScroll, { passive: true });
     return () => el.removeEventListener('scroll', handleScroll);
-  }, [originalLength, step]);
+  }, [step, applyReset]);
 
-  // Initialize at middle section
   useEffect(() => {
     if (mainScrollRef.current && thumbScrollRef.current) {
-      const initialIndex = originalLength;
-      setCurrentIndex(initialIndex);
-      scrollMainAndThumb(initialIndex, false);
+      scrollMainAndThumb(IMAGE_COUNT, false);
     }
   }, []);
 
-  const displayIndex = (currentIndex % originalLength + originalLength) % originalLength;
+  useEffect(() => {
+    if (mainScrollRef.current && thumbScrollRef.current) {
+      scrollMainAndThumb(currentIndex, false);
+    }
+  }, [sizeMode]);
+
+  const displayIndex = useMemo(
+    () => modIndex(currentIndex, IMAGE_COUNT),
+    [currentIndex]
+  );
   const currentPage = displayIndex + 1;
-  const totalPages = originalLength;
 
   return (
-    <div className="bg-white content-stretch flex flex-col gap-[16px] items-center px-[60px] py-[60px] relative size-full min-h-screen">
-      {/* Header */}
-      <h1 className="capitalize font-['Tangerine:Regular',sans-serif] leading-[0.85] not-italic relative shrink-0 text-[80px] text-black">
-        Gallery
-      </h1>
-      <p className="font-['Roboto:Light_Italic',sans-serif] font-light italic leading-[1.2] relative shrink-0 text-[#282828] text-[24px]">
-        24/7 Dedicated staff available around the clock for safety and assistance
-      </p>
-
-      {/* Main Gallery */}
-      <div className="w-full overflow-hidden relative">
-        <div
-          ref={mainScrollRef}
-          className="content-stretch flex gap-[40px] h-[488px] items-start relative shrink-0 overflow-x-hidden"
-          style={{
-            paddingLeft: `calc(50% - ${IMAGE_WIDTH / 2}px)`,
-            paddingRight: `calc(50% - ${IMAGE_WIDTH / 2}px)`,
-          }}
+    <section id="gallery" className="relative">
+      <div className="pointer-events-none absolute left-0 top-0 z-10 hidden lg:block">
+        <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
+      </div>
+      <div className="pointer-events-none absolute right-0 top-0 z-10 hidden lg:block">
+        <OrchidSmall className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-right-bottom" />
+      </div>
+      <div id="gallery" className="bg-white content-stretch flex flex-col gap-[16px] items-center py-[60px] relative size-full">
+        <h2
+          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
+          style={{ fontFamily: '"Tangerine", cursive' }}
         >
-          {infiniteImages.map((img, index) => (
-            <div
-              key={index}
-              className="h-[488px] rounded-[60px] shrink-0 w-[836.571px] bg-[#c4c4c4]"
-            >
-              <img
-                alt={`Gallery image ${index + 1}`}
-                className="size-full object-cover pointer-events-none rounded-[60px]"
-                src={img}
-                draggable={false}
-              />
-            </div>
-          ))}
+          Gallery
+        </h2>
+        <p className="mt-4 text-center font-sans text-[24px] font-light italic leading-[1.3] text-[#282828]">
+          {GALLERY_SUBTITLE}
+        </p>
+
+        <div className="w-full overflow-hidden relative">
+          <div
+            ref={mainScrollRef}
+            className="content-stretch flex items-start relative shrink-0 overflow-x-hidden"
+            style={{
+              gap: `${config.imageGap}px`,
+              height: `${config.imageHeight}px`,
+              paddingLeft: `calc(50% - ${config.imageWidth / 2}px)`,
+              paddingRight: `calc(50% - ${config.imageWidth / 2}px)`,
+            }}
+          >
+            {INFINITE_IMAGES.map((img, index) => (
+              <div
+                key={index}
+                className="rounded-[60px] shrink-0 bg-[#c4c4c4]"
+                style={{
+                  width: config.imageWidth,
+                  height: config.imageHeight,
+                }}
+              >
+                <img
+                  alt={`Gallery image ${modIndex(index, IMAGE_COUNT) + 1}`}
+                  className="size-full object-cover pointer-events-none rounded-[60px]"
+                  src={img}
+                  draggable={false}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="w-full overflow-hidden relative">
+          <div
+            ref={thumbScrollRef}
+            className="content-stretch flex items-center relative shrink-0 overflow-x-hidden"
+            style={{
+              gap: `${config.thumbGap}px`,
+              paddingLeft: `calc(50% - ${config.thumbWidth / 2}px)`,
+              paddingRight: `calc(50% - ${config.thumbWidth / 2}px)`,
+            }}
+          >
+            {INFINITE_IMAGES.map((img, index) => {
+              const thumbIndex = modIndex(index, IMAGE_COUNT);
+              const isActive = index === currentIndex;
+              return (
+                <div
+                  key={index}
+                  className={`rounded-[30px] shrink-0 transition-all cursor-pointer hover:opacity-80 ${isActive ? 'bg-[#8f8f8f] ring-black/30' : 'bg-[#c4c4c4]'
+                    }`}
+                  style={{
+                    width: config.thumbWidth,
+                    height: config.thumbHeight,
+                  }}
+                  onClick={() => handleThumbnailClick(thumbIndex)}
+                >
+                  <img
+                    alt={`Thumbnail ${thumbIndex + 1}`}
+                    className="size-full object-cover pointer-events-none rounded-[30px]"
+                    src={img}
+                    draggable={false}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 text-[18px] text-black">
+          <button
+            onClick={prevImage}
+            className="relative shrink-0 hover:opacity-60 transition-opacity cursor-pointer"
+            aria-label="Previous image"
+          >
+            &lt;
+          </button>
+          <p className="relative shrink-0">
+            {currentPage} / {IMAGE_COUNT}
+          </p>
+          <button
+            onClick={nextImage}
+            className="relative shrink-0 hover:opacity-60 transition-opacity cursor-pointer"
+            aria-label="Next image"
+          >
+            &gt;
+          </button>
         </div>
       </div>
+    </section>
 
-      {/* Thumbnail Strip — infinite scroll, selected always centered */}
-      <div className="w-full overflow-hidden relative">
-        <div
-          ref={thumbScrollRef}
-          className="content-stretch flex gap-[38px] items-center relative shrink-0 overflow-x-hidden"
-          style={{
-            paddingLeft: `calc(50% - ${THUMB_WIDTH / 2}px)`,
-            paddingRight: `calc(50% - ${THUMB_WIDTH / 2}px)`,
-          }}
-        >
-          {infiniteThumbnails.map((img, index) => (
-            <div
-              key={index}
-              className={`h-[181px] rounded-[30px] shrink-0 w-[233.6px] transition-all cursor-pointer hover:opacity-80 ${
-                index === currentIndex ? 'bg-[#8f8f8f] ring-2 ring-black/30' : 'bg-[#c4c4c4]'
-              }`}
-              onClick={() => handleThumbnailClick((index % originalLength + originalLength) % originalLength)}
-            >
-              <img
-                alt={`Thumbnail ${(index % originalLength) + 1}`}
-                className="size-full object-cover pointer-events-none rounded-[30px]"
-                src={img}
-                draggable={false}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 text-[18px] text-black">
-        <button
-          onClick={prevImage}
-          className="relative shrink-0 hover:opacity-60 transition-opacity cursor-pointer"
-          aria-label="Previous image"
-        >
-          &lt;
-        </button>
-        <p className="relative shrink-0">{currentPage} / {totalPages}</p>
-        <button
-          onClick={nextImage}
-          className="relative shrink-0 hover:opacity-60 transition-opacity cursor-pointer"
-          aria-label="Next image"
-        >
-          &gt;
-        </button>
-      </div>
-    </div>
   );
 }

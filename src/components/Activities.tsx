@@ -11,7 +11,7 @@ type SlideWidthMode = '100%' | '50%' | '33.333333%';
 function getSlideWidthMode(): SlideWidthMode {
   if (typeof window === 'undefined') return '100%';
   const w = window.innerWidth;
-  if (w < 640) return '100%';
+  if (w < 540) return '100%';
   if (w < 768) return '50%';
   return '33.333333%';
 }
@@ -74,12 +74,12 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
       tabIndex={0}
       onClick={scrollToContact}
       onKeyDown={(e) => e.key === 'Enter' && scrollToContact()}
-      className={`flex h-[460px] w-full max-w-full md:cursor-pointer flex-col rounded-[30px] bg-[#EFEFEF] px-5 py-5 transition-shadow sm:max-w-[372px] lg:h-[507px] lg:px-8 lg:py-6 hover:shadow-[0_8px_6px_0_rgba(0,0,0,0.15)]`}
+      className={`flex h-[460px] w-full max-w-full md:cursor-pointer flex-col rounded-[30px] bg-[#EFEFEF] px-4 py-5 transition-shadow max-w-[372px] lg:h-[507px] lg:px-6 lg:py-6 hover:shadow-[0_8px_6px_0_rgba(0,0,0,0.15)]`}
     >
       <p className="shrink-0 text-center font-sans text-[20px] font-bold leading-[120%] tracking-normal text-[#282828] md:text-[22px]">
         {tier.tier}
       </p>
-      <div className="my-3 flex shrink-0 justify-center gap-0.5 lg:my-5 lg:gap-1">
+      <div className="my-[20px] lg:my-[25px] flex shrink-0 justify-center">
         {Array.from({ length: index + 1 }).map((_, j) => (
           <img
             key={j}
@@ -91,7 +91,7 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
         ))}
       </div>
       <p
-        className="shrink-0 text-center text-[32px] font-normal capitalize leading-[85%] tracking-normal text-[#282828] md:text-[48px]"
+        className="shrink-0 text-center font-normal capitalize leading-[85%] tracking-normal text-[#282828] text-[48px]"
         style={{ fontFamily: '"Tangerine", cursive' }}
       >
         {tier.title}
@@ -252,7 +252,7 @@ export function Activities() {
   const slideStyleWidth = getSlideStyleWidth(slideWidthMode);
 
   return (
-    <section id="" className="relative overflow-visible bg-white px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section id="" className="relative overflow-visible bg-white px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
         <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
       </div>
@@ -260,7 +260,7 @@ export function Activities() {
         <OrchidSmall className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-right-bottom" />
       </div>
 
-      <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         <h2
           className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
@@ -268,7 +268,7 @@ export function Activities() {
           Personalized Care Tiers
         </h2>
 
-        <div className="mt-8 rounded-[30px] p-4 lg:mt-12 lg:p-5">
+        <div className="rounded-[30px] mt-[22px] md:mt-8 lg:mt-12">
           <div className="md:hidden">
             <div
               ref={containerRef}
@@ -306,7 +306,7 @@ export function Activities() {
             </div>
           </div>
 
-          <div className="hidden md:flex md:justify-center md:gap-x-[22px]">
+          <div className="hidden md:flex md:justify-center md:gap-x-[15px] lg:gap-x-[22px]">
             {TIERS.map((tier, i) => (
               <div key={tier.tier} className="w-full max-w-[372px]">
                 <TierCard tier={tier} index={i} />

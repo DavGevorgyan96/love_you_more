@@ -2,7 +2,7 @@ const PHONE = 'tel:+1';
 
 export function AvailabilityCta() {
   return (
-    <section className="relative bg-[#EFEEEE] px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section className="relative bg-[#EFEEEE] px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       <div className="mx-auto flex flex-wrap items-center justify-between gap-6 py-8 sm:px-6 md:py-10 lg:px-8">
         <p
           className="font-normal text-[#282828]"

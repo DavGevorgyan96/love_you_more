@@ -11,7 +11,7 @@ const SUITE_FEATURES = [
 
 export function SuitesAmenities() {
   return (
-    <section id="suites-amenities" className="relative overflow-visible bg-white px-4 md:px-[50px] lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section id="suites-amenities" className="relative overflow-visible bg-white px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
 
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
         <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
@@ -36,7 +36,7 @@ export function SuitesAmenities() {
         />
       </div> */}
 
-      <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
@@ -44,8 +44,8 @@ export function SuitesAmenities() {
           Suites & Amenities
         </h2>
 
-        <div className="mt-6 md:h-[400px] md:my-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start">
-          <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-full md:w-[350px] md:rounded-[30px]">
+        <div className="mt-5 md:h-[400px] md:my-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start">
+          <div className="h-[208px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-full md:w-[350px] md:rounded-[30px]">
             <img
               src="https://picsum.photos/seed/suites-bedroom/800/560"
               alt="Comfortable bedroom with twin beds and luxury finishes"
