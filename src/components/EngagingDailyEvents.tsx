@@ -241,7 +241,7 @@ export function EngagingDailyEvents() {
   );
 
   return (
-    <section id="activities" className="relative overflow-visible bg-white px-0 lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section id="activities" className="relative overflow-visible bg-white px-0">
       {/* Corner florals */}
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
         <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
@@ -339,7 +339,7 @@ export function EngagingDailyEvents() {
             {EVENTS_ITEMS.map((item, i) => (
               <article
                 key={i}
-                className="w-[387px] xl:w-[400px] 2xl:w-[578px] max-w-full flex-col"
+                className="w-[387px]  xl:w-[578px] max-w-full flex-col"
               >
                 <div className="h-[300px] 2xl:h-[460px] w-full overflow-hidden rounded-[60px]">
                   <img
