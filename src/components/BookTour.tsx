@@ -35,7 +35,7 @@ export function BookTour() {
         <div className="flex flex-col items-center justify-end gap-[31px]  px-6 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
           <div>
             <h2
-              className="font-normal text-[#F2CF8B] max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-[72px]"
+              className="font-normal text-[#F2CF8B] text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
               style={{ fontFamily: '"Tangerine", cursive', lineHeight: 1 }}
             >
               Experience The Difference

@@ -38,13 +38,13 @@ export function SuitesAmenities() {
 
       <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         <h2
-          className="font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
+          className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
         >
           Suites & Amenities
         </h2>
 
-        <div className="mt-6 h-[400px] md:my-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start">
+        <div className="mt-6 md:h-[400px] md:my-[53px] flex flex-col gap-6 md:gap-[40px] md:flex-row md:items-start">
           <div className="h-[220px] w-full max-w-full shrink-0 overflow-hidden rounded-[20px] md:h-full md:w-[350px] md:rounded-[30px]">
             <img
               src="https://picsum.photos/seed/suites-bedroom/800/560"

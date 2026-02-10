@@ -262,7 +262,7 @@ export function Activities() {
 
       <div className="relative z-10 mx-auto pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         <h2
-          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black max-sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
+          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
         >
           Personalized Care Tiers

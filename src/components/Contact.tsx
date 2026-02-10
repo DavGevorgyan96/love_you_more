@@ -177,7 +177,7 @@ export function Contact() {
 
       <div className="relative z-10 mx-auto sm:px-6 md:px-8 pt-6 sm:pt-10 md:pt-14 lg:pt-24 xl:pt-[120px] pb-12 sm:pb-16 lg:pb-24">
         <h2
-          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px]"
+          className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
         >
           Transparency Through Direct Engagement
