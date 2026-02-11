@@ -10,7 +10,7 @@ const FAQ_ITEMS = [
   {
     question: 'Can I visit my loved one at any time?',
     answer:
-      'Absolutely. This is your loved one\'s home. We encourage family involvement and have an open-door policy for visits, as we believe family connection is vital to our residents\' well-being.',
+      "Absolutely. This is your loved one's home. We encourage family involvement and have an open-door policy for visits, as we believe family connection is vital to our residents' well-being.",
   },
   {
     question: "What happens if my loved one's care needs change?",
@@ -23,14 +23,14 @@ const FAQ_ITEMS = [
       'Our rates are based on the level of care required and the type of room selected. Because we are a boutique facility, our pricing is often more transparent and inclusive than larger facilities that "nickel and dime" for every extra service. Please contact us for a personalized quote.',
   },
   {
-    question: 'Do you provide specialized care for Dementia or Alzheimer\'s?',
+    question: "Do you provide specialized care for Dementia or Alzheimer's?",
     answer:
       'Yes, we are equipped and trained to provide specialized support for those with cognitive impairments, ensuring a safe and calm environment that reduces wandering and anxiety.',
   },
   {
     question: 'The "Love You More" Promise',
     answer:
-      'When you can\'t be there 24/7, we are. We provide the professional care they need so you can go back to being a daughter, son, or spouse again.',
+      "When you can't be there 24/7, we are. We provide the professional care they need so you can go back to being a daughter, son, or spouse again.",
   },
 ];
 
@@ -114,7 +114,7 @@ export function Faq() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px] pb-16">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px] pb-4 sm:pb-16">
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
@@ -122,7 +122,7 @@ export function Faq() {
           Frequently Asked Questions
         </h2>
 
-        <div className="mt-10 sm:mt-12">
+        <div className="mt-4 sm:mt-12">
           {FAQ_ITEMS.map((item, i) => (
             <FaqAccordionItem
               key={i}

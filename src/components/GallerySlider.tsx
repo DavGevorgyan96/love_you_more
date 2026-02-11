@@ -200,7 +200,7 @@ export default function GallerySlider() {
       <div className="pointer-events-none absolute right-0 top-0 z-10 hidden lg:block">
         <OrchidSmall className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-right-bottom" />
       </div>
-      <div className="bg-white content-stretch flex flex-col gap-[16px] items-center py-[60px] relative size-full">
+      <div className="bg-white content-stretch flex flex-col gap-[16px] items-center pt-[60px] relative size-full">
         <h2
           className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}

@@ -29,10 +29,11 @@ const MAP_EMBED_URL =
 export function BookTour() {
   return (
     <section id="tour" className="min-h-[400px] md:min-h-[500px] lg:min-h-[532px]">
-      <div className="grid min-h-[400px] md:min-h-[500px] lg:grid-cols-[1fr_1fr] lg:min-h-[532px]">
-        {/* Left: dark green panel */}
-        <div className="flex flex-col items-center justify-end gap-[31px] bg-[#052720] px-6 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
-          <div className='text-center lg:text-left'>
+      <div className="flex flex-col min-h-[400px] md:min-h-[500px] md:grid md:grid-cols-[1fr_1fr] md:min-h-[500px] lg:min-h-[532px]">
+        {/* Left: dark green panel — on <768px use contents so children reorder with map */}
+        <div className="contents md:flex md:flex-col md:items-center md:justify-end md:gap-[31px] md:bg-[#052720] md:px-8 md:py-12 lg:px-14 lg:py-16">
+          {/* 1. Experience The Difference — <768px: first */}
+          <div className="order-1 flex flex-col gap-[31px] md:gap-0 items-center bg-[#052720] px-3 py-10 text-center md:bg-transparent md:px-0 md:py-0 lg:text-left">
             <h2
               className="font-normal text-[#F2CF8B] text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
               style={{ fontFamily: '"Tangerine", cursive', lineHeight: 1 }}
@@ -40,15 +41,15 @@ export function BookTour() {
               Experience The Difference
             </h2>
 
-            {/* Contact icons — circular, golden */}
-            <div className="mt-8 flex items-center justify-center flex-wrap gap-4 sm:gap-6">
+            {/* 2. Contact icons */}
+            <div className="order-2 w-full md:mt-8 flex items-center justify-between md:justify-center flex-wrap gap-4 md:gap-6">
               {TOUR_ICONS.map(({ href, src, alt }) => (
                 <a
                   key={alt}
                   href={href}
                   target={alt === 'WhatsApp' ? '_blank' : undefined}
                   rel={alt === 'WhatsApp' ? 'noopener noreferrer' : undefined}
-                  className="flex h-14 w-14 items-center justify-center sm:h-16 sm:w-16"
+                  className="flex h-14 w-14 items-center justify-center md:h-16 md:w-16"
                   aria-label={alt}
                 >
                   <img src={src} alt="" className="h-full w-full object-contain" />
@@ -56,12 +57,14 @@ export function BookTour() {
               ))}
             </div>
 
-            <p className="mt-6 max-w-[499px] font-sans text-[18px] font-normal leading-[130%] tracking-normal capitalize text-[#F2CF8B]">
+            {/* 3. CTA text */}
+            <p className="order-3 md:mt-6 max-w-[499px] font-sans text-start text-[16px] md:text-[18px] font-normal leading-[130%] tracking-normal capitalize text-[#F2CF8B] text-center md:text-left">
               {CTA_TEXT}
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-[70px] sm:flex-row sm:flex-wrap sm:items-start sm:justify-between lg:mt-0">
+          {/* 5. Address — <768px: after map */}
+          <div className="order-5 w-full text-center md:text-left pt-[31px] flex flex-col gap-4 md:gap-[70px] md:mt-0 md:flex-row md:flex-wrap md:items-start md:justify-between lg:mt-0 bg-[#052720] px-3 pb-3 md:pb-10 md:bg-transparent md:px-0 md:pb-0">
             <div>
               <p className="font-sans text-[18px] font-semibold leading-[130%] tracking-normal text-[#F2CF8B]">
                 Address
@@ -76,16 +79,17 @@ export function BookTour() {
                 {EMAIL}
               </a>
             </div>
+            {/* 6. Follow us */}
             <div>
               <p className="font-sans text-[18px] font-semibold tracking-wide text-[#F2CF8B]">
                 Follow us
               </p>
-              <ul className="mt-1 flex flex-col gap-0.5">
+              <ul className="mt-1 flex md:flex-col justify-center gap-1.5">
                 {SOCIAL_LINKS.map(({ label, href }) => (
                   <li key={label}>
                     <a
                       href={href}
-                      className="font-sans no-underline text-[18px] font-regular text-white underline hover:no-underline sm:text-base"
+                      className="font-sans no-underline text-[18px] font-regular text-white underline hover:no-underline md:text-base"
                     >
                       {label}
                     </a>
@@ -96,8 +100,8 @@ export function BookTour() {
           </div>
         </div>
 
-        {/* Right: map */}
-        <div className="relative min-h-[280px] w-full sm:min-h-[320px] lg:min-h-full">
+        {/* 4. Map — <768px: after CTA; md+: right column */}
+        <div className="order-4 relative min-h-[280px] w-full md:min-h-[320px] md:order-2 lg:min-h-full">
           <iframe
             title="Love You More location"
             src={MAP_EMBED_URL}

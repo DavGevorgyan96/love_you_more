@@ -8,36 +8,101 @@ const SUBTITLE =
 
 const SERVICES_ITEMS = [
   {
-    title: 'Personal Care & Daily Living',
+    title: 'Assistance with ADLs',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Personalized help with Bathing, Dressing, Hygiene and Mobility.
+      </p>
+    ),
+  },
+  {
+    title: 'Health & Medication Oversight',
     content: (
       <>
         <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
-          We provide respectful, one-on-one assistance with the essential tasks of daily life,
-          tailored to each resident&apos;s level of independence.
+          Oversight, storage, and assistance to ensure prescriptions are taken accurately and on time.
         </p>
-        <ul className="mt-3 list-disc pl-5 font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
-          <li>Hygiene & Grooming: Assistance with bathing, hair care, oral hygiene, and dressing.</li>
-          <li>Mobility Support: Help with walking, stand-by assistance, and safe transfers (e.g., from bed to chair).</li>
-          <li>Incontinence Care: Compassionate and discreet management of personal care needs.</li>
-          <li>Escort Service: Assistance moving to and from the dining area and activity spaces.</li>
-        </ul>
+        <p className="mt-3 font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+          Holistic monitoring of physical and cognitive vitality.
+        </p>
       </>
     ),
   },
-  { title: 'Health & Medication Management', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Oversight of medications, coordination with healthcare providers, and support with health monitoring.</p> },
-  { title: 'Culinary Excellence', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Nutritious, chef-prepared meals tailored to dietary needs and preferences.</p> },
-  { title: 'Hospitality & Environment', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Housekeeping, linen service, and a comfortable, well-maintained living environment.</p> },
-  { title: 'Engagement & Social Vitality', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Activities, outings, and programs designed to support social connection and purpose.</p> },
-  { title: 'Mobile Hair/Barber Manicure/Pedicure Services', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">On-site grooming and personal care services for convenience and dignity.</p> },
-  { title: 'Horticulture Therapy', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Gardening and plant-based activities to support wellness and engagement.</p> },
+  {
+    title: 'Nutritious Dining',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        We deliver nutritious, fresh, chef-prepared meals and snacks tailored to individual dietary needs and personal preferences.
+      </p>
+    ),
+  },
+  {
+    title: 'Hospitality & Environment',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Daily housekeeping, personal laundry, linen service, and a comfortable, well-maintained living environment.
+      </p>
+    ),
+  },
+  {
+    title: 'Engagement & Social Vitality',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Activities, outings, and programs designed to support social connection and purpose.
+      </p>
+    ),
+  },
+  {
+    title: 'Mobile Hair/Barber Manicure/Pedicure Services',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        On-site grooming and personal care services for convenience and dignity.
+      </p>
+    ),
+  },
+  {
+    title: 'Horticulture Therapy',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Gardening and plant-based activities to support wellness and engagement.
+      </p>
+    ),
+  },
 ];
 
 const SPECIALIZED_ITEMS = [
-  { title: "Dementia & Alzheimer's Care:", content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Specialized support and a secure, calming environment for residents with memory care needs.</p> },
-  { title: 'Memory Care:', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Structured programs and trained staff focused on cognitive and emotional well-being.</p> },
-  { title: 'Cognitive Stimulation Therapy (CST)', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Evidence-based group activities to support memory and cognitive function.</p> },
-  { title: 'Home health support:', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Coordination with home health agencies for nursing and therapy as needed.</p> },
-  { title: 'Hospice Support:', content: <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">Compassionate end-of-life care and family support in partnership with hospice providers.</p> },
+  {
+    title: "Dementia & Alzheimer's Care",
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Specialized support and a secure, calming environment for residents with memory care needs.
+      </p>
+    ),
+  },
+  {
+    title: 'Cognitive Stimulation Therapy (CST) and Memory Care',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        We offer evidence-based Cognitive Stimulation Therapy (CST) to promote mental vitality and social engagement. Our sessions focus on themed discussions and sensory activities that spark memory, opinion, and connection. By integrating each resident&apos;s unique history into these sessions, we honor their identity while proactively supporting their cognitive health in a warm, supportive environment.
+      </p>
+    ),
+  },
+  {
+    title: 'Home health support',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Coordination with home health agencies for nursing and therapy as needed.
+      </p>
+    ),
+  },
+  {
+    title: 'Hospice Support',
+    content: (
+      <p className="font-sans text-[18px] font-normal leading-[1.3] tracking-normal text-[#282828]">
+        Compassionate end-of-life care and family support in partnership with hospice providers.
+      </p>
+    ),
+  },
 ];
 
 function AccordionItem({
