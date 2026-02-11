@@ -23,9 +23,8 @@ const SOCIAL_LINKS = [
   { label: 'Instagram', href: '#' },
   { label: 'Linkedin', href: '#' },
 ];
-
 const MAP_EMBED_URL =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d373.1043654075474!2d-118.4424497096089!3d34.23961276360128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c290df1dbb5b83%3Ax2fd8e5989cf85a5!2zOTM3MSBEb3JyaW5ndG9uIFBsLCBBcmxldGEsIENBIDkxMzMxLCDQodCo0JA!5e0!3m2!1sen!2sam!4v1770302746703!5m2!1sru!2sam';
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3298.3429694903!2d-118.44742101907204!3d34.23979113842923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c290df1dbb5b83%3A0x2fd8e5989cf85a5!2s9371%20Dorrington%20Pl%2C%20Arleta%2C%20CA%2091331%2C%20USA!5e0!3m2!1sen!2sam!4v1770787047030!5m2!1sen!2sam';
 
 export function BookTour() {
   return (
