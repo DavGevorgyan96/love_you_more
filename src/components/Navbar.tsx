@@ -118,7 +118,7 @@ export function Navbar() {
                 </svg>
               </a>
             </div>
-            <p className="absolute bottom-[-22px] text-right font-roboto font-light leading-[1.4] tracking-normal text-[#F2CF8B] lg:text-[16px] lg:bottom-[-32px]">
+            <p className="absolute bottom-[-22px] text-right font-roboto font-light leading-[1.4] tracking-normal text-[#F2CF8B] text-[12px] lg:text-[16px] lg:bottom-[-32px]">
               {ADDRESS}
             </p>
           </div>
