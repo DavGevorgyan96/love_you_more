@@ -18,7 +18,7 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative flex -mt-px overflow-hidden bg-[#052720] pt-10 sm:pt-12 md:pt-[103px]">
+    <footer className="relative flex -mt-px overflow-hidden bg-[#052720] py-4 md:pt-10 sm:pt-12 md:pt-[103px]">
       {/* Decorative florals — bottom corners, curving up */}
       <div className="pointer-events-none bottom-0 left-0 z-0 hidden lg:block">
         <img
