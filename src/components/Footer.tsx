@@ -31,7 +31,7 @@ export function Footer() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         {/* Top row: navigation */}
-        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8" aria-label="Footer navigation">
+        <nav className="hidden md:flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8" aria-label="Footer navigation">
           {NAV_LINKS.map(({ label, href }) => (
             <a
               key={href}
@@ -44,10 +44,10 @@ export function Footer() {
         </nav>
 
         {/* Bottom row: legal */}
-        <div className="mt-[22px] flex flex-wrap items-center justify-center gap-y-2">
+        <div className="flex flex-wrap items-center justify-around md:justify-center gap-y-2">
           {LEGAL_LINKS.map((item, i) => (
             <span key={item.href}>
-              {i > 0 && <span className="mx-1.5 text-[#FFFFFF]">|</span>}
+              {i > 0 && <span className="mx-1.5 hidden text-[#FFFFFF] md:inline">|</span>}
               <a
                 href={item.href}
                 download={item.download}

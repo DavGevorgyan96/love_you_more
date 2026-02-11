@@ -189,7 +189,7 @@ export function Services() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-[60px] sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         {/* Title */}
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"

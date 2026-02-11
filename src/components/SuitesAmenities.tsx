@@ -37,7 +37,7 @@ export function SuitesAmenities() {
         />
       </div> */}
 
-      <div className="relative z-10 mx-auto max-w-[1200px] pt-8 sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] pt-[60px] sm:pt-12 md:pt-16 lg:pt-24 xl:pt-[120px]">
         <h2
           className="font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
@@ -54,7 +54,7 @@ export function SuitesAmenities() {
             />
           </div>
 
-          <div className="h-full flex flex-col justify-between pb-[40px] gap-5 md:gap-8 font-sans md:flex-1">
+          <div className="h-full flex flex-col justify-between pb-[60px] gap-5 md:gap-8 font-sans md:flex-1">
             <div className="pt-4 md:pt-10">
               <h3
                 className="font-sans font-bold capitalize text-black text-[22px]"
