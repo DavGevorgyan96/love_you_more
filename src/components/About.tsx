@@ -9,55 +9,37 @@ const PHILOSOPHY_SLIDES: Array<
     {
       image: "https://picsum.photos/seed/about1/600/750",
       title: "Our Philosophy: The Gold Orchid Standard",
-      text: 'At Love You More, we believe that aging should be a promotion in quality of life, not a retreat from it. We replace the clinical coldness of traditional facilities with the warmth of a true home. By maintaining a boutique, intimate setting, we ensure that every resident is not just "monitored," but deeply known, respected, and cherished. Our name is our daily standard: in every interaction, we choose to go further, listen longer, and love you more.',
+      text: 'At Love You More, we believe that aging should be a promotion in quality of life, not a retreat from it. We replace the clinical coldness of traditional facilities with the warmth of a true home. By maintaining a boutique, intimate setting, we ensure that every resident is not just "monitored," but deeply known, respected, and cherished. Our name is not just a brand—it is our operational mandate. In every interaction, we choose to go further, listen longer, and love you more.',
     },
     {
       image: "https://picsum.photos/seed/about2/600/750",
-      title: "Our Core Values",
-      items: [
-        "Radical Personalization: We adapt our home to the resident, never the resident to our home.",
-        "Uncompromising Dignity: We uphold the self-worth and autonomy of every senior, regardless of their level of care.",
-        "Presence-Based Safety: Our high caregiver-to-resident ratio ensures that safety is proactive, not reactive.",
-        "Holistic Vitality: We nourish the body with home-cooked meals, the mind with engagement, and the spirit with companionship.",
-      ],
+      title: "Our Vision",
+      text: "At Love You More Residential Villa, we don't look at where senior care is—we look at where it should be. Our vision is to eliminate the 'institutional' feel of aging, replacing it with a curated residential experience. We see a future where families feel an absolute sense of peace, knowing their loved ones are in a place where excellence is the baseline, and the Gold Orchid is the promise.",
     },
     {
       image: "https://picsum.photos/seed/about3/600/750",
-      title: "Mission Statement",
-      text: "To provide a sanctuary of comfort and compassion that transcends traditional senior living. At Love You More Residential Villa, our mission is to honor the life stories of our residents by providing a boutique, home-based environment where every individual feels deeply known, safely protected, and genuinely loved.",
+      title: "Our Mission",
+      text: "At Love You More Residential Villa, our mission is to provide a sanctuary of comfort and compassion that transcends traditional senior living, to honor the life stories of our residents by providing a boutique, home-based environment where every individual feels deeply known, safely protected, and genuinely loved.",
     },
     {
       image: "https://picsum.photos/seed/about4/600/750",
-      title: "Our Core Commitment",
-      items: [
-        "Guaranteed consistency in standards",
-        "Profound Respect for Personal Privacy and Boundaries",
-        "Proactive Holistic Health monitoring",
-        "Focus on quality time and connection",
-        "Active Memory and Identity Integration",
-        "Validation and empathy",
-      ],
+      title: "Our Core Values",
+      text: "At Love You More Residential Villa, we honor your trust through radical transparency and executive stewardship. We don't just manage care; we protect your family's legacy with the integrity the Gold Standard demands. By adapting our home to the resident—never the resident to our home—we ensure proactive safety and uncompromising dignity while nourishing the body, mind, and spirit.",
     },
     {
-      image: "https://picsum.photos/seed/about4/600/750",
+      image: "https://picsum.photos/seed/about5/600/750",
       title: "Our Core Commitment",
-      items: [
-        "Guaranteed consistency in standards",
-        "Profound Respect for Personal Privacy and Boundaries",
-        "Proactive Holistic Health monitoring",
-        "Focus on quality time and connection",
-        "Active Memory and Identity Integration",
-        "Validation and empathy",
-      ],
-    }
+      text: "At Love You More Residential Villa, we provide guaranteed consistency in standards and a profound respect for personal privacy and boundaries. Our approach centers on proactive holistic health monitoring and a dedicated focus on quality time and connection. By prioritizing active memory and identity integration, we ensure that every resident is met with the validation and empathy they deserve.",
+    },
   ];
 
 const CEO_PARAGRAPHS = [
-  "To Our Families,",
-  "I founded Love You More Residential Villa to offer the same level of devotion I would give my own family.",
-  "Our mission is to provide a sanctuary where luxury meets personalized care. Like the orchid, we believe every resident is unique and deserves a beautiful, tranquil environment to flourish. We are here to ensure your loved ones are not just cared for, but truly cherished.",
-  "At the Villa, we don't just offer a home—we offer a heart.",
-  "We are Honored to Welcome You to Our Family",
+  "Trust is earned through actions, not just words. I take the responsibility of your trust personally.",
+  'When I founded Love You More Residential Villa, I did so with a single uncompromising question in mind: "If my residents were my mother and father, would this be enough?" That question will always remain the heartbeat of everything we do here.',
+  "We define our care by the Gold Orchid Standard. This benchmark represents our commitment to a lifestyle that is as resilient as it is refined. Just as the orchid requires a specific, nurturing environment to flourish, we provide a meticulously curated sanctuary designed for the individual. While the Villa provides the home, our heart remains our greatest asset.",
+  '"The Villa is our setting; our heart is our signature."',
+  "Thank you for allowing us to be a part of your story.",
+  "With heart and dedication,",
 ];
 
 const AUTO_ADVANCE_MS = 500000;
@@ -236,16 +218,12 @@ export function About() {
 
         {/* CEO signature block */}
         <div className="mt-[20px] sm:mt-[40px] flex max-w-[714px] flex-wrap items-center gap-[37px]">
-          <div
-            className="h-[117px] w-[117px] sm:h-[120px] sm:w-[120px] shrink-0 rounded-[30px] bg-slate-200"
-            aria-hidden
-          />
           <div>
             <p className="font-sans text-lg font-regular text-[#282828] sm:text-xl">
               Armine Marie Jimenez
             </p>
             <p className="mt-1 font-sans text-sm text-[#909090] sm:text-base">
-              Co-founder & CEO
+              Founder/CEO, Love You More Residential Villa
             </p>
           </div>
         </div>

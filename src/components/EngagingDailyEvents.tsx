@@ -16,7 +16,7 @@ const EVENTS_ITEMS = [
   {
     title: 'Gardening and Outdoor Time',
     description:
-      'Nurturing a plant allows residents to transition from "care-receiver" to "care-provider" restoring a sense of dignity.',
+      'Nurturing a plant allows residents to transition from "care-receiver" to "care-provider", restoring a sense of dignity.',
     image: 'https://picsum.photos/seed/gallery-garden/578/460',
   },
   {

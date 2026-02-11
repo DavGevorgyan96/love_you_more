@@ -7,6 +7,7 @@ const SUITE_FEATURES = [
   'Clean, luxury interior finishes',
   'Safety-focused design and staff support access',
   'Housekeeping and laundry included',
+  'Room types: Shared or Private',
 ];
 
 export function SuitesAmenities() {
@@ -77,20 +78,6 @@ export function SuitesAmenities() {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <h3
-                className="font-sans font-bold text-[#282828] text-[22px]"
-                style={{ lineHeight: '130%', letterSpacing: 0 }}
-              >
-                Room types:
-              </h3>
-              <p
-                className="font-sans font-light text-[#282828] text-[22px]"
-                style={{ lineHeight: '130%', letterSpacing: 0 }}
-              >
-                Shared or Private
-              </p>
             </div>
           </div>
         </div>
