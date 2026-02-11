@@ -30,7 +30,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 flex items-center bg-[#041F1A] h-[120px] lg:h-[160px]">
+    <header className="sticky top-0 z-40 flex items-center bg-[#052720] h-[110px] lg:h-[160px]">
       <div className="2xl:mx-[79px] mx-4 w-full h-full">
         {/* Mobile: hamburger | logo | book icon | contact icon */}
         <div className="md:hidden flex h-full items-center justify-between gap-2">
@@ -39,8 +39,9 @@ export function Navbar() {
             onClick={() => setMenuOpen(true)}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#F2CF8B] transition hover:bg-gold/10"
             aria-label="Open menu"
+            aria-expanded={menuOpen}
           >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -51,36 +52,40 @@ export function Navbar() {
               className="h-[80px] w-auto max-w-[200px] shrink-0 object-contain"
             />
           </a>
-          <a
-            href="#contact"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#F2CF8B] text-[#F2CF8B] transition hover:bg-gold/10"
-            aria-label="Book a Tour"
-          >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </a>
-          <a
-            href={PHONE}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#F2CF8B] text-black transition hover:bg-gold-light"
-            aria-label="Contact us"
-          >
-            <svg className="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 17 17" aria-hidden>
-              <path d="M15.6343 6.55923C13.7141 10.7398 10.3029 14.0533 6.06829 15.8512L5.38829 16.1542C4.63526 16.4895 3.78804 16.5483 2.99592 16.3202C2.20381 16.0921 1.51762 15.5917 1.05829 14.9072L0.169287 13.5832C0.0301723 13.3756 -0.0261459 13.1234 0.0114269 12.8763C0.0489998 12.6292 0.177742 12.4051 0.372288 12.2482L3.38429 9.81823C3.48918 9.73366 3.61009 9.67116 3.73974 9.63448C3.8694 9.59781 4.00513 9.58771 4.13878 9.6048C4.27243 9.6219 4.40125 9.66582 4.51751 9.73394C4.63376 9.80207 4.73505 9.89298 4.81529 10.0012L5.74729 11.2582C8.13968 10.0767 10.0762 8.13983 11.2573 5.74723L10.0013 4.81523C9.89304 4.73499 9.80213 4.6337 9.734 4.51745C9.66588 4.4012 9.62196 4.27237 9.60486 4.13872C9.58777 4.00507 9.59787 3.86934 9.63454 3.73968C9.67122 3.61003 9.73372 3.48912 9.81829 3.38423L12.2483 0.372227C12.4052 0.17768 12.6293 0.0489404 12.8763 0.0113674C13.1234 -0.0262056 13.3756 0.0301121 13.5833 0.169227L14.9163 1.06323C15.6049 1.52501 16.1072 2.21624 16.3337 3.01379C16.5603 3.81134 16.4963 4.66342 16.1533 5.41823L15.6343 6.55923Z" />
-            </svg>
-          </a>
+          <div className="flex items-center border border-[#F2CF8B] rounded-lg overflow-hidden">
+            <a
+              href="#contact"
+              className="flex h-10 w-10 shrink-0 items-center justify-center   text-[#F2CF8B] transition hover:bg-gold/10"
+              aria-label="Book a Tour"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </a>
+            <a
+              href={PHONE}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-bl-lg rounded-tl-lg bg-[#F2CF8B] text-black transition hover:bg-gold-light"
+              aria-label="Contact us"
+            >
+              <svg className="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 17 17" aria-hidden>
+                <path d="M15.6343 6.55923C13.7141 10.7398 10.3029 14.0533 6.06829 15.8512L5.38829 16.1542C4.63526 16.4895 3.78804 16.5483 2.99592 16.3202C2.20381 16.0921 1.51762 15.5917 1.05829 14.9072L0.169287 13.5832C0.0301723 13.3756 -0.0261459 13.1234 0.0114269 12.8763C0.0489998 12.6292 0.177742 12.4051 0.372288 12.2482L3.38429 9.81823C3.48918 9.73366 3.61009 9.67116 3.73974 9.63448C3.8694 9.59781 4.00513 9.58771 4.13878 9.6048C4.27243 9.6219 4.40125 9.66582 4.51751 9.73394C4.63376 9.80207 4.73505 9.89298 4.81529 10.0012L5.74729 11.2582C8.13968 10.0767 10.0762 8.13983 11.2573 5.74723L10.0013 4.81523C9.89304 4.73499 9.80213 4.6337 9.734 4.51745C9.66588 4.4012 9.62196 4.27237 9.60486 4.13872C9.58777 4.00507 9.59787 3.86934 9.63454 3.73968C9.67122 3.61003 9.73372 3.48912 9.81829 3.38423L12.2483 0.372227C12.4052 0.17768 12.6293 0.0489404 12.8763 0.0113674C13.1234 -0.0262056 13.3756 0.0301121 13.5833 0.169227L14.9163 1.06323C15.6049 1.52501 16.1072 2.21624 16.3337 3.01379C16.5603 3.81134 16.4963 4.66342 16.1533 5.41823L15.6343 6.55923Z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         {/* Desktop: logo, nav links, CTA+address */}
         <div className="hidden h-full flex-wrap items-center justify-between gap-4 md:flex md:flex-nowrap">
           <div className="flex items-center gap-3">
-            <img
-              src={logoImg}
-              alt="Love You More"
-              className="h-[100px]  shrink-0 object-contain xl:h-[128px] xl:w-[370.91px] lg:w-[290px] md:w-[200px]"
-            />
+            <a href="#" className="block shrink-0  h-[100px] xl:h-[128px] xl:w-[370.91px] lg:w-[290px] md:w-[200px]" aria-label="Love You More - Home">
+              <img
+                src={logoImg}
+                alt="Love You More - Logo"
+                className="object-contain h-full w-full"
+              />
+            </a>
           </div>
-          <nav className="order-3 w-full basis-full md:order-2 md:basis-auto md:flex md:h-[60px] md:items-center md:justify-center">
+          <nav className="order-3 w-full basis-full md:order-2 md:basis-auto md:flex md:h-[60px] md:items-center md:justify-center" aria-label="Main navigation">
             <ul className="flex flex-wrap items-center justify-center gap-5 min-[1400px]:gap-[50px] min-[1600px]:gap-[65.25px]">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
@@ -105,7 +110,7 @@ export function Navbar() {
               <a
                 href={PHONE}
                 className="inline-flex h-full w-full items-center justify-center gap-2 bg-[#F2CF8B] font-inter text-[15px] font-semibold leading-[0] tracking-normal text-black transition hover:bg-gold-light xl:gap-[11px] xl:px-4 xl:text-[17px]"
-                aria-label="Позвонить"
+                aria-label="Call us"
               >
                 Contact us
                 <svg className="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 17 17" aria-hidden>
@@ -130,6 +135,9 @@ export function Navbar() {
           onClick={closeMenu}
         />
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Main menu"
           className={`absolute left-0 top-0 h-full w-[280px] max-w-[85vw] bg-[#041F1A] shadow-xl transition-transform duration-200 ease-out ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <div className="flex flex-col p-4 pt-6">
@@ -143,7 +151,7 @@ export function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <nav>
+            <nav aria-label="Main menu">
               <ul className="flex flex-col gap-1">
                 {NAV_LINKS.map(({ label, href }) => (
                   <li key={href}>

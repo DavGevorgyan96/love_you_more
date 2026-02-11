@@ -263,6 +263,8 @@ export function EngagingDailyEvents() {
             <div className="w-full overflow-hidden relative">
               <div
                 ref={mainScrollRef}
+                role="region"
+                aria-label="Engaging daily events carousel"
                 className="content-stretch flex items-start relative shrink-0 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
                 style={{
                   gap: `${sliderConfig.gap}px`,
@@ -283,7 +285,7 @@ export function EngagingDailyEvents() {
                     >
                       <img
                         src={item.image}
-                        alt=""
+                        alt={item.title}
                         className="h-full w-full object-cover pointer-events-none rounded-[60px]"
                         draggable={false}
                       />
@@ -344,7 +346,7 @@ export function EngagingDailyEvents() {
                 <div className="h-[300px] 2xl:h-[460px] w-full overflow-hidden rounded-[60px]">
                   <img
                     src={item.image}
-                    alt=""
+                    alt={item.title}
                     className="h-full w-full object-cover"
                   />
                 </div>

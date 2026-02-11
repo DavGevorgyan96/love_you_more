@@ -200,7 +200,7 @@ export default function GallerySlider() {
       <div className="pointer-events-none absolute right-0 top-0 z-10 hidden lg:block">
         <OrchidSmall className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-right-bottom" />
       </div>
-      <div id="gallery" className="bg-white content-stretch flex flex-col gap-[16px] items-center py-[60px] relative size-full">
+      <div className="bg-white content-stretch flex flex-col gap-[16px] items-center py-[60px] relative size-full">
         <h2
           className="text-center font-normal capitalize leading-[0.85] tracking-normal text-black text-[56px] md:text-6xl lg:text-7xl xl:text-[80px]"
           style={{ fontFamily: '"Tangerine", cursive' }}
@@ -256,40 +256,50 @@ export default function GallerySlider() {
               const thumbIndex = modIndex(index, IMAGE_COUNT);
               const isActive = index === currentIndex;
               return (
-                <div
+                <button
                   key={index}
-                  className={`rounded-[30px] shrink-0 transition-all cursor-pointer hover:opacity-80 ${isActive ? 'bg-[#8f8f8f] ring-black/30' : 'bg-[#c4c4c4]'
+                  type="button"
+                  className={`rounded-[30px] shrink-0 transition-all cursor-pointer hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${isActive ? 'bg-[#8f8f8f] ring-black/30' : 'bg-[#c4c4c4]'
                     }`}
                   style={{
                     width: config.thumbWidth,
                     height: config.thumbHeight,
                   }}
                   onClick={() => handleThumbnailClick(thumbIndex)}
+                  aria-label={`View gallery image ${thumbIndex + 1} of ${IMAGE_COUNT}`}
+                  aria-current={isActive ? true : undefined}
                 >
                   <img
-                    alt={`Thumbnail ${thumbIndex + 1}`}
+                    alt=""
                     className="size-full object-cover pointer-events-none rounded-[30px]"
                     src={img}
                     draggable={false}
+                    aria-hidden
                   />
-                </div>
+                </button>
               );
             })}
           </div>
         </div>
 
-        <div className="content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 text-[18px] text-black">
+        <div
+          className="content-stretch flex font-sans font-normal gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 text-[18px] text-black"
+          role="group"
+          aria-label="Gallery navigation"
+        >
           <button
+            type="button"
             onClick={prevImage}
             className="relative shrink-0 hover:opacity-60 transition-opacity cursor-pointer"
             aria-label="Previous image"
           >
             &lt;
           </button>
-          <p className="relative shrink-0">
+          <p className="relative shrink-0" aria-live="polite" aria-atomic="true">
             {currentPage} / {IMAGE_COUNT}
           </p>
           <button
+            type="button"
             onClick={nextImage}
             className="relative shrink-0 hover:opacity-60 transition-opacity cursor-pointer"
             aria-label="Next image"

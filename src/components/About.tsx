@@ -121,12 +121,12 @@ export function About() {
         </h2>
 
         {/* Two columns: image + philosophy (carousel) — crossfade */}
-        <div className="mt-[21px] sm:mt-[31px] md:mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[400px]">
+        <div className="mt-[21px] sm:mt-[31px] md:mt-[60px] flex flex-col gap-[40px] min-[920px]:flex-row xl:h-[400px]" role="region" aria-roledescription="carousel" aria-label="About us philosophy">
           <div className="mx-auto h-[281px] w-full shrink-0 overflow-hidden rounded-2xl bg-slate-200 sm:h-[358px] sm:rounded-[20px] md:h-[403px] min-[920px]:w-[360px] md:rounded-[25px] lg:mx-0 lg:h-[400px] lg:w-[400px] lg:rounded-[30px] xl:h-[400px] xl:w-[350px]">
             <img
               key={activeSlide}
               src={PHILOSOPHY_SLIDES[activeSlide].image}
-              alt=""
+              alt={PHILOSOPHY_SLIDES[activeSlide].title}
               className="h-full w-full object-cover transition-opacity duration-300 ease-out"
             />
           </div>
@@ -175,7 +175,7 @@ export function About() {
                   type="button"
                   onClick={goPrev}
                   className="flex h-12 w-12 items-center justify-center rounded-full"
-                  aria-label="Previous"
+                  aria-label="Previous slide"
                 >
                   <span className="text-[30px] font-light opacity-50">
                     &lt;
@@ -188,7 +188,7 @@ export function About() {
                     resetAutoPlay();
                   }}
                   className="flex h-12 w-12 items-center justify-center rounded-full"
-                  aria-label="Next"
+                  aria-label="Next slide"
                 >
                   <span className="text-[30px] font-light opacity-50">
                     &gt;
@@ -202,7 +202,7 @@ export function About() {
                     type="button"
                     onClick={() => goTo(i)}
                     className="transition-opacity hover:opacity-80"
-                    aria-label={`Slide ${i + 1}`}
+                    aria-label={`Go to slide ${i + 1} of ${totalSlides}`}
                   >
                     <OrchidIcon
                       color={i === activeSlide ? "#282828" : "#D9D9D9"}

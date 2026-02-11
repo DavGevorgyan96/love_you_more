@@ -11,7 +11,7 @@ const ICONS = [
 
 export function ContactIcons() {
   return (
-    <section className="relative overflow-visible bg-[#052720] py-6 sm:py-8 px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section className="relative overflow-visible bg-[#052720] mt-[-1px] sm:mt-[0] py-4 sm:py-8 px-3 lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       {/* Decorative left — extends into header */}
       <div className="pointer-events-none absolute left-0 bottom-0 z-0 hidden lg:block">
         <img

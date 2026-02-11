@@ -11,10 +11,13 @@
   body {
     @apply font-sans;
   }
-  *:focus,
-  *:focus-visible {
+  /* Visible focus for keyboard/screen reader users (accessibility) */
+  *:focus {
     outline: none;
-    box-shadow: none;
+  }
+  *:focus-visible {
+    outline: 2px solid #F2CF8B;
+    outline-offset: 2px;
   }
   /* Offset scroll target for sticky navbar (120px/160px) + 20px */
   #about,

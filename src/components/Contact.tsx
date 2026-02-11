@@ -58,8 +58,9 @@ function CustomSelect({
       {open && (
         <ul
           role="listbox"
+          aria-labelledby={`${id}-label`}
+          id={`${id}-listbox`}
           className="absolute left-0 right-0 top-[calc(100%+4px)] z-50 max-h-[240px] overflow-auto rounded-[13px] border border-[#D1D5DB] bg-white py-1 shadow-lg"
-          aria-activedescendant={value ? undefined : undefined}
         >
           {options.map((opt) => {
             const selected = opt.value === value;
@@ -187,11 +188,12 @@ export function Contact() {
           {/* Left column */}
           <div className="w-full flex-1 space-y-3 sm:space-y-4">
             <div>
-              <label className={labelClass}>
-                Name / Last Name <span className="text-[#282828]">*</span>
-              </label>
               <div className="flex flex-col gap-3 sm:gap-3">
+                <label htmlFor="contact-first-name" className={labelClass}>
+                  First Name <span className="text-[#282828]">*</span>
+                </label>
                 <input
+                  id="contact-first-name"
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -199,7 +201,11 @@ export function Contact() {
                   className={inputClass}
                   placeholder="First Name"
                 />
+                <label htmlFor="contact-last-name" className={labelClass}>
+                  Last Name <span className="text-[#282828]">*</span>
+                </label>
                 <input
+                  id="contact-last-name"
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
@@ -250,7 +256,7 @@ export function Contact() {
               />
             </div>
             <div>
-              <label className={labelClass} htmlFor="how-can-we-help">
+              <label id="how-can-we-help-label" className={labelClass} htmlFor="how-can-we-help">
                 How can we help you?
               </label>
               <CustomSelect
@@ -262,7 +268,7 @@ export function Contact() {
               />
             </div>
             <div>
-              <label className={labelClass} htmlFor="how-did-you-hear">
+              <label id="how-did-you-hear-label" className={labelClass} htmlFor="how-did-you-hear">
                 How did you hear about us?
               </label>
               <CustomSelect
@@ -278,10 +284,11 @@ export function Contact() {
           {/* Right column */}
           <div className="w-full flex-1 flex flex-col justify-between mt-6 lg:mt-0">
             <div>
-              <label className={labelClass}>
+              <label htmlFor="contact-message" className={labelClass}>
                 Your Message
               </label>
               <textarea
+                id="contact-message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={6}
@@ -303,6 +310,7 @@ export function Contact() {
                     href="/pdfs/privacy-policy.pdf"
                     download="privacy-policy.pdf"
                     className="font-inter text-[14px] font-normal leading-[140%] tracking-normal text-[#282828] underline align-middle hover:opacity-80"
+                    aria-label="Personal data (PDF)"
                   >
                     Personal data
                   </a>

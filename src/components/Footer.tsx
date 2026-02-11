@@ -31,7 +31,7 @@ export function Footer() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         {/* Top row: navigation */}
-        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8">
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8" aria-label="Footer navigation">
           {NAV_LINKS.map(({ label, href }) => (
             <a
               key={href}
@@ -52,6 +52,7 @@ export function Footer() {
                 href={item.href}
                 download={item.download}
                 className="font-sans text-[18px] font-normal leading-[130%] tracking-normal text-[#FFFFFF] transition hover:opacity-90"
+                aria-label={`${item.label} (PDF)`}
               >
                 {item.label}
               </a>

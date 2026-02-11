@@ -35,11 +35,13 @@ const FAQ_ITEMS = [
 ];
 
 function FaqAccordionItem({
+  id,
   question,
   answer,
   open,
   onToggle,
 }: {
+  id: string;
   question: string;
   answer: string;
   open: boolean;
@@ -50,6 +52,9 @@ function FaqAccordionItem({
       <button
         type="button"
         onClick={onToggle}
+        aria-expanded={open}
+        aria-controls={id}
+        id={`${id}-button`}
         className="flex w-full items-start justify-between gap-4 py-5 text-left transition"
       >
         <span className="font-sans text-[22px] font-semibold leading-[1.3] tracking-normal text-[#282828]">
@@ -66,6 +71,10 @@ function FaqAccordionItem({
         </svg>
       </button>
       <div
+        id={id}
+        role="region"
+        aria-labelledby={`${id}-button`}
+        aria-hidden={!open}
         className="grid transition-[grid-template-rows] duration-300 ease-out"
         style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
@@ -117,6 +126,7 @@ export function Faq() {
           {FAQ_ITEMS.map((item, i) => (
             <FaqAccordionItem
               key={i}
+              id={`faq-panel-${i}`}
               question={item.question}
               answer={item.answer}
               open={openIndex === i}

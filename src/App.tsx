@@ -26,12 +26,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans bg-slate-50">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-[#F2CF8B] focus:px-4 focus:py-2 focus:text-[#041F1A] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#041F1A]"
+      >
+        Skip to main content
+      </a>
       <ToastContainer position="bottom-center" theme="light" />
       <Navbar />
       <Header />
       <ContactIcons />
 
-      <main>
+      <main id="main-content">
         <About />
         <Services />
         <Activities />

@@ -74,6 +74,7 @@ function TierCard({ tier, index }: { tier: Tier; index: number }) {
       tabIndex={0}
       onClick={scrollToContact}
       onKeyDown={(e) => e.key === 'Enter' && scrollToContact()}
+      aria-label={`${tier.tier}: ${tier.title}. Contact us for more information.`}
       className={`flex h-[460px] w-full max-w-full md:cursor-pointer flex-col rounded-[30px] bg-[#EFEFEF] px-4 py-5 transition-shadow max-w-[372px] lg:h-[507px] lg:px-6 lg:py-6 hover:shadow-[0_8px_6px_0_rgba(0,0,0,0.15)]`}
     >
       <p className="shrink-0 text-center font-sans text-[20px] font-bold leading-[120%] tracking-normal text-[#282828] md:text-[22px]">
@@ -252,7 +253,7 @@ export function Activities() {
   const slideStyleWidth = getSlideStyleWidth(slideWidthMode);
 
   return (
-    <section id="" className="relative overflow-visible bg-white px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
+    <section id="activities" className="relative overflow-visible bg-white px-3   lg:px-[100px] xl:px-[150px] 2xl:px-[200px]">
       <div className="pointer-events-none absolute left-0 top-0 z-0 hidden lg:block">
         <OrchidSmall flipHorizontal className="h-[120px] w-[258px] xl:h-[148px] xl:w-[300px] object-contain object-left-bottom" />
       </div>
@@ -292,7 +293,7 @@ export function Activities() {
                 </div>
               ))}
             </div>
-            <div className="-mt-8 flex justify-center gap-2" aria-hidden>
+            <div className="-mt-8 flex justify-center gap-2" role="tablist" aria-label="Care tiers carousel slides">
               {[0, 1, 2].map((i) => (
                 <button
                   key={i}
@@ -300,7 +301,7 @@ export function Activities() {
                   onClick={() => scrollToSlide(i)}
                   className={`h-2 rounded-full transition-colors ${currentIndex === i ? 'w-6 bg-[#4a90d9]' : 'w-2 bg-[#ccc]'
                     }`}
-                  aria-label={`Go to slide ${i + 1}`}
+                  aria-label={`Go to slide ${i + 1} of 3`}
                 />
               ))}
             </div>

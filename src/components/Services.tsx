@@ -41,11 +41,13 @@ const SPECIALIZED_ITEMS = [
 ];
 
 function AccordionItem({
+  id,
   title,
   children,
   open,
   onToggle,
 }: {
+  id: string;
   title: string;
   children: React.ReactNode;
   open: boolean;
@@ -56,6 +58,9 @@ function AccordionItem({
       <button
         type="button"
         onClick={onToggle}
+        aria-expanded={open}
+        aria-controls={id}
+        id={`${id}-button`}
         className="flex w-full items-center justify-between py-4 text-left font-sans text-[20px] md:text-[22px] font-bold leading-[1.2] tracking-normal text-[#282828]"
       >
         <span>{title}</span>
@@ -70,6 +75,10 @@ function AccordionItem({
         </svg>
       </button>
       <div
+        id={id}
+        role="region"
+        aria-labelledby={`${id}-button`}
+        aria-hidden={!open}
         className="grid transition-[grid-template-rows] duration-300 ease-out"
         style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
@@ -136,6 +145,7 @@ export function Services() {
             {SERVICES_ITEMS.map((item, i) => (
               <AccordionItem
                 key={i}
+                id={`services-panel-${i}`}
                 title={item.title}
                 open={openService === i}
                 onToggle={() => setOpenService(openService === i ? null : i)}
@@ -155,6 +165,7 @@ export function Services() {
             {SPECIALIZED_ITEMS.map((item, i) => (
               <AccordionItem
                 key={i}
+                id={`specialized-panel-${i}`}
                 title={item.title}
                 open={openSpecialized === i}
                 onToggle={() => setOpenSpecialized(openSpecialized === i ? null : i)}

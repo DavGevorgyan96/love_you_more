@@ -73,6 +73,8 @@ export function ContactForm() {
         </div>
         {message && (
           <p
+            role="alert"
+            aria-live="polite"
             className={`text-sm ${
               status === 'success' ? 'text-green-600' : 'text-red-600'
             }`}
